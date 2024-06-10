@@ -1,5 +1,5 @@
 const passwordField = document.getElementById("password");
-const togglePassword = document.querySelector(".password-toggle i");
+const togglePassword = document.querySelector(".toggle-password i");
 
 togglePassword.addEventListener("click", function () {
   if (passwordField.type === "password") {

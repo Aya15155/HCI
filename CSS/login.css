@@ -60,10 +60,9 @@
         padding: 10px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background-position-y: center;
-        background-position-x: 10px;
-        background-image: url('../Media/Vector.png');
-        background-repeat: no-repeat;
+        
+        
+        
     }
 
 
@@ -86,7 +85,34 @@
       .password-toggle i:hover {
         color: #000;
       }
-
+      
+      input[type='email']:focus {
+        background-image: none;
+        padding-left: calc(100% - 98%);
+        transition: ease-in-out;
+      }
+      input[type='email']::placeholder {
+        background: white url(../Media/Vector.png) no-repeat ;
+        
+        padding-left: calc(100% - 88%);
+        background-position-x:10px ;
+        background-size: contain;
+      }
+      input[type='password']:focus {
+        background-image: none;
+        padding-left: calc(100% - 98%);
+        overflow: hidden;
+        transition: ease-in-out;
+      }
+      input[type='password']::placeholder {
+        background: white url(../Media/Group.png) no-repeat ;
+        
+        padding-left: calc(100% - 88%);
+        background-position-x:15px ;
+        background-size: contain;
+      }
+      
+      
     .or {
         text-align: center;
         margin: 20px 0;

@@ -1,6 +1,17 @@
-document.querySelector('.toggle-password').addEventListener('click', function () {
-    const passwordInput = document.querySelector('#password');
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type);
-    this.textContent = type === 'password' ? '👁️' : '👁';
+const passwordField = document.getElementById("password");
+const togglePassword = document.querySelector(".password-toggle i");
+
+togglePassword.addEventListener("click", function () {
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    togglePassword.classList.remove("fa-eye");
+    togglePassword.classList.add("fa-eye-slash");
+  } else {
+    passwordField.type = "password";
+    togglePassword.classList.remove("fa-eye-slash");
+    togglePassword.classList.add("fa-eye");
+  }
 });
+function hideIcon(self) {
+    self.style.backgroundImage = 'none';
+}

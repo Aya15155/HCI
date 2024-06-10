@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+    <title>Library Login</title>
+    <link rel="stylesheet" href="../CSS/login.css">
+</head>
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="../Media/illustration.png" alt="Illustration">
+        </div>
+        <div class="login-section">
+            <h1>Welcome To our LIBRARY</h1>
+            <form action="#" method="POST">
+                <div class="input-group">
+                    <label for="email">Email</label>
+
+                    <input type="email" id="email" name="email" placeholder="               example@gmail.com" onchange="hideIcon(this);" required alt="Illustration">
+                    
+            
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input class="password" type="password" id="password" name="password" placeholder="Password" required>
+                    <span class="toggle-password"><i class="fas fa-eye"></i></span>
+                </div>
+                <div class="or">OR</div>
+                <button type="button" class="social-login google">Login with Google</button>
+                <button type="button" class="social-login facebook">Login with Facebook</button>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+    <script src="../JAVA/login.js"></script>
+    
+</body>
+</html>

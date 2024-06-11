@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management</title>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <style>
         body {
@@ -12,53 +13,7 @@
             padding: 0;
             background-color: #f2f2f2;
         }
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #d6dbf8;
-            padding-top: 20px;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .sidebar .logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .sidebar .logo img {
-            width: 40px;
-        }
-        .sidebar p {
-            margin-left: 20px;
-        }
-        .sidebar .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            color: #333;
-            text-decoration: none;
-            font-size: 18px;
-            border-bottom: 1px solid #e6e6e6;
-            transition: background-color 0.3s;
-        }
-        .sidebar .menu-item:hover {
-            background-color: #c5cbe3;
-        }
-        .sidebar .menu-item i {
-            margin-right: 20px;
-        }
-        .sidebar .menu-top, .sidebar .menu-bottom {
-            flex-grow: 1;
-        }
-        .sidebar .menu-bottom {
-            margin-top: auto;
-        }
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-        }
+        
         .top-bar {
             background-color: #3498db;
             padding: 10px 20px;
@@ -180,28 +135,35 @@
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div>
+    <div class="container">
+        <nav class="sidebar" id="sidebar">
             <div class="logo">
-                <img src="https://via.placeholder.com/40" alt="Logo">
+                <img src="/Media/logo.png" alt="Library Logo">
             </div>
-            <p>John Sam<br><small>Admin</small></p>
-            <div class="menu-top">
-                <a href="#" class="menu-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                <a href="#" class="menu-item"><i class="fas fa-book"></i>Library loan</a>
-                <a href="#" class="menu-item"><i class="fas fa-bookmark"></i>Cataloging</a>
-                <a href="#" class="menu-item"><i class="fas fa-user"></i>Librarian</a>
-                <a href="#" class="menu-item"><i class="fas fa-users"></i>Users</a>
-                <a href="#" class="menu-item"><i class="fas fa-tasks"></i>Manage Requests</a>
-                <a href="#" class="menu-item"><i class="fas fa-history"></i>Request History</a>
+            <div class="profile">
+                <img src="/Media/profile.png" alt="Profile Picture">
+                <div class="profile-info">
+                    <h2>John Sam</h2>
+                    <p>admin</p>
+                </div>
             </div>
-        </div>
-        <div class="menu-bottom">
-            <a href="#" class="menu-item"><i class="fas fa-question-circle"></i>Help</a>
-            <a href="#" class="menu-item"><i class="fas fa-cog"></i>Settings</a>
-        </div>
-    </div>
-    <div class="content">
+            <ul class="menu">
+                <li><a href="Dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-book" style="color:black;"></i> Library loan</a></li>
+                <li><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
+                <li class="active"><a href="#"><i class="fas fa-user-tie"></i> Librarians</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="managerequest.html"><i class="fas fa-tasks"></i> Manage Requests</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Request History</a></li>
+                </ul>
+                <ul class="menu2">
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+        
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <div class="content">
         <div class="top-bar">
             <input type="search" placeholder="Search">
             <div class="icons">
@@ -292,6 +254,8 @@
             </table>
         </div>
     </div>
+    </div>
+    <script src="/JAVA/admin_menu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js"></script>
 </body>
 </html>

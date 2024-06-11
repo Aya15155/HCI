@@ -154,7 +154,7 @@ body {
     .sidebar {
         transform: translateX(-100%);
         z-index: 100;
-        width: calc(100vw - 80vw);
+        width: calc(100vw - 70vw);
         min-width: 120px;
     }
 

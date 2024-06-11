@@ -25,12 +25,12 @@
                 </div>
             </div>
             <ul class="menu">
-                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li ><a href="Dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
                 <li><a href="#"><i class="fas fa-book" style="color:black;"></i> Library loan</a></li>
                 <li><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
-                <li><a href="#"><i class="fas fa-user-tie"></i> Librarian</a></li>
+                <li><a href="librarians.html"><i class="fas fa-user-tie"></i> Librarian</a></li>
                 <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
-                <li><a href="#"><i class="fas fa-tasks"></i> Manage Requests</a></li>
+                <li class="active"><a href="#"><i class="fas fa-tasks"></i> Manage Requests</a></li>
                 <li><a href="#"><i class="fas fa-history"></i> Request History</a></li>
             </ul>
             <ul class="menu2">
@@ -39,11 +39,40 @@
             </ul>
         </nav>
         <button class="hamburger" id="hamburger">&#9776;</button>
+        
         <div class="content">
-            <div class="search-bar">
-                <input type="text" placeholder="Borrower's Email">
-                <input type="text" placeholder="Borrower's ID">
-                <button class="search-button">Search</button>
+            <div class="top-bar">
+                <input type="search" placeholder="Search">
+                <div class="icons">
+                    <button class="icon-btn" title="Filter"><i class="fas fa-filter"></i></button>
+                    <button class="icon-btn" title="Report"><i class="fas fa-file-alt"></i></button>
+                    <button class="icon-btn" title="Books"><i class="fas fa-book"></i></button>
+                    <button class="icon-btn" title="Periodicals"><i class="fas fa-newspaper"></i></button>
+                </div>
+            </div>
+            <div class="search-container">
+                <div style="flex-grow: 1;">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Borrower's Email">
+                </div>
+                <div style="flex-grow: 1; margin-left: 20px;">
+                    <label for="id">ID</label>
+                    <input type="text" id="id" placeholder="Borrower's ID">
+                </div>
+                <div class="icon-group">
+                    <div style="text-align: center;">
+                        <button class="icon-btn" title="Search"><i class="fas fa-search"></i></button>
+                        <div class="icon-label">Search</div>
+                    </div>
+                    <div style="text-align: center; margin-left: 10px;">
+                        <button class="icon-btn" title="Add"><i class="fas fa-plus"></i></button>
+                        <div class="icon-label">Add</div>
+                    </div>
+                    <div style="text-align: center; margin-left: 10px;">
+                        <button class="icon-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                        <div class="icon-label">Delete</div>
+                    </div>
+                </div>
             </div>
             <table>
                 <thead>

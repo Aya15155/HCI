@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Dashboard</title>
+    <link rel="stylesheet" href="admin_menu.css">
+    <!-- Font Awesome CDN Link -->
+    <script src="https://kit.fontawesome.com/fa33ff1c75.js" crossorigin="anonymous"></script>
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <nav class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="/Media/logo.png" alt="Library Logo">
+            </div>
+            <div class="profile">
+                <img src="/Media/profile.png" alt="Profile Picture">
+                <div class="profile-info">
+                    <h2>John Sam</h2>
+                    <p>admin</p>
+                </div>
+            </div>
+            <ul class="menu">
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-book" style="color:black;"></i> Library loan</a></li>
+                <li><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
+                <li><a href="#"><i class="fas fa-user-tie"></i> Librarian</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> Manage Requests</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Request History</a></li>
+            </ul>
+            <ul class="menu2">
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="search-bar">
+                <input type="text" placeholder="Borrower's Email">
+                <input type="text" placeholder="Borrower's ID">
+                <button class="search-button">Search</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>Request</th>
+                        <th>ID</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jacob Brown</td>
+                        <td>Early leave to attend a library management training workshop</td>
+                        <td>2024123</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                    <tr>
+                        <td>Paula Lee</td>
+                        <td>Maternity leave for 3 months</td>
+                        <td>2024124</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                    <tr>
+                        <td>Harper Benett</td>
+                        <td>Update borrowing policy</td>
+                        <td>2024125</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                    <tr>
+                        <td>Thalia Smith</td>
+                        <td>Improve search functionality</td>
+                        <td>2024126</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                    <tr>
+                        <td>Peter Wright</td>
+                        <td>Increase Storage Capacity</td>
+                        <td>2024127</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                    <tr>
+                        <td>Danny Bass</td>
+                        <td>Approve sick leave</td>
+                        <td>2024128</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="hamburger" id="hamburger">&#9776;</button>
+    </div>
+    <script src="admin_menu.js"></script>
+</body>
+</html>

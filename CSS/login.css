@@ -1,197 +1,227 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
-    body {
-        font-family: Arial, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #f0f0f0;
-        margin: 0;
-    }
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+    margin: 0;
+}
 
+.container {
+    display: flex;
+    width: 90vw;
+    max-width: 100%;
+    
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.image-section {
+    flex: 1;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+.image-section img {
+    width: 80%;
+}
+
+.login-section {
+    flex: 1;
+    padding: 40px;
+    border-style: solid;
+    border-top: none;
+    border-right: none;
+    border-bottom: none;
+    border-left-width: 1px;
+    border-color: #000;
+}
+
+h1 {
+    font-size: 23px;
+    margin-bottom: 20px;
+    color: #5352ED;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.h1{
+    width: calc(100% - 55%);
+}
+
+  
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.input-group input {
+    width: calc(100% - 40px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.input-group .toggle-password {
+    position: absolute;
+    margin-right: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.password-toggle i {
+    font-size: 18px;
+    line-height: 1;
+    color: #333;
+    transition: color 0.3s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.password-toggle i:hover {
+    color: #000;
+}
+
+input[type='email']:focus {
+    background-image: none;
+    padding-left: calc(100% - 98%);
+    transition: ease-in-out;
+}
+input[type='email']::placeholder {
+    background: white url(../Media/Vector.png) no-repeat ;
+    padding-left: calc(100% - 88%);
+    background-position-x:10px ;
+    background-size: contain;
+}
+input[type='password']:focus {
+    background-image: none;
+    padding-left: calc(100% - 98%);
+    overflow: hidden;
+    transition: ease-in-out;
+}
+input[type='password']::placeholder {
+    background: white url(../Media/Group.png) no-repeat ;
+    padding-left: calc(100% - 88%);
+    background-position-x:15px ;
+    background-size: contain;
+}
+
+.or {
+    text-align: center;
+    margin: 20px 0;
+    color: #888;
+}
+
+.social-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Ensures the button takes the full width of the container */
+}
+
+
+.google{
+    
+    width: 75%;
+    height: 40px;
+    border: none;
+    
+    border-radius: 5px;
+    
+    margin:auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    
+}
+
+.fb-login-button {
+    width: 100%;
+    margin:auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #3b5998;
+    border: none;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.options a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #ff7f50;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
     .container {
-        display: flex;
-
-        width: 90vw;
-        max-width: 100%; /* Ensure container doesn't exceed screen width */
-        background-color: #fff;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        overflow: hidden;
+        flex-direction: column;
+        width: 100%;
     }
 
     .image-section {
-        flex: 1;
-        background-color: #e0e0e0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .image-section img {
-        width: 80%;
+        flex: none;
+        width: 100%;
+        order: 2; /* Move image below form on smaller screens */
     }
 
     .login-section {
-        flex: 1;
-        padding: 40px;
+        width: 100%;
+        order: 1; /* Move form above image on smaller screens */
     }
 
-    h1 {
-        font-size: 24px;
-        margin-bottom: 20px;
-        color: #333;
-    }
-
-    .input-group {
-        margin-bottom: 20px;
-        position: relative;
-        
-    }
-
-    .input-group label {
-        display: block;
-        margin-bottom: 5px;
-        color: #555;
-    }
-
-    .input-group input {
-        width: calc(100% - 40px);
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        
-        
-        
-    }
-
-
-
-    .input-group .toggle-password {
-        position: absolute;
-        cursor: pointer;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .password-toggle i {
-        font-size: 18px;
-        line-height: 1;
-        color: #333;
-        transition: color 0.3s ease-in-out;
-        margin-bottom: 20px;
-      }
-      
-      .password-toggle i:hover {
-        color: #000;
-      }
-      
-      input[type='email']:focus {
-        background-image: none;
-        padding-left: calc(100% - 98%);
-        transition: ease-in-out;
-      }
-      input[type='email']::placeholder {
-        background: white url(../Media/Vector.png) no-repeat ;
-        
-        padding-left: calc(100% - 88%);
-        background-position-x:10px ;
-        background-size: contain;
-      }
-      input[type='password']:focus {
-        background-image: none;
-        padding-left: calc(100% - 98%);
-        overflow: hidden;
-        transition: ease-in-out;
-      }
-      input[type='password']::placeholder {
-        background: white url(../Media/Group.png) no-repeat ;
-        
-        padding-left: calc(100% - 88%);
-        background-position-x:15px ;
-        background-size: contain;
-      }
-      
-      
-    .or {
-        text-align: center;
-        margin: 20px 0;
-        color: #888;
+    .image-section img {
+        width: 100%;
+        height: auto;
     }
 
     .social-login {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
+        width: 48%;
         margin-bottom: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 16px;
     }
 
-    .social-login.google {
-        background-color: #db4437;
-        color: #fff;
+    .social-login:first-child {
+        margin-right: 4%;
     }
-
-    .social-login.facebook {
-        background-color: #3b5998;
-        color: #fff;
-    }
-
-    .options {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .options a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    button[type="submit"] {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        background-color: #ff7f50;
-        color: #fff;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    @media (max-width: 800px) {
-        .container {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .image-section {
-            flex: none;
-            width: 100%;
-            order: 2; /* Move image below form on smaller screens */
-        }
-
-        .login-section {
-            width: 100%;
-            order: 1; /* Move form above image on smaller screens */
-        }
-
-        .image-section img {
-            width: 100%;
-            height: auto;
-        }
-
-        .social-login {
-            width: 48%;
-            margin-bottom: 10px;
-        }
-
-        .social-login:first-child {
-            margin-right: 4%;
-        }
-    }
+    
+}

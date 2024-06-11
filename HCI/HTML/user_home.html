@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ddd;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: black;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        .trending-books,
+        .borrowed-books {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .book {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .book h3 {
+            margin: 0;
+        }
+
+        .book button {
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #ddd;
+        }
+
+        @media screen and (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+
+            nav li {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My Books</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Return Book</a></li>
+                <li><a href="#">Request a New Book</a></li>
+                <li><a href="#">Request a Meeting Room</a></li>
+                <li><input type="text" placeholder="Search for a book"></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="trending-books">
+            <h2>TOP TRENDING BOOKS</h2>
+            <div class="book">
+                <h3>When Some Win and Others Don't...</h3>
+                <p>Chip Heath & Dan Heath</p>
+                <button>Borrow</button>
+            </div>
+            <div class="book">
+                <h3>Tiny Changes, Remarkable Results</h3>
+                <p>James Clear</p>
+                <button>Borrow</button>
+            </div>
+            <div class="book">
+                <h3>Atomic Habits</h3>
+                <p>James Clear</p>
+                <button>Borrow</button>
+            </div>
+        </section>
+        <section class="borrowed-books">
+            <h2>TOP BORROWED BOOKS</h2>
+            <div class="book">
+                <h3>The Little Prince</h3>
+                <p>Antoine de Saint-Exupéry</p>
+                <button>Borrow</button>
+            </div>
+            <div class="book">
+                <h3>Little Fires Everywhere</h3>
+                <p>Celeste Ng</p>
+                <button>Borrow</button>
+            </div>
+            <div class="book">
+                <h3>The Lord of the Rings</h3>
+                <p>J. R. R. Tolkien</p>
+                <button>Borrow</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Library</p>
+    </footer>
+</body>
+</html>

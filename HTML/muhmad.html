@@ -1,1 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #F3F7FB;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #F3F7FB;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid #ccc;
+        }
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile img {
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .profile-info p {
+            margin: 0;
+            color: #0F254F;
+            font-size: 14px;
+        }
+
+        .menu {
+            width: 100%;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #0F254F;
+            padding: 10px 0;
+            display: block;
+            text-align: left;
+            padding-left: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .menu a i {
+            margin-right: 10px;
+        }
+
+        .menu a.active {
+            background-color: #0056b3;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            background-color: #E9EEF6;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .stat {
+            text-align: center;
+            flex: 1;
+            margin: 0 10px;
+        }
+
+        .stat-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .chart {
+            background-color: #333;
+            height: 300px;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .manage-librarians {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        .manage-librarians h2 {
+            margin: 0 0 20px 0;
+            font-size: 20px;
+            color: #333;
+        }
+
+        .librarian-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .librarian-list div {
+            background-color: #E0E0E0;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .actions button {
+            background-color: #0F254F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .actions button i {
+            margin-right: 5px;
+        }
+
+        .icon {
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+        }
+
+        .section-icons {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .section-icons div {
+            text-align: center;
+        }
+
+        .section-icons img {
+            width: 120px;
+            height: 120px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div style="background-color: #F3F7FB; padding: 10px; border-radius: 10px;">
+            <img id="logo" src="/mnt/data/images.jpg" alt="Logo" style="width: 60px; height: 60px; margin-bottom: 20px;">
+        </div>
+        <div class="profile">
+            <img src="/mnt/data/Dashboard-3.png" alt="Profile Picture" style="width: 60px; height: 60px;">
+            <div class="profile-info">
+                <p style="font-size: 18px; font-weight: bold;">John Sam</p>
+                <p style="font-size: 16px;">admin</p>
+            </div>
+        </div>
+        <nav class="menu">
+            <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+            <a href="#"><i class="fas fa-sync-alt"></i> Library loan</a>
+            <a href="#"><i class="fas fa-book"></i> Cataloging</a>
+            <a href="#"><i class="fas fa-user"></i> Librarian</a>
+            <a href="#"><i class="fas fa-users"></i> Users</a>
+            <a href="#"><i class="fas fa-tasks"></i> Manage Requests</a>
+            <a href="#"><i class="fas fa-history"></i> Request History</a>
+            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
+            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+        </nav>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>Dashboard</h1>
+            <div class="dropdown">
+                <button class="dropbtn">weekly <i class="fas fa-chevron-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#" onclick="updateChart('daily')">daily</a>
+                    <a href="#" onclick="updateChart('weekly')">weekly</a>
+                    <a href="#" onclick="updateChart('monthly')">monthly</a>
+                </div>
+            </div>
+        </header>
+        <section class="stats">
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                <p>borrowed</p>
+                <h2 id="borrowedCount">35</h2>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-exclamation-circle"></i></div>
+                <p>overdue</p>
+                <h2 id="overdueCount">6</h2>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-user"></i></div>
+                <p>users</p>
+                <h2 id="userCount">89</h2>
+            </div>
+            <div class="stat">
+                <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                <p>new users</p>
+                <h2 id="newUserCount">13</h2>
+            </div>
+        </section>
+        <section class="chart">
+            <canvas id="chart"></canvas>
+        </section>
+        <section class="manage-librarians">
+            <h2>Manage Librarians</h2>
+            <div class="librarian-list" id="librarianList">
+                <!-- Librarian entries will be inserted here -->
+            </div>
+            <div class="actions">
+                <button onclick="addLibrarian()"><i class="fas fa-plus"></i> Add</button>
+                <button onclick="updateLibrarian()"><i class="fas fa-sync-alt"></i> Update</button>
+                <button onclick="trackLibrarian()"><i class="fas fa-arrow-right"></i> Track</button>
+            </div>
+        </section>
+        <section class="section-icons">
+            <div>
+                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Library">
+                <p>LIBRARY</p>
+            </div>
+            <div>
+                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Borrowers List">
+                <p>BORROWERS LIST</p>
+            </div>
+            <div>
+                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Reports">
+                <p>REPORTS</p>
+            </div>
+            <div>
+                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Updates">
+                <p>UPDATES</p>
+            </div>
+        </section>
+    </div>
+    <script>
+        const librarianListElement = document.getElementById('librarianList');
+
+        document.addEventListener("DOMContentLoaded", function() {
+            loadLibrarians();
+            initializeChart();
+            loadLogo();
+        });
+
+        function loadLibrarians() {
+            const librarians = JSON.parse(localStorage.getItem('librarians')) || [
+                'Jacob Brown',
+                'Paula Lee',
+                'Harper Benett',
+                'Thalia Smith',
+                'Peter Wright',
+                'Danny Bass'
+            ];
+            librarianListElement.innerHTML = '';
+            librarians.forEach(name => {
+                const librarianDiv = document.createElement('div');
+                librarianDiv.innerHTML = `${name} <button onclick="deleteLibrarian(this)"><i class="fas fa-trash"></i></button> <button onclick="editLibrarian(this)"><i class="fas fa-edit"></i></button>`;
+                librarianListElement.appendChild(librarianDiv);
+            });
+        }
+
+        function saveLibrarians() {
+            const librarianNames = Array.from(librarianListElement.children).map(div => div.childNodes[0].textContent.trim());
+            localStorage.setItem('librarians', JSON.stringify(librarianNames));
+        }
+
+        function deleteLibrarian(button) {
+            const librarianDiv = button.parentElement;
+            librarianDiv.remove();
+            saveLibrarians();
+        }
+
+        function addLibrarian() {
+            const librarianName = prompt("Enter the librarian's name:");
+            if (librarianName) {
+                const newLibrarian = document.createElement('div');
+                newLibrarian.innerHTML = `${librarianName} <button onclick="deleteLibrarian(this)"><i class="fas fa-trash"></i></button> <button onclick="editLibrarian(this)"><i class="fas fa-edit"></i></button>`;
+                librarianListElement.appendChild(newLibrarian);
+                saveLibrarians();
+            }
+        }
+
+        function editLibrarian(button) {
+            const librarianDiv = button.parentElement;
+            const currentName = librarianDiv.childNodes[0].textContent.trim();
+            const newName = prompt("Edit the librarian's name:", currentName);
+            if (newName && newName !== currentName) {
+                librarianDiv.childNodes[0].textContent = newName + ' ';
+                saveLibrarians();
+            }
+        }
+
+        function updateLibrarian() {
+            alert('Update Librarian functionality: Please use the edit buttons next to each librarian to update their information.');
+        }
+
+        function trackLibrarian() {
+            alert('Track Librarian functionality: This feature can be implemented based on specific tracking needs.');
+        }
+
+        function initializeChart() {
+            const ctx = document.getElementById('chart').getContext('2d');
+            window.myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'],
+                    datasets: [{
+                        label: 'Users',
+                        data: [12, 19, 3, 5, 2, 3, 7, 10, 8, 6, 11, 13],
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Borrowers',
+                        data: [22, 29, 5, 5, 2, 3, 8, 15, 10, 7, 14, 17],
+                        backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChart(period) {
+            // Update the chart based on the selected period (daily, weekly, monthly)
+            const data = {
+                daily: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    users: [5, 10, 15, 20, 25, 30, 35],
+                    borrowers: [10, 15, 20, 25, 30, 35, 40]
+                },
+                weekly: {
+                    labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                    users: [50, 100, 150, 200],
+                    borrowers: [100, 150, 200, 250]
+                },
+                monthly: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    users: [120, 150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450],
+                    borrowers: [150, 180, 210, 240, 270, 300, 330, 360, 390, 420, 450, 480]
+                }
+            };
+            const selectedData = data[period];
+            window.myChart.data.labels = selectedData.labels;
+            window.myChart.data.datasets[0].data = selectedData.users;
+            window.myChart.data.datasets[1].data = selectedData.borrowers;
+            window.myChart.update();
+        }
+
+        function loadLogo() {
+            const logo = localStorage.getItem('logo');
+            if (logo) {
+                document.getElementById('logo').src = logo;
+            }
+        }
+    </script>
+</body>
+</html>
 

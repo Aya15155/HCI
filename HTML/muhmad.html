@@ -14,15 +14,7 @@
             background-color: #F3F7FB;
         }
 
-        .sidebar {
-            width: 250px;
-            background-color: #F3F7FB;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-right: 1px solid #ccc;
-        }
+       
 
         .profile {
             display: flex;
@@ -42,31 +34,6 @@
             margin: 0;
             color: #0F254F;
             font-size: 14px;
-        }
-
-        .menu {
-            width: 100%;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #0F254F;
-            padding: 10px 0;
-            display: block;
-            text-align: left;
-            padding-left: 20px;
-            font-size: 16px;
-            font-weight: bold;
-        }
-
-        .menu a i {
-            margin-right: 10px;
-        }
-
-        .menu a.active {
-            background-color: #0056b3;
-            color: white;
-            border-radius: 5px;
         }
 
         .main-content {
@@ -224,32 +191,46 @@
             height: 120px;
             margin: 10px;
         }
+        @media (max-width: 768px) {
+            .main-content {
+        transform: translateX(5%);
+    }
+        }
     </style>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
+    <!-- Font Awesome CDN Link -->
+    <script src="https://kit.fontawesome.com/fa33ff1c75.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="sidebar">
-        <div style="background-color: #F3F7FB; padding: 10px; border-radius: 10px;">
-            <img id="logo" src="/mnt/data/images.jpg" alt="Logo" style="width: 60px; height: 60px; margin-bottom: 20px;">
-        </div>
-        <div class="profile">
-            <img src="/mnt/data/Dashboard-3.png" alt="Profile Picture" style="width: 60px; height: 60px;">
-            <div class="profile-info">
-                <p style="font-size: 18px; font-weight: bold;">John Sam</p>
-                <p style="font-size: 16px;">admin</p>
+    <div class="container">
+        <nav class="sidebar" id="sidebar">
+            <div class="logo">
+                <img src="/Media/logo.png" alt="Library Logo">
             </div>
-        </div>
-        <nav class="menu">
-            <a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            <a href="#"><i class="fas fa-sync-alt"></i> Library loan</a>
-            <a href="#"><i class="fas fa-book"></i> Cataloging</a>
-            <a href="#"><i class="fas fa-user"></i> Librarian</a>
-            <a href="#"><i class="fas fa-users"></i> Users</a>
-            <a href="#"><i class="fas fa-tasks"></i> Manage Requests</a>
-            <a href="#"><i class="fas fa-history"></i> Request History</a>
-            <a href="#"><i class="fas fa-question-circle"></i> Help</a>
-            <a href="#"><i class="fas fa-cog"></i> Settings</a>
+            <div class="profile">
+                <img src="/Media/profile.png" alt="Profile Picture">
+                <div class="profile-info">
+                    <h2>John Sam</h2>
+                    <p>admin</p>
+                </div>
+            </div>
+            <ul class="menu">
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-book" style="color:black;"></i> Library loan</a></li>
+                <li><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
+                <li><a href="#"><i class="fas fa-user-tie"></i> Librarian</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> Manage Requests</a></li>
+                <li><a href="#"><i class="fas fa-history"></i> Request History</a></li>
+                </ul>
+                <ul class="menu2">
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
         </nav>
-    </div>
+        
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        <div class="content">
     <div class="main-content">
         <header>
             <h1>Dashboard</h1>
@@ -316,6 +297,8 @@
                 <p>UPDATES</p>
             </div>
         </section>
+        </div>
+    </div>
     </div>
     <script>
         const librarianListElement = document.getElementById('librarianList');

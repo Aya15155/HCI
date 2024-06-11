@@ -1,6 +1,9 @@
 document.getElementById('hamburger').addEventListener('click', function() {
     document.getElementById('sidebar').classList.toggle('open');
+
+    document.getElementById('hamburger').style.zIndex= 1001;
 });
+
 
 document.querySelectorAll('.approve, .decline').forEach(button => {
     button.addEventListener('click', function() {

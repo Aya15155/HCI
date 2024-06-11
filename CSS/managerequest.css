@@ -39,21 +39,93 @@ th, td {
 }
 
 .approve {
-    background: green;
+    background: #6cd8007a;
     color: white;
+    width: 100%;
+    border-radius: 13px;
     border: none;
     padding: 10px 20px;
+    margin-right:3px ;
     cursor: pointer;
 }
 
 .decline {
-    background: red;
+    background: #fa2a2ab7;
     color: white;
+    
+    width: 100%;
+    border-radius: 13px;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
 }
-
-
+button{
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .content {
+        margin-left:calc(100vw - 90vw);
+    }
+    .approve{
+        margin-bottom:3px ;
+    }
+    table {
+        max-width:100vh;
+        font-size: small;
+    }
+}
+@media (max-width: 1000px) {
+   
+    .approve{
+        margin-bottom:3px ;
+    }
+   
+}
+@media (min-width: 1000px) {
+    
+    .approve{
+        margin-bottom:5px ;
+        max-width: 47%;
+        align-content: center;
+        text-align: center;
+        
+    }
+    .decline{
+        max-width: 47%;
+        align-content: center;
+        text-align: center;
+    }
+    
+}
+@media (min-width: 1100px) {
+    
+    .approve{
+        margin-right:5px ;
+        max-width: 45%;
+        
+    }
+    .decline{
+        max-width: 45%;
+    }
+    
+}
+@media (min-width: 1300px) {
+    
+    .approve{
+        margin-bottom:5px ;
+    }
+    
+}
+@media (min-width: 1700px) {
+   
+    .approve{
+        margin-right:5px ;
+        max-width: 40%;
+    }
+    .decline{
+        max-width: 40%;
+    }
+    
+}
 
 

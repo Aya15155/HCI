@@ -92,17 +92,22 @@
 
         .stats {
             display: flex;
+            height: min-content;
             justify-content: space-between;
-            margin: 20px 0;
+            margin: 5px 0;
             background-color: #E9EEF6;
-            padding: 20px;
+            padding: 5px;
             border-radius: 5px;
+            width: 80vw;
+        }
+        .stats h2{
+            font-size: 14px;
         }
 
         .stat {
             text-align: center;
             flex: 1;
-            margin: 0 10px;
+            margin: 0 0px;
         }
 
         .stat-icon {
@@ -113,7 +118,9 @@
 
         .chart {
             background-color: #333;
-            height: 300px;
+            height: auto;
+            
+            
             margin: 20px 0;
             padding: 20px;
             border-radius: 5px;
@@ -124,9 +131,10 @@
             flex-direction: column;
             background-color: white;
             padding: 20px;
+            margin: auto;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            
         }
 
         .manage-librarians h2 {
@@ -180,6 +188,7 @@
             display: flex;
             justify-content: space-around;
             margin: 20px 0;
+           width: 80vw;
         }
 
         .section-icons div {
@@ -187,15 +196,118 @@
         }
 
         .section-icons img {
-            width: 120px;
-            height: 120px;
+            width: 15vw;
+            height: 15vw;
             margin: 10px;
         }
-        @media (max-width: 768px) {
-            .main-content {
-        transform: translateX(5%);
-    }
+        
+        p{
+            font-size: 14px;
         }
+        h1{
+            margin-top: 0;
+            padding-top: 0;
+        }
+        
+        @media (min-width: 769px ) and (max-width: 1000px ) {
+            .stats{
+                max-width: 77vw;
+
+            }
+            .chart {
+            background-color: #333;
+            height: max-content;
+            max-width: 77vw;
+            min-width: max-content;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+            .manage-librarians{
+               
+                max-width: 77vw;
+            }
+        }
+        @media (min-width: 1000px ) and (max-width: 2000px ){
+            .stats{
+                width: auto;
+
+            }
+            .up{
+            display: grid;
+            grid-template-columns: 50vw 30vw;
+            
+            
+        }
+            .chart {
+            background-color: #333;
+            height: max-content;
+            width: auto;
+            min-width: max-content;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+        }
+            .manage-librarians{
+                margin-top: 3vh;
+                margin-left: 10%;
+                width: auto;
+            }
+            .section-icons img {
+            width: 7vw;
+            height: 7vw;
+            
+        }
+        .section-icons  {
+            width: 20vw;
+            
+            
+        }
+        }
+        @media (max-width: 768px ) and (min-width:401px) {
+            .stats{
+                width: 80vw;
+                padding: 20px;
+            }
+            .chart {
+            background-color: #333;
+            height: max-content;
+            width: 80vw;
+            min-width: max-content;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 5px;
+            }
+            .manage-librarians{
+                margin-top: 3vh;
+                margin: 0%;
+                width: 80vw;
+            }
+            h1{
+                padding-left: 20px;
+            }
+        }
+        @media (max-width:400px) and (min-width:200px) {
+            
+            .stats{
+                height: auto;
+                width: 80vw;
+            }
+            .chart {
+            
+            height: auto;
+            width: 80vw;
+            
+            margin: 0px 0;
+            
+            border-radius: 5px;
+        }
+        .manage-librarians {
+            width: 80vw;
+        }
+        
+    }
+
     </style>
     <link rel="stylesheet" href="/CSS/admin_menu.css">
     <!-- Font Awesome CDN Link -->
@@ -243,6 +355,8 @@
                 </div>
             </div>
         </header>
+        <div class="up">
+            <div class="frist">
         <section class="stats">
             <div class="stat">
                 <div class="stat-icon"><i class="fas fa-book"></i></div>
@@ -268,6 +382,8 @@
         <section class="chart">
             <canvas id="chart"></canvas>
         </section>
+        </div>
+        <div class="frist">
         <section class="manage-librarians">
             <h2>Manage Librarians</h2>
             <div class="librarian-list" id="librarianList">
@@ -279,27 +395,30 @@
                 <button onclick="trackLibrarian()"><i class="fas fa-arrow-right"></i> Track</button>
             </div>
         </section>
+        </div>
+        </div>
         <section class="section-icons">
             <div>
-                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Library">
+                <img src="/Media/dash1.png" class="icon" alt="Library">
                 <p>LIBRARY</p>
             </div>
             <div>
-                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Borrowers List">
+                <img src="/Media/dash2.png" class="icon" alt="Borrowers List">
                 <p>BORROWERS LIST</p>
             </div>
             <div>
-                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Reports">
+                <img src="/Media/dash3.png" class="icon" alt="Reports">
                 <p>REPORTS</p>
             </div>
             <div>
-                <img src="/mnt/data/Dashboard-2.png" class="icon" alt="Updates">
+                <img src="/Media/dash4.png" class="icon" alt="Updates">
                 <p>UPDATES</p>
             </div>
         </section>
         </div>
     </div>
     </div>
+    <script src="/JAVA/admin_menu.js"></script>
     <script>
         const librarianListElement = document.getElementById('librarianList');
 

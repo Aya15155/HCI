@@ -3,292 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            height: 100vh;
-            background-color: #f8f9fa;
-        }
-
-        .sidebar {
-            width: 250px;
-            background-color: #f1f1f1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .profile {
-            text-align: center;
-            padding: 20px;
-        }
-
-        .profile img {
-            border-radius: 50%;
-            width: 80px;
-            height: 80px;
-        }
-
-        .profile h3 {
-            margin: 10px 0 5px 0;
-        }
-
-        .profile p {
-            color: gray;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            padding: 10px 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: black;
-        }
-
-        nav ul li.active a {
-            color: white;
-            background-color: #007bff;
-            padding: 10px 20px;
-            border-radius: 4px;
-            display: block;
-        }
-
-        .bottom-links {
-            padding: 20px;
-            text-align: center;
-        }
-
-        .bottom-links a {
-            display: block;
-            color: gray;
-            text-decoration: none;
-            margin: 5px 0;
-        }
-
-        .main-content {
-            flex-grow: 1;
-            background-color: #fff;
-            padding: 20px;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #56b3ff;
-            padding: 10px;
-            border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .search-bar {
-            padding: 10px;
-            border-radius: 20px;
-            border: none;
-            width: 300px;
-            font-size: 16px;
-            background-color: #fff;
-        }
-
-        .icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .icons img {
-            margin: 0 10px;
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-        }
-
-        .filters {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
-
-        .filters input {
-            padding: 10px;
-            border-radius: 20px;
-            border: 1px solid #ccc;
-            width: 48%;
-            background-color: #e9ecef;
-            color: #6c757d;
-            font-size: 16px;
-            text-align: center;
-        }
-
-        .delete-button {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            margin-top: -20px;
-            margin-right: 20px;
-        }
-
-        .delete-button img {
-            cursor: pointer;
-            width: 40px;
-            height: 40px;
-        }
-
-        .delete-button p {
-            margin: 0;
-            padding-left: 5px;
-            color: #6c757d;
-            font-size: 16px;
-        }
-
-        .request-table {
-            width: 100%;
-            overflow-x: auto;
-        }
-
-        .request-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .request-table th, .request-table td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .request-table th {
-            background-color: #f9f9f9;
-        }
-
-        .request-table tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        .request-table .reject {
-            background-color: #ff4d4d;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-
-        .request-table .accept {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-        }
-    </style>
+    <title>Library Dashboard</title>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
+    <link rel="stylesheet" href="/CSS/managerequest.css">
+    <!-- Font Awesome CDN Link -->
+    <script src="https://kit.fontawesome.com/fa33ff1c75.js" crossorigin="anonymous"></script>
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/JAVA/manifest.json">
 </head>
 <body>
-    <div class="sidebar">
-        <div class="profile">
-            <img src="profile.png" alt="Profile Picture">
-            <h3>akhouna labib</h3>
-            <p>Librarian</p>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Library loan</a></li>
-                <li><a href="#">Cataloging</a></li>
-                <li class="active"><a href="#">Manage Request</a></li>
+    <div class="container">
+        <nav class="sidebar">
+            <div class="logo">
+                <img src="/Media/logo.png" alt="Library Logo">
+            </div>
+            <div class="profile">
+                <img src="/Media/profile.png" alt="Profile Picture">
+                <div class="profile-info">
+                    <h2>akhouna labib</h2>
+                    <p>Librarian</p>
+                </div>
+            </div>
+            <ul class="menu">
+                <li class="active"><a href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-book"></i> Books</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Members</a></li>
+                <li><a href="#"><i class="fas fa-tasks"></i> Manage Request</a></li>
+            </ul>
+            <ul class="menu2">
+                <li><a href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
         </nav>
-        <div class="bottom-links">
-            <a href="#">help</a>
-            <a href="#">Settings</a>
-        </div>
-    </div>
-    <div class="main-content">
-        <div class="header">
-            <input type="text" class="search-bar" placeholder="Search">
-            <div class="icons">
-                <img src="filter.png" alt="Filter">
-                <img src="meeting-room.png" alt="Meeting Room">
-                <img src="new-book.png" alt="New Book">
+        <button class="hamburger" id="hamburger">&#9776;</button>
+        
+        <div class="content">
+            <div class="top-bar">
+                <input type="search" placeholder="Search">
+                <div class="icons">
+                    <button class="icon-btn " title="Filter"><i class="fas fa-filter"></i></button>
+                    <button class="icon-btn" title="Report"><i class="fas fa-file-alt"></i></button>
+                    <button class="icon-btn" title="Books"><i class="fas fa-book"></i></button>
+                    <button class="icon-btn" title="Periodicals"><i class="fas fa-newspaper"></i></button>
+                </div>
             </div>
-        </div>
-        <div class="filters">
-            <input type="text" placeholder="Requester Email">
-            <input type="text" placeholder="Requester ID">
-        </div>
-        <div class="delete-button">
-            <img src="delete.png" alt="Delete">
-            <p>Delete</p>
-        </div>
-        <div class="request-table">
+            <div class="search-container">
+                <div style="flex-grow: 1;">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" placeholder="Borrower's Email">
+                </div>
+                <div style="flex-grow: 1; margin-left: 20px;">
+                    <label for="id">ID</label>
+                    <input type="text" id="id" placeholder="Borrower's ID">
+                </div>
+                <div style="flex-grow: 1; margin-left: 20px;">
+                    <label for="category">Category</label>
+                    <select id="category">
+                        <option value="all">All</option>
+                        <option value="leave">Leave Requests</option>
+                        <option value="policy">Policy Updates</option>
+                        <option value="maintenance">Maintenance Requests</option>
+                    </select>
+                </div>
+                <div class="icon-group">
+                    <div style="text-align: center;">
+                        <button class="icon-btn" id="search-btn" title="Search"><i class="fas fa-search"></i></button>
+                        <div class="icon-label">Search</div>
+                    </div>
+                    <div style="text-align: center; margin-left: 10px;">
+                        <button class="icon-btn" title="Add"><i class="fas fa-plus"></i></button>
+                        <div class="icon-label">Add</div>
+                    </div>
+                    <div style="text-align: center; margin-left: 10px;">
+                        <button class="icon-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                        <div class="icon-label">Delete</div>
+                    </div>
+                </div>
+            </div>
+            
             <table>
                 <thead>
                     <tr>
-                        <th>Email</th>
-                        <th>ID</th>
+                        <th>Full name</th>
                         <th>Request</th>
-                        <th>Actions</th>
+                        <th>ID</th>
+                        <th>Category</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>email@ensia.edu.dz</td>
-                        <td>37657485</td>
-                        <td>Meeting Room At 5:00 pm to 6:00 pm</td>
-                        <td>
-                            <button class="reject">Reject</button>
-                            <button class="accept">Accept</button>
-                        </td>
+                        <td>Jacob Brown</td>
+                        <td>Early leave to attend a library management training workshop</td>
+                        <td>2024123</td>
+                        <td>leave</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
                     </tr>
                     <tr>
-                        <td>email@ensia.edu.dz</td>
-                        <td>37657485</td>
-                        <td>Meeting Room At 5:00 pm to 6:00 pm</td>
-                        <td>
-                            <button class="reject">Reject</button>
-                            <button class="accept">Accept</button>
-                        </td>
+                        <td>Paula Lee</td>
+                        <td>Maternity leave for 3 months</td>
+                        <td>2024124</td>
+                        <td>leave</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
                     </tr>
                     <tr>
-                        <td>email@ensia.edu.dz</td>
-                        <td>37657485</td>
-                        <td>Meeting Room At 5:00 pm to 6:00 pm</td>
-                        <td>
-                            <button class="reject">Reject</button>
-                            <button class="accept">Accept</button>
-                        </td>
+                        <td>Harper Benett</td>
+                        <td>Update borrowing policy</td>
+                        <td>2024125</td>
+                        <td>policy</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
                     </tr>
                     <tr>
-                        <td>email@ensia.edu.dz</td>
-                        <td>37657485</td>
-                        <td>Meeting Room At 5:00 pm to 6:00 pm</td>
-                        <td>
-                            <button class="reject">Reject</button>
-                            <button class="accept">Accept</button>
-                        </td>
+                        <td>Thalia Smith</td>
+                        <td>Improve search functionality</td>
+                        <td>2024126</td>
+                        <td>policy</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
                     </tr>
                     <tr>
-                        <td>email@ensia.edu.dz</td>
-                        <td>37657485</td>
-                        <td>Meeting Room At 5:00 pm to 6:00 pm</td>
-                        <td>
-                            <button class="reject">Reject</button>
-                            <button class="accept">Accept</button>
-                        </td>
+                        <td>Peter Wright</td>
+                        <td>Increase Storage Capacity</td>
+                        <td>2024127</td>
+                        <td>maintenance</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
+                    </tr>
+                    <tr>
+                        <td>Danny Bass</td>
+                        <td>Approve sick leave</td>
+                        <td>2024128</td>
+                        <td>leave</td>
+                        <td><button class="approve">Approve</button><button class="decline">Decline</button></td>
                     </tr>
                 </tbody>
             </table>
         </div>
+
+        <!-- Confirmation Modal -->
+        <div id="confirmModal" class="modal">
+            <div class="modal-content">
+                <p>Are you sure you want to approve the request?</p>
+                <button id="confirmYes" class="modal-btn">Yes</button>
+                <button id="confirmNo" class="modal-btn">No</button>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <p>Request Approved Successfully</p>
+            </div>
+        </div>
+        
     </div>
+    <script src="/JAVA/managerequest.js"></script>
 </body>
 </html>

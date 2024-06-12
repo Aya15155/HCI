@@ -142,13 +142,14 @@ input[type='password']::placeholder {
 
 .google{
     
-    width: 75%;
+    width: 400px;
     height: 40px;
     border: none;
     
     border-radius: 5px;
-    
     margin:auto;
+    margin-left: 53px;
+    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -224,4 +225,22 @@ button[type="submit"] {
         margin-right: 4%;
     }
     
+    
+}
+@media (min-width: 1500px) {
+    .google{
+    
+        
+        margin:auto;
+        margin-left: 202px;
+        margin-bottom: 10px;
+        width: 400px;
+        height: 40px;
+        
+    }
+    .fb-login-button{
+        margin:auto;
+        margin-left: 150px;
+        margin-bottom: 30px;
+    }
 }

@@ -136,7 +136,7 @@ body {
     color: #fff;
     border: none;
     font-size: 24px;
-    
+    z-index: 1000;
     cursor: pointer;
 }
 
@@ -194,7 +194,7 @@ body {
     }
     .content {
         margin: 0;
-        padding: 0;
+        padding: calc(100vw - 80vw);
         overflow-x:hidden;
         max-width: 98vw;
         size:50vw ;

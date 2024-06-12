@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="/CSS/user.css">
+    <link rel="manifest" href="/JAVA/uesr.json">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My books</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Return book</a></li>
+                <li><a href="#">Request a new book</a></li>
+                <li><a href="#">Request a meeting room</a></li>
+                <li>
+                    <input type="text" placeholder="Search for a book">
+                    <button>🔍</button>
+                </li>
+                <li><a href="#">👤</a></li>
+                <li><a href="#" id="cart">🛒</a></li>
+               
+                
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="page1" class="page">
+        <section id="top-trending-books">
+            <h2>Top Trending Books</h2>
+            <div class="book-list">
+                <div class="book">
+                    <img src="../Media/Rectangle 2.png" alt="Book 1">
+                    <button class="borrow-btn" data-book-id="1">Borrow</button>
+                </div>
+                <!-- Repeat for other books -->
+                <div class="book">
+                  <img src="../Media/image 13.png" alt="Book 2">
+                  <button class="borrow-btn" data-book-id="1">Borrow</button>
+              </div>
+
+              <div class="book">
+                <img src="../Media/Frame 16.png" alt="Book 3">
+                <button class="borrow-btn" data-book-id="1">Borrow</button>
+            </div>
+
+            <div class="book">
+              <img src="../Media/Rectangle 4.png" alt="Book 4">
+              <button class="borrow-btn" data-book-id="1">Borrow</button>
+          </div>
+           
+          <div class="book">
+            <img src="../Media/Rectangle 5.png" alt="Book 5">
+            <button class="borrow-btn" data-book-id="1">Borrow</button>
+        </div>
+     </div>
+        </section>
+
+        <!-- Add other sections similar to the above one for Top Borrowed Books, Recently Returned, etc. -->
+        <section id="top-trending-books">
+          <h2>FAMOUS NOVELS</h2>
+          <div class="book-list">
+              <div class="book">
+                  <img src="../Media/image 13 (3).png" alt="Book 1">
+                  <button class="borrow-btn" data-book-id="1">Borrow</button>
+              </div>
+              <!-- Repeat for other books -->
+              <div class="book">
+                <img src="../Media/Frame 16 (2).png" alt="Book 2">
+                <button class="borrow-btn" data-book-id="1">Borrow</button>
+            </div>
+
+            <div class="book">
+              <img src="../Media/Rectangle 2 (3).png" alt="Book 3">
+              <button class="borrow-btn" data-book-id="1">Borrow</button>
+          </div>
+
+          <div class="book">
+            <img src="../Media/Rectangle 4 (3).png" alt="Book 4">
+            <button class="borrow-btn" data-book-id="1">Borrow</button>
+        </div>
+         
+        <div class="book">
+          <img src="../Media/Rectangle 5 (3).png" alt="Book 5">
+          <button class="borrow-btn" data-book-id="1">Borrow</button>
+      </div>
+          </div>
+      </section>
+    </section>
+
+
+    <section id="page2" class="page">
+      <section id="top-trending-books">
+        <h2>Top Borrowed Books</h2>
+        <div class="book-list">
+            <div class="book">
+                <img src="../Media/image 13 (1).png" alt="Book 1">
+                <button class="borrow-btn" data-book-id="1">Borrow</button>
+            </div>
+            <!-- Repeat for other books -->
+            <div class="book">
+              <img src="../Media/Frame 16 (1).png" alt="Book 2">
+              <button class="borrow-btn" data-book-id="1">Borrow</button>
+          </div>
+
+          <div class="book">
+            <img src="../Media/Rectangle 4 (1).png" alt="Book 3">
+            <button class="borrow-btn" data-book-id="1">Borrow</button>
+        </div>
+
+        <div class="book">
+          <img src="../Media/Rectangle 5 (1).png" alt="Book 4">
+          <button class="borrow-btn" data-book-id="1">Borrow</button>
+      </div>
+       
+      <div class="book">
+        <img src="../Media/Rectangle 2 (1).png" alt="Book 5">
+        <button class="borrow-btn" data-book-id="1">Borrow</button>
+    </div>
+        </div>
+    </section>
+
+    <section id="top-trending-books">
+      <h2>Recently Returned</h2>
+      <div class="book-list">
+          <div class="book">
+              <img src="../Media/image 13 (2).png" alt="Book 1">
+              <button class="borrow-btn" data-book-id="1">Borrow</button>
+          </div>
+          <!-- Repeat for other books -->
+          <div class="book">
+            <img src="../Media/Rectangle 2 (2).png" alt="Book 2">
+            <button class="borrow-btn" data-book-id="1">Borrow</button>
+        </div>
+
+        <div class="book">
+          <img src="../Media/Rectangle 5 (2).png" alt="Book 3">
+          <button class="borrow-btn" data-book-id="1">Borrow</button>
+      </div>
+
+      <div class="book">
+        <img src="../Media/Rectangle 4 (2).png" alt="Book 4">
+        <button class="borrow-btn" data-book-id="1">Borrow</button>
+    </div>
+     
+    <div class="book">
+      <img src="../Media/Rectangle 24.png" alt="Book 5">
+      <button class="borrow-btn" data-book-id="1">Borrow</button>
+  </div>
+      </div>
+  </section>
+</section>
+
+
+<section id="page3" class="page">
+  <section id="top-trending-books">
+    <h2>Science Fiction</h2>
+    <div class="book-list">
+        <div class="book">
+            <img src="../Media/image 13 (2).png" alt="Book 1">
+            <button class="borrow-btn" data-book-id="1">Borrow</button>
+        </div>
+        <!-- Repeat for other books -->
+        <div class="book">
+          <img src="../Media/Rectangle 2 (2).png" alt="Book 2">
+          <button class="borrow-btn" data-book-id="1">Borrow</button>
+      </div>
+
+      <div class="book">
+        <img src="../Media/Rectangle 5 (2).png" alt="Book 3">
+        <button class="borrow-btn" data-book-id="1">Borrow</button>
+    </div>
+
+    <div class="book">
+      <img src="../Media/Rectangle 4 (2).png" alt="Book 4">
+      <button class="borrow-btn" data-book-id="1">Borrow</button>
+  </div>
+   
+  <div class="book">
+    <img src="../Media/Rectangle 24.png" alt="Book 5">
+    <button class="borrow-btn" data-book-id="1">Borrow</button>
+</div>
+    </div>
+</section>
+
+<section id="top-trending-books">
+    <h2>History</h2>
+    <div class="book-list">
+        <div class="book">
+            <img src="../Media/image 13 (2).png" alt="Book 1">
+            <button class="borrow-btn" data-book-id="1">Borrow</button>
+        </div>
+        <!-- Repeat for other books -->
+        <div class="book">
+          <img src="../Media/Rectangle 2 (2).png" alt="Book 2">
+          <button class="borrow-btn" data-book-id="1">Borrow</button>
+      </div>
+
+      <div class="book">
+        <img src="../Media/Rectangle 5 (2).png" alt="Book 3">
+        <button class="borrow-btn" data-book-id="1">Borrow</button>
+    </div>
+
+    <div class="book">
+      <img src="../Media/Rectangle 4 (2).png" alt="Book 4">
+      <button class="borrow-btn" data-book-id="1">Borrow</button>
+  </div>
+   
+  <div class="book">
+    <img src="../Media/Rectangle 24.png" alt="Book 5">
+    <button class="borrow-btn" data-book-id="1">Borrow</button>
+</div>
+    </div>
+</section>
+</section>
+
+
+<section id="page4" class="page">
+ <!-- Browse Genres -->
+<section id="browse-genres">
+    <div class="browse-header">
+        <h2>Browse Genres</h2>
+        <select>
+            <option>All Categories</option>
+            <!-- Add other categories here -->
+        </select>
+    </div>
+    <div class="genre-list">
+        <div class="genre-row">
+            <button class="genre-btn">Adventure</button>
+            <button class="genre-btn">Biography</button>
+            <button class="genre-btn">Thriller</button>
+            <button class="genre-btn">Magazines</button>
+        </div>
+        <div class="genre-row">
+            <button class="genre-btn">Fiction</button>
+            <button class="genre-btn">Science Fiction</button>
+            <button class="genre-btn">History</button>
+            <button class="genre-btn">AI</button>
+        </div>
+    </div>
+    <div class="see-all">
+        <a href="#">See All</a>
+    </div>
+</section>
+
+
+
+<!-- Popular Authors -->
+<section id="popular-authors">
+    <h2>Popular Authors</h2>
+    <div class="author-list">
+        <div class="author">
+            <img src="../Media/unsplash_iFgRcqHznqg.png" alt="Author 1">
+            <p class="author-name">James Clear</p>
+            <p class="athor-description">600+ Books</p>
+        </div>
+        <!-- Repeat for other authors -->
+        <div class="author">
+            <img src="../Media/unsplash_9UVmlIb0wJU.png" alt="Author 1">
+            <p class="author-name">Lucy Caldwel</p>
+            <p class="athor-description">150+ Books</p>
+        </div>
+
+        <div class="author">
+            <img src="../Media/unsplash_WNoLnJo7tS8.png" alt="Author 1">
+            <p class="author-name">Alan Trotter</p>
+            <p class="athor-description">10 EBooks</p>
+        </div>
+
+        <div class="author">
+            <img src="../Media/unsplash_0Zx1bDv5BNY.png" alt="Author 1">
+            <p class="author-name">Sarah Raughan</p>
+            <p class="athor-description">100+ Novels</p>
+        </div>
+
+        <div class="author">
+            <img src="../Media/unsplash_jFAG_ixCrsM.png" alt="Author 1">
+            <p class="author-name">Chip Heath</p>
+            <p class="athor-description">250+Books</p>
+        </div>
+    </div>
+</section>
+</section>
+
+
+<section id="page5" class="page">
+<!-- Book a Meeting Room -->
+<section id="book-meeting-room">
+    <h2>Book a Meeting Room</h2>
+    <div class="meeting-room-container">
+        <form id="meeting-room-form">
+            <label for="user-id">User ID</label>
+            <input type="text" id="user-id" name="user-id" placeholder="909810">
+            <label for="room-number">Room Number</label>
+            <input type="text" id="room-number" name="room-number" placeholder="FF101">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date">
+            <label for="time-slot">Time Slot</label>
+            <select id="time-slot" name="time-slot">
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="evening">Evening</option>
+            </select>
+            <button type="submit">Send a request</button>
+        </form>
+        <img src="../Media/unsplash_HH4WBGNyltc.png" alt="Meeting Room">
+    </div>
+</section>
+</section>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="newsletter">
+        <h2>Subscribe to Our Newsletter</h2>
+        <p>Newest Books Updates</p>
+        <form id="subscribe-form">
+            <input type="email" id="email" placeholder="Type your email here" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </div>
+    <div class="footer-content">
+        <div class="about">
+            <img src="../Media/Frame 313.png" alt="Logo">
+            <p>e-library website that consists of all <br> genres of books from around the world</p>
+        </div>
+        <div class="links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Request a new book</a></li>
+                <li><a href="#">Request a meeting room</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+        </div>
+        <div class="customer-area">
+            <h3>Customer Area</h3>
+            <ul>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">My books</a></li>
+                <li><a href="#">Return book</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </div>
+        <div class="social-medias">
+            <h3>Social Medias</h3>
+            <ul>
+                <li><a href="#"><img src="../Media/logos_facebook.png" alt="Facebook"></a></li>
+                <li><a href="#"><img src="../Media/logos_twitter.png" alt="Twitter"></a></li>
+                <li><a href="#"><img src="../Media/Group.png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="../Media/icon-park_email-block.png" alt="Email"></a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<script src="/JAVA/user.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/service-worker.js')
+        .then(registration => {
+            console.log('Service Worker registered with scope:', registration.scope);
+        })
+        .catch(error => {
+            console.log('Service Worker registration failed:', error);
+        });
+}
+</script>
+</body>
+</html>

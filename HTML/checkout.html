@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="../CSS/checkout.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="checkout-header">
+            <button class="back-button">&#8592;</button>
+            <h1>Checkout</h1>
+        </div>
+        <div class="content">
+            <div class="payment-method">
+                <h2>Payment method</h2>
+                <div class="card">
+                    <img src="path/to/card-image.png" alt="NBank Card">
+                </div>
+                <form>
+                    <label for="saved-cards">Use saved card:</label>
+                    <select id="saved-cards">
+                        <option value="mastercard">Mastercard</option>
+                        <option value="visa">Visa</option>
+                    </select>
+                    <label for="card-name">Name on card:</label>
+                    <input type="text" id="card-name" value="Esther Howard">
+                    <label for="card-number">Card number:</label>
+                    <input type="text" id="card-number" value="1234-5678-9876-5432">
+                    <label for="expiry-date">Expiry date:</label>
+                    <input type="text" id="expiry-date" placeholder="MM / YY">
+                    <label for="ccv">CCV:</label>
+                    <input type="text" id="ccv" placeholder="...">
+                </form>
+            </div>
+            <div class="order-summary">
+                <h2>Order summary</h2>
+                <div class="item">
+                    <img src="path/to/atomic-habits.png" alt="Atomic Habits">
+                    <div>
+                        <p>Atomic Habits</p>
+                        <p>\$21.45</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="path/to/happiness-by-design.png" alt="Happiness by Design">
+                    <div>
+                        <p>Happiness by Design</p>
+                        <p>\$15.00</p>
+                    </div>
+                </div>
+                <div class="summary">
+                    <p>Product total: \$36.45</p>
+                    <p>Discount: \$12.25</p>
+                    <p>Total: \$24.20</p>
+                </div>
+                <button class="order-button">Order</button>
+            </div>
+        </div>
+    </div>
+    <script src="user.js"></script>
+</body>
+
+</html>

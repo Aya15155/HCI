@@ -1,306 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library Management</title>
-    <link rel="stylesheet" href="/CSS/admin_menu.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-        .content{
-            padding-top:0;
-            padding-left: 1px;
-        }
-        
-        .top-bar {
-            background-color: #3498db;
-            padding: 10px 20px;
-            width: 80vw;
-            margin: 0;
-            z-index: 0;
-            
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-        }
-        .top-bar input[type="search"] {
-            padding: 10px 20px;
-            border: none;
-            
-            border-radius: 20px;
-            margin-right: 10px;
-            
-            flex-grow: 1;
-            background-color: #e0e0e0;
-            font-size: 12px;
-        }
-        .top-bar input{
-            width: 20vw;
-        }
-        .top-bar .icons {
-            display: flex;
-            align-items: center;
-            
-        }
-        .top-bar .icon-btn {
-            width: 50px;
-            height: 50px;
-            background-color: #e0e0e0;
-            border: none;
-            border-radius: 50%;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .top-bar .icon-btn i {
-            font-size: 24px;
-            color: black;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-            margin: 20px 0;
-            justify-content: space-between;
-        }
-        .search-container label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-        .search-container input {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            background-color: #e0e0e0;
-            font-size: 16px;
-        }
-        .search-container .icon-group {
-            display: flex;
-            align-items: center;
-        }
-        .search-container .icon-group button {
-            width: 50px;
-            height: 50px;
-            background-color: #e0e0e0;
-            border: none;
-            border-radius: 50%;
-            margin-left: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .search-container .icon-group button i {
-            font-size: 24px;
-            color: black;
-        }
-        .search-container .icon-group .delete-btn {
-            background-color: #ff7f00;
-            color: black;
-        }
-        .search-container .icon-label {
-            text-align: center;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-        .table-container {
-            background-color: #e0e5e5;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        table th, table td {
-            padding: 15px;
-            text-align: left;
-        }
-        table th {
-            background-color: #e0e5e5;
-        }
-        table tr {
-            background-color: #f5f5f5;
-        }
-        table tr:nth-child(even) {
-            background-color: #ffffff;
-        }
-        .delete-button {
-            background-color: #ff4d4d;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .delete-button:hover {
-            background-color: #e60000;
-        }
-        @media (max-width: 768px){
-            .top-bar {
-            
-            width: 100vw;
-            
-        }
-        .top-bar input[type="search"] {
-            padding: 10px 20px;
-            border: none;
-            width: calc(70vw - ((3/8) * 70vw));
-            border-radius: 20px;
-            margin-right: 10px;
-            
-            flex-grow: 1;
-            background-color: #e0e0e0;
-            font-size: 12px;
-        }
-        .top-bar .icons {
-            display: flex;
-            align-items: center;
-            width: calc(70vw - ((1/8) * 70vw));
-        }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <nav class="sidebar" id="sidebar">
-            <div class="logo">
-                <img src="/Media/logo.png" alt="Library Logo">
-            </div>
-            <div class="profile">
-                <img src="/Media/profile.png" alt="Profile Picture">
-                <div class="profile-info">
-                    <h2>John Sam</h2>
-                    <p>admin</p>
-                </div>
-            </div>
-            <ul class="menu">
-                <li><a href="Dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
-                <li><a href="#"><i class="fas fa-book" style="color:black;"></i> Library loan</a></li>
-                <li><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
-                <li class="active"><a href="#"><i class="fas fa-user-tie"></i> Librarians</a></li>
-                <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
-                <li><a href="managerequest.html"><i class="fas fa-tasks"></i> Manage Requests</a></li>
-                <li><a href="#"><i class="fas fa-history"></i> Request History</a></li>
-                </ul>
-                <ul class="menu2">
-                <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
-                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-            </ul>
-        </nav>
-        
-        <button class="hamburger" id="hamburger">&#9776;</button>
-        <div class="content">
-        <div class="top-bar">
-            <input type="search" placeholder="Search">
-            <div class="icons">
-                <button class="icon-btn" title="Filter"><i class="fas fa-filter"></i></button>
-                <button class="icon-btn" title="Report"><i class="fas fa-file-alt"></i></button>
-                <button class="icon-btn" title="Books"><i class="fas fa-book"></i></button>
-                <button class="icon-btn" title="Periodicals"><i class="fas fa-newspaper"></i></button>
-            </div>
-        </div>
-        <div class="search-container">
-            <div style="flex-grow: 1;">
-                <label for="email">Email</label>
-                <input type="text" id="email" placeholder="Borrower's Email">
-            </div>
-            <div style="flex-grow: 1; margin-left: 20px;">
-                <label for="id">ID</label>
-                <input type="text" id="id" placeholder="Borrower's ID">
-            </div>
-            <div class="icon-group">
-                <div style="text-align: center;">
-                    <button class="icon-btn" title="Search"><i class="fas fa-search"></i></button>
-                    <div class="icon-label">Search</div>
-                </div>
-                <div style="text-align: center; margin-left: 10px;">
-                    <button class="icon-btn" title="Add"><i class="fas fa-plus"></i></button>
-                    <div class="icon-label">Add</div>
-                </div>
-                <div style="text-align: center; margin-left: 10px;">
-                    <button class="icon-btn delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
-                    <div class="icon-label">Delete</div>
-                </div>
-            </div>
-        </div>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Email</th>
-                        <th>ID</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td>Jacob Brown</td>
-                        <td>jacob.brown@gmail.com</td>
-                        <td>2024123</td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td>Paula Lee</td>
-                        <td>paula.lee@gmail.com</td>
-                        <td>2024124</td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td>Harper Benett</td>
-                        <td>harper.benett@gmail.com</td>
-                        <td>2024125</td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td>Thalia Smith</td>
-                        <td>thalia.smith@gmail.com</td>
-                        <td>2024126</td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td>Peter Wright</td>
-                        <td>peter.wright@gmail.com</td>
-                        <td>2024127</td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td><i class="fas fa-user"></i></td>
-                        <td>Danny Bass</td>
-                        <td>danny.bass@gmail.com</td>
-                        <td>2024128</td>
-                        <td><button class="delete-button">Delete</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    </div>
-    <script src="/JAVA/admin_menu.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js"></script>
-</body>
-</html>
 
-----------------------
-UPDATED LIBRARIANS CODE ////
-----------------------
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -308,56 +6,16 @@ UPDATED LIBRARIANS CODE ////
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
+    
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+           
         }
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #d6dbf8;
-            padding-top: 20px;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .sidebar .logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .sidebar .logo img {
-            width: 40px;
-        }
-        .sidebar p {
-            margin-left: 20px;
-        }
-        .sidebar .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            color: #333;
-            text-decoration: none;
-            font-size: 18px;
-            border-bottom: 1px solid #e6e6e6;
-            transition: background-color 0.3s;
-        }
-        .sidebar .menu-item:hover {
-            background-color: #c5cbe3;
-        }
-        .sidebar .menu-item i {
-            margin-right: 20px;
-        }
-        .sidebar .menu-top, .sidebar .menu-bottom {
-            flex-grow: 1;
-        }
-        .sidebar .menu-bottom {
-            margin-top: auto;
-        }
+
         .content {
             margin-left: 250px;
             padding: 20px;
@@ -544,27 +202,31 @@ UPDATED LIBRARIANS CODE ////
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div>
-            <div class="logo">
-                <img src="https://via.placeholder.com/40" alt="Logo">
-            </div>
-            <p>John Sam<br><small>Admin</small></p>
-            <div class="menu-top">
-                <a href="#" class="menu-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                <a href="#" class="menu-item"><i class="fas fa-book"></i>Library loan</a>
-                <a href="#" class="menu-item"><i class="fas fa-bookmark"></i>Cataloging</a>
-                <a href="#" class="menu-item"><i class="fas fa-user"></i>Librarian</a>
-                <a href="#" class="menu-item"><i class="fas fa-users"></i>Users</a>
-                <a href="#" class="menu-item"><i class="fas fa-tasks"></i>Manage Requests</a>
-                <a href="#" class="menu-item"><i class="fas fa-history"></i>Request History</a>
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="/Media/logo.png" alt="Library Logo">
+        </div>
+        <div class="profile">
+            <img src="/Media/profile.png" alt="Profile Picture">
+            <div class="profile-info">
+                <h2>John Sam</h2>
+                <p>admin</p>
             </div>
         </div>
-        <div class="menu-bottom">
-            <a href="#" class="menu-item"><i class="fas fa-question-circle"></i>Help</a>
-            <a href="#" class="menu-item"><i class="fas fa-cog"></i>Settings</a>
-        </div>
-    </div>
+        <ul class="menu">
+            <li><a href="Dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="#"><i class="fas fa-book" style="color:black;"></i> Library loan</a></li>
+            <li><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
+            <li class="active"><a href="#"><i class="fas fa-user-tie"></i> Librarians</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="managerequest.html"><i class="fas fa-tasks"></i> Manage Requests</a></li>
+            <li><a href="#"><i class="fas fa-history"></i> Request History</a></li>
+            </ul>
+            <ul class="menu2">
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
     <div class="content">
         <div class="top-bar">
             <input type="search" id="searchInput" placeholder="Search" onkeyup="filterTable()">
@@ -686,7 +348,8 @@ UPDATED LIBRARIANS CODE ////
             <button class="modal-button ok" onclick="hideModal()">OK!</button>
         </div>
     </div>
-
+    <script src="/JAVA/admin_menu.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/js/all.min.js"></script>
     <script>
         let deleteName = '';
         let deleteRow;

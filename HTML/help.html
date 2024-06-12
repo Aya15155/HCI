@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management - Help</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+        }
+        .header {
+            background: linear-gradient(to right, #4a90e2, #0056b3);
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .header .logo {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 24px;
+        }
+        .container {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .section h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .section h2 i {
+            margin-right: 10px;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+        }
+        .faq-item h3 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .faq-item h3 i {
+            margin-right: 10px;
+        }
+        .faq-item p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+        }
+        .contact {
+            background-color: #eaf4ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .contact h3 {
+            margin-bottom: 20px;
+            color: #4a90e2;
+            display: flex;
+            align-items: center;
+        }
+        .contact h3 i {
+            margin-right: 10px;
+        }
+        .contact p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        .contact a {
+            color: #4a90e2;
+            text-decoration: none;
+        }
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .header {
+                font-size: 20px;
+            }
+        }
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <i class="fas fa-book logo"></i>
+        Library Management - Help
+    </div>
+    <div class="container">
+        <div class="section">
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3><i class="fas fa-user-plus"></i> How do I add a new librarian?</h3>
+                <p>To add a new librarian, click on the "Add" button in the toolbar and fill out the required information in the form that appears.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-user-minus"></i> How do I delete a librarian?</h3>
+                <p>To delete a librarian, click on the "Delete" button next to the librarian you wish to remove. Confirm the action in the popup that appears.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-search"></i> How do I search for a user?</h3>
+                <p>Use the search bar at the top of the page to find users by entering their email or ID. The table will automatically filter the results based on your input.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-book-open"></i> How do I check the availability of a book?</h3>
+                <p>To check the availability of a book, enter the book's title or ISBN in the search bar. The system will display the current status of the book.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-calendar-check"></i> How do I reserve a book?</h3>
+                <p>To reserve a book, search for the book and click on the "Reserve" button. You will receive a notification once the book is available for pickup.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-book-reader"></i> How do I renew a borrowed book?</h3>
+                <p>To renew a borrowed book, go to your account section and click on "Renew" next to the book you wish to extend. Note that renewals are subject to availability.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-user-edit"></i> How do I update my user profile?</h3>
+                <p>To update your user profile, log in to your account and go to the profile section. Here, you can update your personal information and preferences.</p>
+            </div>
+            <div class="faq-item">
+                <h3><i class="fas fa-lock"></i> How do I reset my password?</h3>
+                <p>If you have forgotten your password, click on the "Forgot Password" link on the login page. Follow the instructions to reset your password.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-th-large"></i> Dashboard</h2>
+            <p>The dashboard provides a summary of the library's key metrics and quick access to important functions.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-cogs"></i> Admin Menu</h2>
+            <p>The admin menu allows you to manage librarians, users, and library settings. Access this menu from the top-right corner of the screen.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-book"></i> Cataloging</h2>
+            <p>In the cataloging section, you can add, update, or delete book records. Ensure all necessary information is filled out before saving a book entry.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-shopping-cart"></i> Checkout</h2>
+            <p>The checkout process allows you to lend books to users. Scan the book's barcode and the user's library card to complete a checkout.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
+            <p>To access the library management system, log in with your credentials. Ensure your password is secure and updated regularly.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-tasks"></i> Manage Requests</h2>
+            <p>Manage book requests from users in this section. Approve or deny requests and notify users about the status of their requests.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-user"></i> User Management</h2>
+            <p>In the user management section, you can add, update, or delete user profiles. Ensure user data is accurate and up-to-date.</p>
+        </div>
+        <div class="section">
+            <h2><i class="fas fa-home"></i> Welcome Page</h2>
+            <p>The welcome page provides an overview of the library management system and quick access to various sections. Customize this page to suit your needs.</p>
+        </div>
+        <div class="section contact">
+            <h3><i class="fas fa-headset"></i> Contact Support</h3>
+            <p>If you need further assistance, please contact our support team:</p>
+            <p>Email: <a href="mailto:support@example.com"><i class="fas fa-envelope"></i> support@example.com</a></p>
+            <p>Phone: <i class="fas fa-phone"></i> 123-456-7890</p>
+        </div>
+    </div>
+</body>
+</html>

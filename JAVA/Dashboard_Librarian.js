@@ -2,21 +2,24 @@ const ctx = document.getElementById('chart').getContext('2d');
         const chart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul' ,'Aug','Sept','Oct','Nov','Dec'],
                 datasets: [
                     {
                         label: 'Books Borrowed',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: 'white',
+                        data: [12, 19, 3, 5, 2, 3,7,5,8,9,2,10],
+                        backgroundColor: '#ffffffcb',
                         borderColor: '#0F254F',
-                        borderWidth: 1
+                        borderWidth: 1,
+                       
+
                     },
                     {
                         label: 'Visitors',
-                        data: [25, 30, 10, 15, 20, 35],
-                        backgroundColor: 'orange',
-                        borderColor: 'orange',
-                        borderWidth: 1
+                        data: [25, 30, 10, 15, 20, 35,60 ,50,44,20,10,40],
+                        backgroundColor: '#ff721ac2',
+                        borderColor: '#fd6100',
+                        borderWidth: 1,
+                       
                     }
                 ]
             },
@@ -41,9 +44,9 @@ const ctx = document.getElementById('chart').getContext('2d');
                 chart.data.datasets[0].data = [20, 15, 25, 30];
                 chart.data.datasets[1].data = [50, 45, 60, 70];
             } else if (period === 'monthly') {
-                chart.data.labels = ['January', 'February', 'March', 'April', 'May', 'June'];
-                chart.data.datasets[0].data = [12, 19, 3, 5, 2, 3];
-                chart.data.datasets[1].data = [25, 30, 10, 15, 20, 35];
+                chart.data.labels =  ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul' ,'Aug','Sept','Oct','Nov','Dec'];
+                chart.data.datasets[0].data = [12, 19, 3, 5, 2, 3,7,5,8,9,2,10];
+                chart.data.datasets[1].data = [25, 30, 10, 15, 20, 35,60 ,50,44,20,10,40];
             }
             chart.update();
         }
@@ -53,6 +56,7 @@ const ctx = document.getElementById('chart').getContext('2d');
         link.addEventListener('click', function (event) {
             event.preventDefault();
             const period = event.target.textContent.toLowerCase();
+            
             updateChart(period);
         });
     });

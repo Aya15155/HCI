@@ -99,6 +99,11 @@ header h1 {
     border-radius: 5px;
     margin: auto;
 }
+.aclonica-regular {
+  font-family: "Aclonica", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 
 @media (max-width: 768px) {
@@ -125,11 +130,27 @@ header h1 {
 
 #overdue-books-table {
     width: 100%;
+    height: auto;
+    margin-top: 2%;
     border-collapse: collapse;
+    column-gap: 2vw;
 }
 
 #overdue-books-table thead {
     background: #ddd;
+    
+    margin: 10px 0;
+    
+
+}
+#overdue-books-table thead th {
+    text-align:start;
+    font-family: "Aclonica", sans-serif;
+    font-weight: 400;
+    font-style:normal;
+    font-size: small;
+    padding: 1% 1%;
+
 }
 
 #overdue-books-table td {
@@ -137,9 +158,14 @@ header h1 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; /* Prevent wrapping */
+    font-family: "Actor", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: small;
+    padding: .5% 1%;
   }
   #overdue-books-table th, #overdue-books-table td {
-    width: 20%; /* Adjust percentages as needed */
+    width: 10%; /* Adjust percentages as needed */
   }
   
 

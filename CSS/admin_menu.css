@@ -1,0 +1,244 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    padding-top: 3px;
+    margin-left: calc(100vw - 85vw); 
+}
+
+.sidebar {
+    width: calc(100vw - 85vw);
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0px 0px 0px 5px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(0);
+}
+
+.logo {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.logo img {
+    width: calc(100% - 55%);
+    height: auto;
+}
+
+.profile {
+    text-align: center;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile img {
+    width: calc(100% - 80%);
+    height: auto;
+    border-radius: 50%;
+}
+
+.profile-info {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.profile h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.profile p {
+    margin: 0;
+    font-size: 14px;
+    color: gray;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    margin-bottom: (100%-90%);
+}
+
+.menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    display: block;
+    padding: calc(100% - 95%) 20px;
+    margin: auto;
+}
+.menu li a i {
+    margin-right: 1px;
+}
+.menu2 {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding-left: 0;
+    flex-grow: 1;
+    margin-bottom: (100% -98%);
+}
+
+.menu2 li {
+    margin: 0;
+    padding: 0;
+}
+
+.menu2 li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    display: block;
+    padding: calc(100% - 93%) 20px;
+}
+.menu2 li a i {
+    margin-right: 1px;
+}
+
+.menu li.active a {
+    background-color: #0443A5;
+    color: #fff;
+}
+
+.hamburger {
+    display: none;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) and (min-width:401px){
+    .content {
+        padding: 0;
+        overflow-x:hidden;
+        margin: auto;
+    }
+    
+    .profile h2 {
+        margin: 0;
+        font-size: 14px;
+    }
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 100;
+        width: calc(100vw - 70vw);
+        min-width: 120px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .logo {
+        text-align: left;
+        margin-left: 30px;
+        margin-bottom: 10px;
+    }
+
+    .hamburger {
+        transform: translateX(20%);
+        display: block;
+    }
+    .menu li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+        display: block;
+        padding: calc(100% - 95%) 20px;
+        padding-top: 12px;
+        margin: auto;
+        padding-bottom: 12px;
+    }
+
+}
+@media (max-width:400px)and (min-width:200px)  {
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        font-size: 12px;
+        height: 100vh;
+    }
+    .content {
+        margin: 0;
+        padding: calc(100vw - 80vw);
+        overflow-x:hidden;
+        max-width: 98vw;
+        size:50vw ;
+        margin-left: 0;
+        padding-left: 0;
+       
+    }
+    h1{
+        padding-left: 20px;
+        font-size: 16px;
+    }
+    .profile h2 {
+       
+        font-size: 14px;
+    }
+    .sidebar {
+        transform: translateX(-102%);
+        z-index: 100;
+        width: calc(100vw - 80vw);
+        min-width: 120px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+    .logo {
+        text-align: left;
+        margin-left: 30px;
+        margin-bottom: 10px;
+    }
+
+    .hamburger {
+        transform: translateX(20%);
+        display: block;
+    }
+    .menu li a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+        display: block;
+        padding: calc(100% - 95%) 20px;
+        padding-top: 12px;
+        margin: auto;
+        padding-bottom: 12px;
+    }
+}
+

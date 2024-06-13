@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Dashboard</title>
+    <link rel="stylesheet" href="/CSS/librarian_cataloge.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <div class="sidebar-item active">Cataloging</div>
+            <div class="sidebar-item">Members</div>
+            <!-- Add more sidebar items as needed -->
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Search">
+                <button id="search-button">Search</button>
+            </div>
+            <div class="filter-buttons">
+                <button id="filter-all" class="filter-button active">
+                    <img src="img/all.png" alt="All">
+                </button>
+                <button id="filter-books" class="filter-button">
+                    <img src="img/books.png" alt="Books">
+                </button>
+                <button id="filter-journals" class="filter-button">
+                    <img src="img/journals.png" alt="Journals">
+                </button>
+            </div>
+        </header>
+        <main>
+            <div class="actions">
+                <button id="add-new">
+                    <img src="img/add.png" alt="Add New"> New Record
+                </button>
+                <button id="delete-record">
+                    <img src="img/delete.png" alt="Delete"> Delete
+                </button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Publication Date</th>
+                        <th>ISBN</th>
+                        <th>Barcode</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody id="records-table">
+                    <!-- Records will be inserted here dynamically -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+    <script src="/JAVA/librarian_cataloge.js"></script>
+</body>
+</html>

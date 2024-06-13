@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+.sidebar h2 {
+    text-align: center;
+}
+
+.content {
+    flex: 1;
+    padding: 10px;
+    transition: margin-right 0.3s ease;
+}
+
+.content.with-quick-overview {
+    margin-right: 320px; /* Adjust as necessary to accommodate the quick overview width */
+}
+
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.user-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 10px;
+    width: 150px;
+    cursor: pointer;
+}
+
+.user-card img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.quick-overview {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+    display: none;
+}
+
+.quick-overview span.close-btn {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: -10px;
+    margin-right: -10px;
+}
+
+.quick-overview span.close-btn:hover {
+    color: red;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100px;
+    }
+    .user-card {
+        width: 100px;
+    }
+}

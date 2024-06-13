@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../CSS/usr_dashbord.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../Media/Frame 313.png" alt="Logo">
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="user-info">
+            <span>Maria Ahmed</span>
+            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-bell"></i>
+        </div>
+    </nav>
+    <div class="container">
+        <aside class="sidebar">
+            <ul>
+                <li><a href="../HTML/user.html" data-page="account">Home</a></li>
+                <li><a href="#" data-page="account">My Account</a></li>
+                <li><a href="#" data-page="notification">Notifications</a></li>
+                <li><a href="#" data-page="requests">Requests</a></li>
+                <li><a href="#" data-page="settings">Settings</a></li>
+                <li><a href="#" data-page="help">Help</a></li>
+                <li><a href="#" data-page="logout">Log Out</a></li>
+            </ul>
+        </aside>
+        <main class="content">
+            <div id="account" class="page active">
+                <h2>My Account</h2>
+                <p>Welcome to your account dashboard. Here you can update your personal information, change your password, and view your borrowing history.</p>
+                <p><strong>Name:</strong> Maria Ahmed</p>
+                <p><strong>Email:</strong> maria.ahmed@example.com</p>
+                <p><strong>Member Since:</strong> January 2021</p>
+            </div>
+            <div id="notification" class="page">
+                <h2>Notifications</h2>
+                <p>You have no new notifications.</p>
+            </div>
+            <div id="requests" class="page">
+                <h2>Requests</h2>
+                <p>Here you can view and manage your book requests.</p>
+                <ul>
+                    <li>Request 1: The Great Gatsby - Status: Approved</li>
+                    <li>Request 2: To Kill a Mockingbird - Status: Pending</li>
+                </ul>
+            </div>
+            <div id="settings" class="page">
+                <h2>Settings</h2>
+                <p>Adjust your account settings and preferences here.</p>
+                <form>
+                    <label for="email-notifications">Email Notifications</label>
+                    <input type="checkbox" id="email-notifications" checked>
+                    <br><br>
+                    <label for="dark-mode">Dark Mode</label>
+                    <input type="checkbox" id="dark-mode">
+                </form>
+            </div>
+            <div id="help" class="page">
+                <h2>Help</h2>
+                <p>If you need assistance, please check our FAQ or contact support.</p>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Contact Support</a></li>
+                </ul>
+            </div>
+            <div id="logout" class="page">
+                <h2>Log Out</h2>
+                <p>Are you sure you want to log out?</p>
+                <button>Yes, Log Me Out</button>
+            </div>
+        </main>
+    </div>
+    <script src="../JAVA/user_dashbord.js"></script>
+</body>
+</html>

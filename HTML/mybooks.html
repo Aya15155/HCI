@@ -14,9 +14,10 @@
             background-color: #f8f9fa;
         }
         header {
-            background-color: #343a40;
-            color: white;
+            background-color: white;
+            color: #343a40;
             padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             list-style: none;
@@ -30,19 +31,21 @@
             margin: 0 10px;
         }
         nav ul li a, nav ul li button {
-            color: white;
+            color: #343a40;
             text-decoration: none;
             font-weight: bold;
-            padding: 5px 10px;
+            padding: 10px 15px;
             border: none;
             background: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        nav ul li button:hover {
-            text-decoration: underline;
+        nav ul li a:hover, nav ul li button:hover {
+            background-color: #f8f9fa;
+            border-radius: 5px;
         }
         nav ul li input {
-            padding: 5px;
+            padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
@@ -61,18 +64,29 @@
             text-align: center;
             color: #343a40;
             margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 2.5em;
+            border-bottom: 2px solid #343a40;
+            display: inline-block;
+            padding-bottom: 5px;
+            width: 100%;
         }
         .total-fees-top {
             text-align: right;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.5em;
             margin-bottom: 10px;
+            color: #dc3545;
+        }
+        .table-wrapper {
+            position: relative;
+            overflow: auto;
+            max-height: 600px; /* Adjust based on your requirement */
         }
         .book-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .book-table th, .book-table td {
             padding: 15px;
@@ -80,12 +94,15 @@
             border-bottom: 1px solid #ddd;
         }
         .book-table th {
-            background-color: #343a40;
-            color: white;
+            background-color: white;
+            color: #343a40;
             font-weight: bold;
             position: sticky;
             top: 0;
             z-index: 1;
+        }
+        .book-table th:last-child {
+            border-right: none;
         }
         .book-table td img {
             width: 50px;
@@ -93,8 +110,11 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .book-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
         .return-btn {
-            background-color: #dc3545;
+            background-color: #007bff;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -103,15 +123,20 @@
             transition: background-color 0.3s, transform 0.3s;
         }
         .return-btn:hover {
-            background-color: #c82333;
+            background-color: #0056b3;
             transform: scale(1.05);
         }
         .overdue {
             color: red;
             font-weight: bold;
         }
+        .returned {
+            color: green;
+            font-weight: bold;
+        }
         .paid {
             text-decoration: line-through;
+            color: gray;
         }
         .total-row {
             font-weight: bold;
@@ -176,29 +201,31 @@
         <div class="total-fees-top">Total Unpaid Fees (AED): <span id="total-unpaid-fees-top">0</span></div>
         <section id="my-books" class="page">
             <h2>My Borrowed Books</h2>
-            <table class="book-table">
-                <thead>
-                    <tr>
-                        <th>Cover</th>
-                        <th>Title</th>
-                        <th>Date of Borrowing</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                        <th>Total Fees (AED)</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody id="book-list">
-                    <!-- Books will be dynamically inserted here -->
-                </tbody>
-                <tfoot>
-                    <tr class="total-row">
-                        <td colspan="5">Total Unpaid Fees (AED)</td>
-                        <td id="total-unpaid-fees">0</td>
-                        <td></td>
-                    </tr>
-                </tfoot>
-            </table>
+            <div class="table-wrapper">
+                <table class="book-table">
+                    <thead>
+                        <tr>
+                            <th>Cover</th>
+                            <th>Title</th>
+                            <th>Date of Borrowing</th>
+                            <th>Due Date</th>
+                            <th>Status</th>
+                            <th>Total Fees (AED)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="book-list">
+                        <!-- Books will be dynamically inserted here -->
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="5">Total Unpaid Fees (AED)</td>
+                            <td id="total-unpaid-fees">0</td>
+                            <td></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
         </section>
     </main>
 
@@ -268,6 +295,14 @@
             const today = new Date();
             let totalUnpaidFees = 0;
 
+            // Sort books: unreturned first, then by nearest due date
+            books.sort((a, b) => {
+                if (a.returned === b.returned) {
+                    return new Date(a.dueDate) - new Date(b.dueDate);
+                }
+                return a.returned - b.returned;
+            });
+
             books.forEach(book => {
                 const dueDate = new Date(book.dueDate);
                 const timeDiff = today - dueDate;
@@ -296,7 +331,7 @@
                     <td>${book.title}</td>
                     <td>${book.borrowDate}</td>
                     <td>${book.dueDate}</td>
-                    <td class="${daysLate > 0 ? 'overdue' : ''}">${status}</td>
+                    <td class="${book.returned ? 'returned' : daysLate > 0 ? 'overdue' : ''}">${status}</td>
                     <td class="${book.returned ? 'paid' : ''}">${fees}</td>
                     <td>${book.returned ? '' : `<button class="return-btn" data-book-id="${book.id}">Return</button>`}</td>
                 `;

@@ -88,5 +88,160 @@ bookSections.forEach(section => {
         }
     });
 
+    function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: 'smooth' }); // Smooth scroll to the section
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const borrowButtons = document.querySelectorAll('.borrow-btn');
+        const cartIcon = document.getElementById('cart');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        borrowButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const bookId = event.target.dataset.bookId;
+                cart.push(bookId);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                alert(`Book ${bookId} added to cart`);
+            });
+        });
+    
+        cartIcon.addEventListener('click', () => {
+            window.location.href = 'checkout.html';
+        });
+    });
+      
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const borrowButtons = document.querySelectorAll('.borrow-btn');
+        const cartIcon = document.getElementById('cart');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        borrowButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const bookId = event.target.dataset.bookId;
+                cart.push(bookId);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartIcon(); // Update cart icon
+                alert(`Book ${bookId} added to cart`);
+            });
+        });
+    
+        cartIcon.addEventListener('click', () => {
+            showCartItems(); // Show cart items when clicking on the cart
+        });
+    
+        function updateCartIcon() {
+            const cartItemCount = cart.length;
+            cartIcon.innerHTML = `🛒 ${cartItemCount}`;
+        }
+    
+        function showCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = ''; // Clear previous items
+    
+            cart.forEach(bookId => {
+                const item = document.createElement('div');
+                item.textContent = `Book ID: ${bookId}`;
+                cartItemsContainer.appendChild(item);
+            });
+        }
+    
+        // Initial cart icon update
+        updateCartIcon();
+    });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        const borrowButtons = document.querySelectorAll('.borrow-btn');
+        const cartIcon = document.getElementById('cart');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        borrowButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const bookId = event.target.dataset.bookId;
+                cart.push(bookId);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartIcon(); // Update cart icon
+                updateCartItems(); // Show cart items in cart
+                alert(`Book ${bookId} added to cart`);
+            });
+        });
+    
+        cartIcon.addEventListener('click', () => {
+            showCartItems(); // Show cart items when clicking on the cart
+        });
+    
+        function updateCartIcon() {
+            const cartItemCount = cart.length;
+            cartIcon.innerHTML = `🛒 ${cartItemCount}`;
+        }
+    
+        function updateCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = ''; // Clear previous items
+            cart.forEach(bookId => {
+                const item = document.createElement('div');
+                item.textContent = `Book ID: ${bookId}`;
+                cartItemsContainer.appendChild(item);
+            });
+        }
+    
+        // Initial cart icon update
+        updateCartIcon();
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const borrowButtons = document.querySelectorAll('.borrow-btn');
+        const cartIcon = document.getElementById('cart');
+        const cartCount = document.getElementById('cart-count');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+        borrowButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const bookId = event.target.dataset.bookId;
+                cart.push(bookId);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart();
+                alert(`Book ${bookId} added to cart`);
+            });
+        });
+    
+        cartIcon.addEventListener('click', () => {
+            showCartItems();
+        });
+    
+        function updateCart() {
+            updateCartIcon();
+            updateCartCount();
+        }
+    
+        function updateCartIcon() {
+            const cartItemCount = cart.length;
+            cartIcon.innerHTML = `🛒`;
+        }
+    
+        function updateCartCount() {
+            const cartItemCount = cart.length;
+            cartCount.textContent = cartItemCount;
+        }
+    
+        function showCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+    
+            cart.forEach(bookId => {
+                const item = document.createElement('div');
+                item.textContent = `Book ID: ${bookId}`;
+                cartItemsContainer.appendChild(item);
+            });
+        }
+    
+        // Initial cart updates
+        updateCart();
+    });
+    
 
 

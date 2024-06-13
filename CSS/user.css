@@ -15,21 +15,6 @@ body {
  
   
 }
-/* Smooth scrolling for the entire page */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Optional: Scroll snapping for sections */
-.page {
-  scroll-snap-align: start;
-}
-
-/* Add padding to the top of each section for better scrolling */
-.page {
-  padding-top: 100px; /* Adjust as needed */
-}
-
 
 header {
   background-color: #ffffff;
@@ -86,8 +71,6 @@ nav input[type="text"] {
 
 main {
   padding: 20px;
-  flex: 1; /* Take remaining vertical space */
-  overflow-y: auto; /* Add scrollbars if content exceeds viewport height */
 }
 
 h2{
@@ -356,7 +339,7 @@ footer {
 
 .footer-content > div {
   flex: 1;
-  margin: 30px;
+  margin:0px;
 }
 
 .about img {
@@ -372,7 +355,7 @@ footer {
 .links ul, .customer-area ul, .social-medias ul {
   list-style: none;
   padding: 0;
-  
+  gap: 10px;
 }
 
 .links ul li, .customer-area ul li, .social-medias ul li {

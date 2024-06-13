@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="../CSS/checkout.css">
 </head>
-
 <body>
-  <div id="cart-items" style="display: none;"></div>
+    <div id="cart-items" style="display: none;"></div>
     <div class="container">
         <div class="checkout-header">
-            <button class="back-button">&#8592;</button>
+            <button class="back-button" onclick="goToHomePage()">&#8592;</button>
             <h1>Checkout</h1>
         </div>
         <div class="content">
             <div class="payment-method">
                 <h2>Payment method</h2>
                 <div class="card">
-                    <img src="path/to/card-image.png" alt="NBank Card">
+                    <img src="../Media/Frame 311.png" alt="NBank Card">
                 </div>
                 <form id="payment-form">
                     <label for="saved-cards">Use saved card:</label>
@@ -28,13 +26,13 @@
                         <option value="visa">Visa</option>
                     </select>
                     <label for="card-name">Name on card:</label>
-                    <input type="text" id="card-name" placeholder="Enter your name">
+                    <input type="text" id="card-name" placeholder="Enter your name" required>
                     <label for="card-number">Card number:</label>
-                    <input type="text" id="card-number" placeholder="Enter card number">
+                    <input type="text" id="card-number" placeholder="Enter card number" required>
                     <label for="expiry-date">Expiry date:</label>
-                    <input type="text" id="expiry-date" placeholder="MM / YY">
+                    <input type="text" id="expiry-date" placeholder="MM / YY" required>
                     <label for="ccv">CCV:</label>
-                    <input type="text" id="ccv" placeholder="Enter CCV">
+                    <input type="password" id="ccv" placeholder="Enter CCV" required>
                 </form>
             </div>
             <div class="order-summary">
@@ -43,6 +41,8 @@
                     <!-- Cart items will be dynamically added here -->
                 </div>
                 <div class="summary">
+                    <p id="product-total">Product total: $0.00</p>
+                    <p id="discount">Discount: $0.00</p>
                     <p id="total-amount">Total: $0.00</p>
                 </div>
                 <button class="order-button" id="order-btn">Order</button>
@@ -51,63 +51,5 @@
         </div>
     </div>
     <script src="../JAVA/checkout.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const cartIcon = document.getElementById('cart');
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            // Update cart on borrow button click
-            const borrowButtons = document.querySelectorAll('.borrow-btn');
-            borrowButtons.forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const bookId = event.target.dataset.bookId;
-                    cart.push(bookId);
-                    localStorage.setItem('cart', JSON.stringify(cart));
-                    updateCartItems();
-                });
-            });
-
-            // Display cart items
-            const updateCartItems = () => {
-                const cartItemsContainer = document.getElementById('cart-items-container');
-                cartItemsContainer.innerHTML = ''; // Clear existing items
-                cart.forEach(bookId => {
-                    const item = document.createElement('div');
-                    item.textContent = `Book ID: ${bookId}`;
-                    cartItemsContainer.appendChild(item);
-                });
-            };
-
-            // Calculate and display total amount
-            const calculateTotalAmount = () => {
-                const totalAmount = cart.length * 10; // Assuming each book costs $10
-                document.getElementById('total-amount').textContent = `Total: $${totalAmount.toFixed(2)}`;
-            };
-
-            // Handle payment and order
-            const orderButton = document.getElementById('order-btn');
-            orderButton.addEventListener('click', () => {
-                const paymentForm = document.getElementById('payment-form');
-                const selectedPaymentMethod = document.getElementById('saved-cards').value;
-                const cardName = document.getElementById('card-name').value;
-                const cardNumber = document.getElementById('card-number').value;
-                const expiryDate = document.getElementById('expiry-date').value;
-                const ccv = document.getElementById('ccv').value;
-
-                // Validate payment information (add your validation logic here)
-
-                // Simulate order success
-                alert('Order placed successfully!');
-                localStorage.removeItem('cart'); // Clear cart after order
-                updateCartItems(); // Update cart display
-                calculateTotalAmount(); // Update total amount display
-            });
-
-            // Initial cart items and total amount display
-            updateCartItems();
-            calculateTotalAmount();
-        });
-    </script>
 </body>
-
 </html>

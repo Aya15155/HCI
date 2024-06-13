@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management - Cataloging</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #d6dbf8;
+            padding-top: 20px;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .sidebar .logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .sidebar .logo img {
+            width: 40px;
+        }
+        .sidebar p {
+            margin-left: 20px;
+        }
+        .sidebar .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid #e6e6e6;
+            transition: background-color 0.3s;
+        }
+        .sidebar .menu-item:hover {
+            background-color: #c5cbe3;
+        }
+        .sidebar .menu-item i {
+            margin-right: 20px;
+        }
+        .sidebar .menu-top, .sidebar .menu-bottom {
+            flex-grow: 1;
+        }
+        .sidebar .menu-bottom {
+            margin-top: auto;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            overflow: auto;
+        }
+        .top-bar {
+            background-color: #2c5aa0;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .top-bar .search-container {
+            display: flex;
+            align-items: center;
+            background-color: #e0e5e5;
+            padding: 5px;
+            border-radius: 20px;
+            flex-grow: 1;
+        }
+        .top-bar .search-container input[type="search"] {
+            border: none;
+            border-radius: 20px;
+            padding: 8px;
+            font-size: 16px;
+            flex-grow: 1;
+            margin-right: 10px;
+            background-color: #e0e0e0;
+        }
+        .top-bar .search-container button {
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+        }
+        .search-container {
+            background-color: #e0e0e0;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .search-container input {
+            border: 1px solid #888;
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 14px;
+            width: 120px;
+            margin: 0 5px;
+        }
+        .search-container input:focus {
+            outline: none;
+            border-color: #7a52d4;
+            box-shadow: 0 0 5px #7a52d4;
+        }
+        .icon-group {
+            display: flex;
+            justify-content: space-between;
+            background-color: #fff;
+            padding: 10px 0;
+            margin-top: 10px;
+            border-bottom: 1px solid #ddd;
+            color: #e86833;
+        }
+        .icon-group button {
+            background: none;
+            border: none;
+            color: #e86833;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            margin: 0 10px;
+        }
+        .icon-group button i {
+            margin-right: 5px;
+        }
+        .icon-group button span {
+            font-size: 14px;
+        }
+        .table-container {
+            margin-top: 20px;
+            overflow-x: auto;
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #555;
+        }
+        table th {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        table td img {
+            width: 60px;
+            height: auto;
+        }
+        .availability-available {
+            color: green;
+        }
+        .availability-not-available {
+            color: red;
+        }
+        .availability-reserved {
+            color: blue;
+        }
+        .availability-delayed {
+            color: orange;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            .content {
+                margin-left: 0;
+            }
+            .search-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .search-container input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            .icon-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .icon-group button {
+                margin-bottom: 5px;
+            }
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 25%;
+            border-radius: 10px;
+        }
+        .modal-content h2 {
+            margin-top: 0;
+        }
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #e86833;
+        }
+        .modal-content input, .modal-content select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #e86833;
+            border-radius: 5px;
+        }
+        .modal-content .btn {
+            background-color: #7a52d4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .modal-content .btn:hover {
+            background-color: #6a47c1;
+        }
+        .modal-content .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .modal-content .close:hover,
+        .modal-content .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div>
+            <div class="logo">
+                <img src="https://via.placeholder.com/40" alt="Logo">
+            </div>
+            <p>akhouna labib<br><small>Librarian</small></p>
+            <div class="menu-top">
+                <a href="#" class="menu-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                <a href="#" class="menu-item"><i class="fas fa-book"></i>Cataloging</a>
+                <a href="#" class="menu-item"><i class="fas fa-users"></i>Members</a>
+                <a href="#" class="menu-item"><i class="fas fa-tasks"></i>Manage Request</a>
+            </div>
+        </div>
+        <div class="menu-bottom">
+            <a href="#" class="menu-item"><i class="fas fa-question-circle"></i>help</a>
+            <a href="#" class="menu-item"><i class="fas fa-cog"></i>Settings</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="top-bar">
+            <div
+            class="search-container">
+            <input type="search" placeholder="Search">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+    <div class="search-container">
+        <input type="text" placeholder="Field">
+        <input type="text" placeholder="Subject">
+        <input type="text" placeholder="Author">
+        <input type="text" placeholder="Publisher">
+        <input type="text" placeholder="Year">
+        <input type="text" placeholder="Keyword">
+    </div>
+    <div class="icon-group">
+        <button onclick="document.getElementById('newRecordModal').style.display='flex'"><i class="fas fa-plus"></i><span> New Record</span></button>
+        <button><i class="fas fa-check-circle"></i><span> Select Available</span></button>
+        <button><i class="fas fa-times-circle"></i><span> Select Borrowed</span></button>
+        <button><i class="fas fa-clock"></i><span> Select delay</span></button>
+        <button><i class="fas fa-minus"></i><span> Select Lost</span></button>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Publisher</th>
+                    <th>Publication date</th>
+                    <th>ISBN</th>
+                    <th>Barcode</th>
+                    <th>availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
+                    <td>B.S. Blyth.</td>
+                    <td>Springer-Verlag</td>
+                    <td>September 2018</td>
+                    <td>978-3-319-77535-9</td>
+                    <td>123456789</td>
+                    <td class="availability-not-available">Not Available till 18/07/2023</td>
+                </tr>
+                <tr>
+                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
+                    <td>B.S. Blyth.</td>
+                    <td>Springer-Verlag</td>
+                    <td>September 2018</td>
+                    <td>978-3-319-77535-9</td>
+                    <td>123456789</td>
+                    <td class="availability-available">available</td>
+                </tr>
+                <tr>
+                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
+                    <td>B.S. Blyth.</td>
+                    <td>Springer-Verlag</td>
+                    <td>September 2018</td>
+                    <td>978-3-319-77535-9</td>
+                    <td>123456789</td>
+                    <td class="availability-reserved">reserved</td>
+                </tr>
+                <tr>
+                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
+                    <td>B.S. Blyth.</td>
+                    <td>Springer-Verlag</td>
+                    <td>September 2018</td>
+                    <td>978-3-319-77535-9</td>
+                    <td>123456789</td>
+                    <td class="availability-not-available">Not Available till 02/01/2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="newRecordModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="document.getElementById('newRecordModal').style.display='none'">&times;</span>
+        <h2>Add New Item</h2>
+        <form>
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="Enter the item's title">
+            
+            <label for="author">Author</label>
+            <input type="text" id="author" placeholder="Enter the item's author">
+            
+            <label for="publisher">Publisher</label>
+            <input type="text" id="publisher" placeholder="Enter the item's publisher">
+            
+            <label for="barcode">Barcode</label>
+            <input type="text" id="barcode" placeholder="Enter the item's barcode">
+            
+            <label for="subject">Subject</label>
+            <select id="subject">
+                <option value="">Select subject</option>
+            </select>
+            
+            <label for="pubdate">Publication date</label>
+            <input type="text" id="pubdate" placeholder="18/07/2003">
+            
+            <button type="button" class="btn">Add New Item</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target == document.getElementById('newRecordModal')) {
+            document.getElementById('newRecordModal').style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

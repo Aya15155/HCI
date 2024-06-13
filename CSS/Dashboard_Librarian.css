@@ -1,0 +1,227 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    padding-top: 3px;
+    max-width: 78vw;
+    margin: auto;
+    width: 60vw;
+    margin-left: calc(100vw - 85vw); 
+}
+
+.char_cont {
+    padding: 5vh 10vw;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 50vw;
+}
+
+.stat {
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.stat-icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: #0F254F;
+}
+
+.chart {
+    background-color: #333;
+    padding: 20px;
+    width: 50vw;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.aclonica-regular {
+    font-family: "Aclonica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column;
+    }
+
+    .stat {
+        margin-bottom: 20px;
+    }
+
+    .stat:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.stat .number {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.table-container {
+    margin-top: 20px;
+    height: 90vh; /* Adjust the height as needed */
+    
+    position: relative;
+}
+
+.table-container h2 {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    padding: 10px 0;
+    z-index: 10; /* Ensure it stays on top of other elements */
+    margin: 0; /* Remove margin to prevent unwanted spacing */
+}
+
+#overdue-books-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2%;
+}
+
+#overdue-books-table thead {
+    position: sticky;
+    top: 40px; /* Adjust according to the height of the h2 heading */
+    background: #ddd;
+    z-index: 5; /* Ensure it stays on top of the scrolling body */
+}
+
+#overdue-books-table thead th {
+    text-align: start;
+    font-family: "Aclonica", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: small;
+    padding: 1% 1%;
+}
+
+#overdue-books-table tbody {
+    
+    height: 80vh; /* Adjust the height as needed */
+    max-height: calc(90vh - 60px); /* Adjust to fit within container height */
+    overflow-y:auto;
+    position: relative;
+    width: 100%;
+}
+
+#overdue-books-table tbody tr {
+    
+    width: 100%;
+    table-layout: fixed;
+}
+
+#overdue-books-table td {
+    max-width: max-content; /* Adjust as needed */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Prevent wrapping */
+    font-family: "Actor", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: small;
+    padding: 2% 1%;
+}
+
+
+#overdue-books-table tr:nth-child(2n) {
+    background-color: #EACCA9;
+}
+
+#overdue-books-table th,
+#overdue-books-table td {
+    width: 10%; /* Adjust percentages as needed */
+}
+
+.details {
+    width: 300px;
+    background: #fff;
+    border-left: 1px solid #ddd;
+    padding: 20px;
+    display: none;
+    position: relative;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.details-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.details-content {
+    padding: 10px 0;
+}

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management - Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            color: #333;
+            transition: background 0.3s, color 0.3s;
+        }
+        .dark-mode {
+            background: linear-gradient(to right, #2c3e50, #4a90e2);
+            color: #ecf0f1;
+        }
+        .header {
+            background: linear-gradient(to right, #4a90e2, #0056b3);
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background 0.3s;
+        }
+        .header .logo {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            font-size: 24px;
+        }
+        .container {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto;
+            transition: background 0.3s, color 0.3s;
+        }
+        .section {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
+        }
+        .dark-mode .section {
+            background: #34495e;
+        }
+        .section h2 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        .dark-mode .section h2 {
+            color: #ecf0f1;
+        }
+        .section h2 i {
+            margin-right: 10px;
+        }
+        .section p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .settings-category {
+            margin-bottom: 20px;
+        }
+        .settings-category h3 {
+            color: #333;
+            font-size: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        .dark-mode .settings-category h3 {
+            color: #ecf0f1;
+        }
+        .settings-category h3 i {
+            margin-right: 10px;
+        }
+        .settings-category p {
+            font-size: 16px;
+            line-height: 1.5;
+            color: #666;
+            transition: color 0.3s;
+        }
+        .dark-mode .settings-category p {
+            color: #bdc3c7;
+        }
+        .settings-item {
+            margin-bottom: 20px;
+        }
+        .settings-item label {
+            font-size: 16px;
+            color: #333;
+            margin-right: 10px;
+            display: block;
+            margin-bottom: 5px;
+            transition: color 0.3s;
+        }
+        .dark-mode .settings-item label {
+            color: #ecf0f1;
+        }
+        .settings-item input[type="text"],
+        .settings-item input[type="password"],
+        .settings-item input[type="file"],
+        .settings-item select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+            max-width: 400px;
+            box-sizing: border-box;
+            transition: background 0.3s, color 0.3s;
+        }
+        .dark-mode .settings-item input[type="text"],
+        .dark-mode .settings-item input[type="password"],
+        .dark-mode .settings-item input[type="file"],
+        .dark-mode .settings-item select {
+            background: #2c3e50;
+            color: #ecf0f1;
+            border: 1px solid #34495e;
+        }
+        .settings-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .settings-item button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4a90e2;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .settings-item button:hover {
+            background-color: #0056b3;
+        }
+        .profile-picture {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-picture img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            .header {
+                font-size: 20px;
+            }
+        }
+        .section:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header" data-key="header">
+        <i class="fas fa-book logo"></i>
+        Library Management - Settings
+    </div>
+    <div class="container">
+        <div class="section">
+            <h2 data-key="general-settings"><i class="fas fa-cog"></i> General Settings</h2>
+            <div class="settings-category">
+                <h3 data-key="user-profile"><i class="fas fa-user-cog"></i> User Profile</h3>
+                <div class="settings-item profile-picture">
+                    <img src="default-profile.png" alt="Profile Picture" id="profilePicture">
+                    <input type="file" id="uploadProfilePicture">
+                </div>
+                <div class="settings-item">
+                    <label for="username" data-key="username-label">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username">
+                </div>
+                <div class="settings-item">
+                    <label for="email" data-key="email-label">Email</label>
+                    <input type="text" id="email" placeholder="Enter your email">
+                </div>
+                <div class="settings-item">
+                    <label for="password" data-key="password-label">Password</label>
+                    <input type="password" id="password" placeholder="Enter a new password">
+                </div>
+                <div class="settings-item">
+                    <button id="saveProfile" data-key="save-changes">Save Changes</button>
+                </div>
+            </div>
+            <div class="settings-category">
+                <h3 data-key="notifications"><i class="fas fa-bell"></i> Notifications</h3>
+                <div class="settings-item">
+                    <input type="checkbox" id="email-notifications">
+                    <label for="email-notifications" data-key="email-notifications-label">Email Notifications</label>
+                </div>
+                <div class="settings-item">
+                    <input type="checkbox" id="sms-notifications">
+                    <label for="sms-notifications" data-key="sms-notifications-label">SMS Notifications</label>
+                </div>
+                <div class="settings-item">
+                    <button id="saveNotifications" data-key="save-changes">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2 data-key="privacy-settings"><i class="fas fa-lock"></i> Privacy Settings</h2>
+            <div class="settings-category">
+                <h3 data-key="account-security"><i class="fas fa-user-shield"></i> Account Security</h3>
+                <div class="settings-item">
+                    <input type="checkbox" id="two-factor-auth">
+                    <label for="two-factor-auth" data-key="two-factor-auth-label">Two-Factor Authentication</label>
+                </div>
+                <div class="settings-item">
+                    <input type="checkbox" id="login-alerts">
+                    <label for="login-alerts" data-key="login-alerts-label">Login Alerts</label>
+                </div>
+                <div class="settings-item">
+                    <button id="saveSecurity" data-key="save-changes">Save Changes</button>
+                </div>
+            </div>
+            <div class="settings-category">
+                <h3 data-key="data-management"><i class="fas fa-database"></i> Data Management</h3>
+                <div class="settings-item">
+                    <label for="data-download" data-key="data-download-label">Download Data</label>
+                    <button id="data-download" data-key="download">Download</button>
+                </div>
+                <div class="settings-item">
+                    <label for="delete-account" data-key="delete-account-label">Delete Account</label>
+                    <button id="delete-account" data-key="delete">Delete</button>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <h2 data-key="display-settings"><i class="fas fa-palette"></i> Display Settings</h2>
+            <div class="settings-category">
+                <h3 data-key="theme"><i class="fas fa-adjust"></i> Theme</h3>
+                <div class="settings-item">
+                    <label for="theme-select" data-key="theme-select-label">Select Theme</label>
+                    <select id="theme-select">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="system">System Default</option>
+                    </select>
+                </div>
+                <div class="settings-item">
+                    <button id="saveTheme" data-key="save-changes">Save Changes</button>
+                </div>
+            </div>
+            <div class="settings-category">
+                <h3 data-key="language"><i class="fas fa-language"></i> Language</h3>
+                <div class="settings-item">
+                    <label for="language-select" data-key="language-select-label">Select Language</label>
+                    <select id="language-select">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="zh">Chinese</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                </div>
+                <div class="settings-item">
+                    <button id="saveLanguage" data-key="save-changes">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const translations = {
+            en: {
+                header: "Library Management - Settings",
+                "general-settings": "General Settings",
+                "user-profile": "User Profile",
+                "username-label": "Username",
+                "email-label": "Email",
+                "password-label": "Password",
+                "save-changes": "Save Changes",
+                notifications: "Notifications",
+                "email-notifications-label": "Email Notifications",
+                "sms-notifications-label": "SMS Notifications",
+                "privacy-settings": "Privacy Settings",
+                "account-security": "Account Security",
+                "two-factor-auth-label": "Two-Factor Authentication",
+                "login-alerts-label": "Login Alerts",
+                "data-management": "Data Management",
+                "data-download-label": "Download Data",
+                download: "Download",
+                "delete-account-label": "Delete Account",
+                delete: "Delete",
+                "display-settings": "Display Settings",
+                theme: "Theme",
+                "theme-select-label": "Select Theme",
+                language: "Language",
+                "language-select-label": "Select Language",
+            },
+            es: {
+                header: "Gestión de Biblioteca - Configuración",
+                "general-settings": "Configuración General",
+                "user-profile": "Perfil de Usuario",
+                "username-label": "Nombre de Usuario",
+                "email-label": "Correo Electrónico",
+                "password-label": "Contraseña",
+                "save-changes": "Guardar Cambios",
+                notifications: "Notificaciones",
+                "email-notifications-label": "Notificaciones por Correo Electrónico",
+                "sms-notifications-label": "Notificaciones por SMS",
+                "privacy-settings": "Configuración de Privacidad",
+                "account-security": "Seguridad de la Cuenta",
+                "two-factor-auth-label": "Autenticación de Dos Factores",
+                "login-alerts-label": "Alertas de Inicio de Sesión",
+                "data-management": "Gestión de Datos",
+                "data-download-label": "Descargar Datos",
+                download: "Descargar",
+                "delete-account-label": "Eliminar Cuenta",
+                delete: "Eliminar",
+                "display-settings": "Configuración de Pantalla",
+                theme: "Tema",
+                "theme-select-label": "Seleccionar Tema",
+                language: "Idioma",
+                "language-select-label": "Seleccionar Idioma",
+            },
+            fr: {
+                header: "Gestion de Bibliothèque - Paramètres",
+                "general-settings": "Paramètres Généraux",
+                "user-profile": "Profil de l'Utilisateur",
+                "username-label": "Nom d'Utilisateur",
+                "email-label": "Email",
+                "password-label": "Mot de Passe",
+                "save-changes": "Enregistrer les Modifications",
+                notifications: "Notifications",
+                "email-notifications-label": "Notifications par Email",
+                "sms-notifications-label": "Notifications par SMS",
+                "privacy-settings": "Paramètres de Confidentialité",
+                "account-security": "Sécurité du Compte",
+                "two-factor-auth-label": "Authentification à Deux Facteurs",
+                "login-alerts-label": "Alertes de Connexion",
+                "data-management": "Gestion des Données",
+                "data-download-label": "Télécharger les Données",
+                download: "Télécharger",
+                "delete-account-label": "Supprimer le Compte",
+                delete: "Supprimer",
+                "display-settings": "Paramètres d'Affichage",
+                theme: "Thème",
+                "theme-select-label": "Sélectionner le Thème",
+                language: "Langue",
+                "language-select-label": "Sélectionner la Langue",
+            },
+            de: {
+                header: "Bibliotheksverwaltung - Einstellungen",
+                "general-settings": "Allgemeine Einstellungen",
+                "user-profile": "Benutzerprofil",
+                "username-label": "Benutzername",
+                "email-label": "E-Mail",
+                "password-label": "Passwort",
+                "save-changes": "Änderungen Speichern",
+                notifications: "Benachrichtigungen",
+                "email-notifications-label": "E-Mail-Benachrichtigungen",
+                "sms-notifications-label": "SMS-Benachrichtigungen",
+                "privacy-settings": "Datenschutzeinstellungen",
+                "account-security": "Kontosicherheit",
+                "two-factor-auth-label": "Zwei-Faktor-Authentifizierung",
+                "login-alerts-label": "Anmeldewarnungen",
+                "data-management": "Datenverwaltung",
+                "data-download-label": "Daten Herunterladen",
+                download: "Herunterladen",
+                "delete-account-label": "Konto Löschen",
+                delete: "Löschen",
+                "display-settings": "Anzeigeeinstellungen",
+                theme: "Thema",
+                "theme-select-label": "Thema Auswählen",
+                language: "Sprache",
+                "language-select-label": "Sprache Auswählen",
+            },
+            zh: {
+                header: "图书馆管理 - 设置",
+                "general-settings": "常规设置",
+                "user-profile": "用户资料",
+                "username-label": "用户名",
+                "email-label": "电子邮件",
+                "password-label": "密码",
+                "save-changes": "保存更改",
+                notifications: "通知",
+                "email-notifications-label": "电子邮件通知",
+                "sms-notifications-label": "短信通知",
+                "privacy-settings": "隐私设置",
+                "account-security": "账户安全",
+                "two-factor-auth-label": "双因素身份验证",
+                "login-alerts-label": "登录警报",
+                "data-management": "数据管理",
+                "data-download-label": "下载数据",
+                download: "下载",
+                "delete-account-label": "删除账户",
+                delete: "删除",
+                "display-settings": "显示设置",
+                theme: "主题",
+                "theme-select-label": "选择主题",
+                language: "语言",
+                "language-select-label": "选择语言",
+            },
+            ar: {
+                header: "إدارة المكتبة - الإعدادات",
+                "general-settings": "الإعدادات العامة",
+                "user-profile": "الملف الشخصي",
+                "username-label": "اسم المستخدم",
+                "email-label": "البريد الإلكتروني",
+                "password-label": "كلمة المرور",
+                "save-changes": "حفظ التغييرات",
+                notifications: "الإشعارات",
+                "email-notifications-label": "إشعارات البريد الإلكتروني",
+                "sms-notifications-label": "إشعارات الرسائل النصية",
+                "privacy-settings": "إعدادات الخصوصية",
+                "account-security": "أمان الحساب",
+                "two-factor-auth-label": "المصادقة الثنائية",
+                "login-alerts-label": "تنبيهات تسجيل الدخول",
+                "data-management": "إدارة البيانات",
+                "data-download-label": "تنزيل البيانات",
+                download: "تنزيل",
+                "delete-account-label": "حذف الحساب",
+                delete: "حذف",
+                "display-settings": "إعدادات العرض",
+                theme: "السمة",
+                "theme-select-label": "اختر السمة",
+                language: "اللغة",
+                "language-select-label": "اختر اللغة",
+            }
+        };
+
+        document.getElementById('uploadProfilePicture').addEventListener('change', function() {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('profilePicture').src = e.target.result;
+            };
+            reader.readAsDataURL(this.files[0]);
+        });
+
+        document.getElementById('theme-select').addEventListener('change', function() {
+            const theme = this.value;
+            if (theme === 'dark') {
+                document.body.classList.add('dark-mode');
+            } else {
+                document.body.classList.remove('dark-mode');
+            }
+        });
+
+        document.getElementById('saveTheme').addEventListener('click', function() {
+            const theme = document.getElementById('theme-select').value;
+            localStorage.setItem('theme', theme);
+            alert('Theme saved');
+        });
+
+        document.getElementById('saveLanguage').addEventListener('click', function() {
+            const language = document.getElementById('language-select').value;
+            localStorage.setItem('language', language);
+            applyTranslations(language);
+            alert('Language saved');
+        });
+
+        function applyTranslations(language) {
+            const elements = document.querySelectorAll('[data-key]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-key');
+                element.innerText = translations[language][key];
+            });
+            document.documentElement.setAttribute('lang', language);
+            if (language === 'ar') {
+                document.body.style.direction = 'rtl';
+            } else {
+                document.body.style.direction = 'ltr';
+            }
+        }
+
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.getElementById('theme-select').value = savedTheme;
+                if (savedTheme === 'dark') {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }
+
+            const savedLanguage = localStorage.getItem('language');
+            if (savedLanguage) {
+                document.getElementById('language-select').value = savedLanguage;
+                applyTranslations(savedLanguage);
+            }
+        }
+    </script>
+</body>
+</html>

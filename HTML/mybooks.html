@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books - Library Management System</title>
+    <link rel="stylesheet" href="/CSS/user.css">
+    <link rel="manifest" href="/JAVA/user.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        main {
+            padding: 20px;
+        }
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #343a40;
+        }
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .book-table th, .book-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .book-table th {
+            background-color: #343a40;
+            color: white;
+        }
+        .book-table td img {
+            width: 50px;
+            height: auto;
+        }
+        .return-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .return-btn:hover {
+            background-color: #c82333;
+        }
+        .overdue {
+            color: red;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            .book-table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My books</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Return book</a></li>
+                <li><a href="#">Request a new book</a></li>
+                <li><a href="#">Request a meeting room</a></li>
+                <li>
+                    <input type="text" placeholder="Search for a book">
+                    <button>🔍</button>
+                </li>
+                <li><a href="#">👤</a></li>
+                <li><a href="#" id="cart">🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="my-books" class="page">
+            <h2>My Borrowed Books</h2>
+            <table class="book-table">
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Total Fees (AED)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="book-list">
+                    <!-- Books will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="/JAVA/user.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const books = [
+                {
+                    id: 1,
+                    cover: '../Media/book1.png',
+                    title: 'Book Title 1',
+                    author: 'Author 1',
+                    dueDate: '2023-12-01'
+                },
+                {
+                    id: 2,
+                    cover: '../Media/book2.png',
+                    title: 'Book Title 2',
+                    author: 'Author 2',
+                    dueDate: '2023-12-05'
+                },
+                {
+                    id: 3,
+                    cover: '../Media/book3.png',
+                    title: 'Book Title 3',
+                    author: 'Author 3',
+                    dueDate: '2023-12-10'
+                }
+            ];
+
+            const bookList = document.getElementById('book-list');
+            const today = new Date();
+
+            books.forEach(book => {
+                const dueDate = new Date(book.dueDate);
+                const timeDiff = today - dueDate;
+                const daysLate = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                let status = 'On Time';
+                let fees = 0;
+
+                if (daysLate > 0) {
+                    status = `Overdue by ${daysLate} days`;
+                    fees = daysLate * 10;
+                }
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${book.cover}" alt="${book.title}"></td>
+                    <td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.dueDate}</td>
+                    <td class="${daysLate > 0 ? 'overdue' : ''}">${status}</td>
+                    <td>${fees}</td>
+                    <td><button class="return-btn" data-book-id="${book.id}">Return</button></td>
+                `;
+                bookList.appendChild(row);
+            });
+        });
+    </script>
+</body>
+</html>

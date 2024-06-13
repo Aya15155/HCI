@@ -2,21 +2,25 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
+  background-color: #F4F6FD;
 }
 
 .container {
   max-width: 1200px;
   margin: auto;
   padding: 20px;
-  background-color: #fff;
+  background-color: #F4F6FD;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 .checkout-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  background-color: #47A6EB; /* Light blue background */
+  padding: 30px;
+  position: relative;
 }
 
 .back-button {
@@ -24,10 +28,17 @@ body {
   border: none;
   font-size: 24px;
   cursor: pointer;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 h1 {
   color: #6a1b9a;
+  font-size: 36px;
+  margin: 0;
+  text-align: center;
 }
 
 .content {
@@ -43,6 +54,7 @@ h1 {
 
 .payment-method h2, .order-summary h2 {
   color: #333;
+  font-size: 24px;
 }
 
 .card img {
@@ -58,10 +70,12 @@ form {
 label {
   margin-top: 10px;
   color: #555;
+  font-size: 16px;
 }
 
 input, select {
-  padding: 10px;
+  padding: 12px;
+  font-size: 14px;
   margin-top: 5px;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -69,18 +83,40 @@ input, select {
 
 .order-summary .item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   margin-top: 15px;
 }
 
-.order-summary .item img {
+.order-summary .cart-item {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.order-summary .cart-item img {
   width: 50px;
   height: 50px;
   margin-right: 10px;
 }
 
+.order-summary .cart-item .book-info {
+  flex-grow: 1;
+}
+
+.order-summary .cart-item .remove-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
 .order-summary .summary {
   margin-top: 20px;
+  font-size: 18px;
+  color: #333;
 }
 
 .order-button {
@@ -93,10 +129,4 @@ input, select {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .payment-method, .order-summary {
-      width: 100%;
-  }
 }

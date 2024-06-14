@@ -109,3 +109,41 @@ FB.getLoginStatus(function(response) {
     console.log(response.authResponse.accessToken);
   }
 });
+ // Form submission handler for login
+ document.getElementById('loginForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  if (email === 'User@gmail.com' && password === '123') {
+      console.log('Redirecting to user.html');
+      window.location.href = '/html/user.html'; // Redirect to user's page
+  } else if (email === 'librarian@gmail.com' && password === '123') {
+      console.log('Redirecting to librarianPage.html');
+      window.location.href = '/html/Dashboard_librarian.html'; // Redirect to librarian's page
+  } else if (email === 'admin@gmail.com' && password === '123') {
+      console.log('Redirecting to adminPage.html');
+      window.location.href = '/html/Dashboard_admin.html'; // Redirect to admin's page
+  } else {
+      alert('Invalid email or password'); // Display error message
+  }
+});
+
+// Form submission handler for create account
+document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const username = document.getElementById('username').value;
+  const email = document.getElementById('createEmail').value;
+  const password = document.getElementById('createPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  if (password !== confirmPassword) {
+      alert('Passwords do not match');
+      return;
+  }
+
+  // Add logic for creating an account, such as sending data to the server
+  console.log('Account created for:', username, email);
+  alert('Account successfully created!');
+  showLogin();
+});

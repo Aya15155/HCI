@@ -4,54 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Dashboard</title>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
     <link rel="stylesheet" href="/CSS/librarian_cataloge.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-menu">
-            <div class="sidebar-item active">Cataloging</div>
-            <div class="sidebar-item">Members</div>
-            <!-- Add more sidebar items as needed -->
+    <nav class="sidebar">
+        <div class="logo">
+            <img src="/Media/logo.png" alt="Library Logo">
         </div>
-    </div>
+        <div class="profile">
+            <img src="/Media/profile.png" alt="Profile Picture">
+            <div class="profile-info">
+                <h2>akhouna labib</h2>
+                <p>Librarian</p>
+            </div>
+        </div>
+        <ul class="menu">
+            <li ><a href="Dashboard_Librarian.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active"><a href="#"><i class="fas fa-book"></i> Books</a></li>
+            <li><a href="Members_llibrarian.html"><i class="fas fa-users"></i> Members</a></li>
+            <li><a href="Librarian_manage.html"><i class="fas fa-tasks"></i> Manage Request</a></li>
+        </ul>
+        <ul class="menu2">
+            <li><a href="#"><i class="fas fa-user-circle"></i> Profile</a></li>
+            <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+    <button class="hamburger" id="hamburger">&#9776;</button>
     <div class="container">
-        <header>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Search">
-                <button id="search-button">Search</button>
+        <div class="top-bar">
+            <input type="search" placeholder="Search">
+            <div class="icons filter-buttons">
+                <button class="icon-btn filter-button active" id="filter-all" title="Filter"><i class="fa-solid fa-object-group"></i></button>
+                <button class="icon-btn filter-button" id="filter-books" title="Books"><i class="fas fa-book"></i></button>
+                <button class="icon-btn filter-button" id="filter-journals" title="Journals"><i class="fas fa-newspaper"></i></button>
             </div>
-            <div class="filter-buttons">
-                <button id="filter-all" class="filter-button active">
-                    <img src="img/all.png" alt="All">
-                </button>
-                <button id="filter-books" class="filter-button">
-                    <img src="img/books.png" alt="Books">
-                </button>
-                <button id="filter-journals" class="filter-button">
-                    <img src="img/journals.png" alt="Journals">
-                </button>
+        </div>
+        <div class="search-container">
+            <div style="flex-grow: 1;">
+                <label for="email">Title</label>
+                <input type="text" id="email" placeholder="Title">
             </div>
-        </header>
-        <main>
-            <div class="actions">
-                <button id="add-new">
-                    <img src="img/add.png" alt="Add New"> New Record
-                </button>
-                <button id="delete-record">
-                    <img src="img/delete.png" alt="Delete"> Delete
-                </button>
+            <div style="flex-grow: 1; margin-left: 20px;">
+                <label for="id">Author</label>
+                <input type="text" id="id" placeholder="Author">
             </div>
+            
+            <div class="icon-group">
+                <div style="text-align: center;">
+                    <button class="icon-btn" id="search-btn" title="Search"><i class="fas fa-search"></i></button>
+                    <div class="icon-label">Search</div>
+                </div>
+                <div style="text-align: center; margin-left: 10px;">
+                    <button class="icon-btn add-new" id="add-new" title="Add"><i class="fas fa-plus"></i></button>
+                    <div class="icon-label">Add</div>
+                </div>
+                <div style="text-align: center; margin-left: 10px;">
+                    <button class="icon-btn delete-btn delete-record" id="delete-record" title="Delete"><i class="fas fa-trash"></i></button>
+                    <div class="icon-label">Delete</div>
+                </div>
+            </div>
+        </div>
+        
+        <main class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>Cover</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Publisher</th>
-                        <th>Publication Date</th>
-                        <th>ISBN</th>
-                        <th>Barcode</th>
-                        <th>Availability</th>
+                        <th style="width: calc(1/8 *2%);">Cover</th>
+                        <th style="width: calc(1/8 *2%);">Title</th>
+                        <th style="width: calc(1/8 *2%);">Author</th>
+                        <th style="width: calc(1/8 *2%);">Publisher</th>
+                        <th style="width: calc(1/8 *2%);">Publication Date</th>
+                        <th style="width: calc(1/8 *2%);">ISBN</th>
+                        <th style="width: calc(1/8 *2%);">Barcode</th>
+                        <th style="width: calc(1/8 *2%);">Availability</th>
                     </tr>
                 </thead>
                 <tbody id="records-table">

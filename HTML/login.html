@@ -19,6 +19,29 @@
         .visible {
             display: block;
         }
+        .social-login-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .social-login-button i {
+            margin-right: 10px;
+        }
+        .google-login-button {
+            background-color: #fff;
+            color: #757575;
+        }
+        .facebook-login-button {
+            background-color: #3b5998;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
@@ -45,8 +68,12 @@
                     </div>
                     <div class="or">OR</div>
                     
-                    <div class="google" id="mySignin" onclick="login()"><img src="../Media/G.png" alt="google" style="cursor:pointer;height: 50%;width: 30%;"/></div>
-                    <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    <div class="social-login-button google-login-button" onclick="googleSignIn()">
+                        <i class="fab fa-google"></i> Sign in with Google
+                    </div>
+                    <div class="social-login-button facebook-login-button" onclick="checkLoginState()">
+                        <i class="fab fa-facebook-f"></i> Sign in with Facebook
+                    </div>
                     <div class="options">
                         <label>
                             <input type="checkbox" name="remember"> Remember me
@@ -194,14 +221,44 @@
         function statusChangeCallback(response) {
             if (response.status === 'connected') {
                 console.log('Logged in with Facebook');
-                // Handle successful login
+                FB.api('/me', { fields: 'name, email' }, function(response) {
+                    console.log('Successful login for: ' + response.name);
+                    console.log('Email: ' + response.email);
+                    // Redirect or show authenticated UI
+                    alert('Logged in as ' + response.name);
+                });
             } else {
-                // Handle unsuccessful login
+                console.log('User not authenticated');
             }
         }
 
-        // Facebook login button
-        document.querySelector('.fb-login-button').addEventListener('click', checkLoginState);
+        // Google login
+        function googleSignIn() {
+            gapi.auth2.getAuthInstance().signIn().then(function(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId());
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail());
+                alert('Logged in as ' + profile.getName());
+                // Redirect or show authenticated UI
+            });
+        }
+
+        // Initialize Google API client
+        function initGoogleAuth() {
+            gapi.load('auth2', function() {
+                gapi.auth2.init();
+            });
+        }
+
+        // Load Google API client library
+        (function() {
+            var script = document.createElement('script');
+            script.src = 'https://apis.google.com/js/platform.js?onload=initGoogleAuth';
+            script.async = true;
+            document.head.appendChild(script);
+        })();
     </script>
 </body>
 </html>

@@ -11,12 +11,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
+            background-color: #F4F6FD;
         }
         header {
-            background-color: #343a40;
+            background-color: #fcfdfd;
             color: white;
             padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             list-style: none;
@@ -30,19 +31,21 @@
             margin: 0 10px;
         }
         nav ul li a, nav ul li button {
-            color: white;
+            color: rgb(10, 10, 10);
             text-decoration: none;
             font-weight: bold;
-            padding: 5px 10px;
+            padding: 10px 15px;
             border: none;
             background: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        nav ul li button:hover {
-            text-decoration: underline;
+        nav ul li a:hover, nav ul li button:hover {
+            background-color: #FF7F56;
+            border-radius: 5px;
         }
         nav ul li input {
-            padding: 5px;
+            padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
@@ -59,20 +62,31 @@
         }
         h2 {
             text-align: center;
-            color: #343a40;
+            color: #5352ED;
             margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 2.5em;
+            border-bottom: 2px solid #343a40;
+            display: inline-block;
+            padding-bottom: 5px;
+            width: 100%;
         }
         .total-fees-top {
             text-align: right;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.5em;
             margin-bottom: 10px;
+            color: #dc3545;
+        }
+        .table-wrapper {
+            position: relative;
+            overflow: auto;
+            max-height: 600px; /* Adjust based on your requirement */
         }
         .book-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .book-table th, .book-table td {
             padding: 15px;
@@ -87,11 +101,17 @@
             top: 0;
             z-index: 1;
         }
+        .book-table th:last-child {
+            border-right: none;
+        }
         .book-table td img {
             width: 50px;
             height: auto;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .book-table tr:nth-child(even) {
+            background-color: #f8f9fa;
         }
         .return-btn {
             background-color: #dc3545;
@@ -110,8 +130,13 @@
             color: red;
             font-weight: bold;
         }
+        .returned {
+            color: green;
+            font-weight: bold;
+        }
         .paid {
             text-decoration: line-through;
+            color: gray;
         }
         .total-row {
             font-weight: bold;
@@ -156,18 +181,20 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">My books</a></li>
-                <li><a href="#">Browse</a></li>
-                <li><a href="#">Return book</a></li>
-                <li><a href="#">Request a new book</a></li>
-                <li><a href="#">Request a meeting room</a></li>
+
+                <li><a href="user.html">Home</a></li>
+                <li><a href="mybooks.html">My books</a></li>
+                <li><a href="user.html">Browse</a></li>
+                <li><a href="RequestaNewBook.html">Request a new book</a></li>
+                <li><a href="user.html">Request a meeting room</a></li>
                 <li>
                     <input type="text" placeholder="Search for a book">
                     <button>🔍</button>
                 </li>
-                <li><a href="#">👤</a></li>
-                <li><a href="#" id="cart">🛒</a></li>
+                <li><a href="../HTML/user_dashbord.html">👤</a></li>
+               
+               
+                
             </ul>
         </nav>
     </header>
@@ -184,7 +211,7 @@
                         <th>Date of Borrowing</th>
                         <th>Due Date</th>
                         <th>Status</th>
-                        <th>Total Fees (AED)</th>
+                        <th>Total Late Fees (AED)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -208,56 +235,56 @@
             const books = [
                 {
                     id: 1,
-                    cover: '../Media/book1.png',
-                    title: 'Book Title 1',
+                    cover: '../Media/Rectangle 5 (3).png',
+                    title: 'Harray Potter',
                     borrowDate: '2024-04-01',
                     dueDate: '2024-05-01',
                     returned: false
                 },
                 {
                     id: 2,
-                    cover: '../Media/book2.png',
-                    title: 'Book Title 2',
+                    cover: '../Media/Rectangle 5.png',
+                    title: 'Happiness by design',
                     borrowDate: '2024-05-01',
                     dueDate: '2024-06-01',
                     returned: true
                 },
                 {
                     id: 3,
-                    cover: '../Media/book3.png',
-                    title: 'Book Title 3',
+                    cover: '../Media/Rectangle 2 (3).png',
+                    title: 'The kite Runner',
                     borrowDate: '2024-05-05',
                     dueDate: '2024-06-05',
                     returned: false
                 },
                 {
                     id: 4,
-                    cover: '../Media/book4.png',
-                    title: 'Book Title 4',
+                    cover: '../Media/Rectangle 5 (1).png',
+                    title: 'The top 10',
                     borrowDate: '2024-05-10',
                     dueDate: '2024-06-10',
                     returned: true
                 },
                 {
                     id: 5,
-                    cover: '../Media/book5.png',
-                    title: 'Book Title 5',
+                    cover: '../Media/Rectangle 4.png',
+                    title: 'Made to stick',
                     borrowDate: '2024-05-13',
                     dueDate: '2024-06-13',
                     returned: false
                 },
                 {
                     id: 6,
-                    cover: '../Media/book6.png',
-                    title: 'Book Title 6',
+                    cover: '../Media/Rectangle 4 (1).png',
+                    title: 'Shoot the moon',
                     borrowDate: '2024-05-20',
                     dueDate: '2024-06-20',
                     returned: true
                 },
                 {
                     id: 7,
-                    cover: '../Media/book7.png',
-                    title: 'Book Title 7',
+                    cover: '../Media/Rectangle 4 (2).png',
+                    title: 'Machine learning for beginner',
                     borrowDate: '2024-05-25',
                     dueDate: '2024-06-25',
                     returned: false
@@ -267,6 +294,14 @@
             const bookList = document.getElementById('book-list');
             const today = new Date();
             let totalUnpaidFees = 0;
+
+            // Sort books: unreturned first, then by nearest due date
+            books.sort((a, b) => {
+                if (a.returned === b.returned) {
+                    return new Date(a.dueDate) - new Date(b.dueDate);
+                }
+                return a.returned - b.returned;
+            });
 
             books.forEach(book => {
                 const dueDate = new Date(book.dueDate);
@@ -296,7 +331,7 @@
                     <td>${book.title}</td>
                     <td>${book.borrowDate}</td>
                     <td>${book.dueDate}</td>
-                    <td class="${daysLate > 0 ? 'overdue' : ''}">${status}</td>
+                    <td class="${book.returned ? 'returned' : daysLate > 0 ? 'overdue' : ''}">${status}</td>
                     <td class="${book.returned ? 'paid' : ''}">${fees}</td>
                     <td>${book.returned ? '' : `<button class="return-btn" data-book-id="${book.id}">Return</button>`}</td>
                 `;

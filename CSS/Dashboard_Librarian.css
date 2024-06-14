@@ -5,6 +5,11 @@
     font-family: Arial, sans-serif;
 }
 
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .content {
     flex: 1;
     padding: 20px;
@@ -128,11 +133,17 @@ header h1 {
 
 .table-container h2 {
     position: sticky;
-    top: 0;
+   
     background-color: #fff;
     padding: 10px 0;
-    z-index: 10; /* Ensure it stays on top of other elements */
-    margin: 0; /* Remove margin to prevent unwanted spacing */
+    
+}
+
+.table-container {
+    overflow-y: auto;
+    height: 90vh;
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 table {
@@ -143,9 +154,9 @@ table {
 
 thead {
     position: sticky;
-    top: 7vh;
+    top: 0;
     background-color: #f9f9f9;
-    z-index: 11;
+    z-index: 1;
 }
 
 thead th {
@@ -171,7 +182,6 @@ tbody tr:nth-child(even) {
     background-color: #eacca97c;
 }
 
-
 .container {
     flex: 1;
     padding: 20px;
@@ -183,7 +193,6 @@ tbody tr:nth-child(even) {
 .popup-visible .container {
     margin-right:30vw; /* Adjust the margin to shift content left */
 }
-
 
 .details {
     background-color: #fff;

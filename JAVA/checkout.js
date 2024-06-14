@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const item = document.createElement('div');
           item.classList.add('cart-item');
           item.innerHTML = `
-              <img src="path/to/book-image-${bookId}.png" alt="Book Image">
+              <i class="fa-solid fa-book fa-3x"></i>
               <div class="book-info">
                   <p>Book Title ${bookId}</p>
                   <p>$10.00</p>

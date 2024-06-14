@@ -13,6 +13,7 @@
             padding: 0;
             background-color: #f4f4f9;
         }
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -21,8 +22,8 @@
             padding: 10px 20px;
             color: #ecf0f1;
         }
-        .navbar .logo img {
-            width: 100px;
+         .logo img {
+            width: 60px;
         }
         .navbar .search-bar input {
             padding: 5px;
@@ -45,12 +46,19 @@
         }
         .container {
             display: flex;
+            max-height: min-content;
         }
         .sidebar {
             width: 250px;
             background-color: #34495e;
             padding: 20px;
             color: #ecf0f1;
+            top: 0;
+            bottom: 0;
+            position: sticky;
+            height: 93vh;
+            z-index: 1;
+            margin: 0;
         }
         .sidebar ul {
             list-style-type: none;
@@ -58,6 +66,7 @@
         }
         .sidebar ul li {
             margin-bottom: 20px;
+            
         }
         .sidebar ul li a {
             color: #ecf0f1;
@@ -71,6 +80,26 @@
             font-size: 20px;
         }
         .sidebar ul li a:hover {
+            color: #1abc9c;
+        }
+        .sidebar  li {
+            margin-bottom: 20px;
+            list-style-type: none;
+        }
+        
+        .sidebar  li a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            text-decoration: none ;
+        }
+        .sidebar  li a i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .sidebar  li a:hover {
             color: #1abc9c;
         }
         .content {
@@ -357,9 +386,7 @@
 </head>
 <body>
     <nav class="navbar">
-        <div class="logo">
-            <img src="../Media/Frame 313.png" alt="Logo">
-        </div>
+        
         <div class="search-bar">
             <input type="text" placeholder="Search">
         </div>
@@ -369,9 +396,16 @@
             <i class="fas fa-bell"></i>
         </div>
     </nav>
+
     <div class="container">
+        
         <aside class="sidebar">
+            <div class="logo">
+                <img src="../Media/Frame 313.png" alt="Logo">
+            </div>
+            <li><a href="/HTML/user.html"><i class="fa-solid fa-house-user"></i>Home</a></li>
             <ul>
+              
                 <li><a href="#" data-page="account"><i class="fas fa-user"></i>My Account</a></li>
                 <li><a href="#" data-page="notification"><i class="fas fa-bell"></i>Notifications</a></li>
                 <li><a href="#" data-page="requests"><i class="fas fa-book"></i>Requests</a></li>
@@ -385,7 +419,7 @@
                 <h2>My Account</h2>
                 <div class="account-details">
                     <div class="profile-picture">
-                        <img src="../Media/profile_picture.png" alt="Profile Picture">
+                        <img src="../Media/avatar.png" alt="Profile Picture">
                         <div class="edit-icon">
                             <i class="fas fa-edit"></i>
                         </div>
@@ -440,25 +474,30 @@
                 <h2>Requests</h2>
                 <div class="requests">
                     <div class="request-item">
-                        <img src="../Media/book1.jpg" alt="The Great Gatsby">
+                        <img src="../Media/b14.jpeg" alt="To Kill a Mockingbird">
                         <div class="request-info">
-                            <p><strong>The Great Gatsby</strong></p>
-                            <p>Request Date: January 10, 2024</p>
-                            <p>Status: <span style="color: green;">Approved</span></p>
-                        </div>
-                        <div class="actions">
-                            <button>Cancel Request</button>
-                        </div>
-                    </div>
-                    <div class="request-item">
-                        <img src="../Media/book2.jpg" alt="To Kill a Mockingbird">
-                        <div class="request-info">
-                            <p><strong>To Kill a Mockingbird</strong></p>
+                            <p><strong>Computer vision</strong></p>
                             <p>Request Date: January 12, 2024</p>
                             <p>Status: <span style="color: orange;">Pending</span></p>
                         </div>
                         <div class="actions">
                             <button>Cancel Request</button>
+                        </div>
+                    </div> 
+                    <div class="request-item">
+                        <img src="../Media/b13.jpeg" alt="Pattern recognition and Machine learning">
+                        <div class="request-info">
+                            <p><strong>Pattern recognition and Machine learning</strong></p>
+                            <p>Request Date: January 10, 2024</p>
+                            <p>Status: <span style="color: green;">Approved</span></p>
+                        </div>
+                    </div>
+                    <div class="request-item">
+                        <img src="../Media/b15.jpg" alt="To Kill a Mockingbird">
+                        <div class="request-info">
+                            <p><strong>Digital image processing</strong></p>
+                            <p>Request Date: January 9, 2024</p>
+                            <p>Status: <span style="color: rgb(255, 0, 0);">Declined</span></p>
                         </div>
                     </div>
                 </div>

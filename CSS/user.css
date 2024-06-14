@@ -64,8 +64,12 @@ nav a:hover {
 }
 
 nav input[type="text"] {
-  padding: 5px 10px;
+  padding: 0px 0px;
   margin-right: 5px;
+  text-align: start;
+}
+nav input::placeholder{
+  padding: 0px 0px;
 }
 
 
@@ -134,7 +138,21 @@ h2{
   margin-bottom: 30px; /* Adjust bottom margin for spacing */
   border-radius: 5px;
 }
-
+.Read-btn{
+  margin-top: 20px; /* Add space between book and button */
+  background-color: #47A6EB;
+  color: white;
+  border: none;
+  padding: 10px 30px; /* Adjust padding as needed */
+  cursor: pointer;
+  display: block; /* Ensure buttons appear on a new line */
+  margin-bottom: 30px; /* Adjust bottom margin for spacing */
+  border-radius: 5px;
+  
+}
+.Read-btn:hover{
+  background-color: #0056b3;
+}
 .book .borrow-btn:hover {
   background-color: #0056b3;
 }
@@ -257,11 +275,21 @@ h2{
 #meeting-room-form label {
   margin-top: 10px;
   text-align: left;
+  
+}
+#meeting-room-form label {
+  margin-top: 10px;
+  text-align: left;
+  
 }
 
-#meeting-room-form input,
 #meeting-room-form select {
   padding: 10px 80px;
+  margin-top: 5px;
+}
+#meeting-room-form input
+ {
+  padding: 10px 1px;
   margin-top: 5px;
 }
 
@@ -382,3 +410,4 @@ footer {
       width: 60%;
   }
 }
+

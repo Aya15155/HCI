@@ -7,21 +7,27 @@ body {
 
 .navbar {
   display: flex;
-  align-items: center;
+  align-items: clenter;
   justify-content: space-between;
+  
   background-color: #00aaff;
   padding: 10px 20px;
+  height: max-content;
 }
 
 .logo img {
   height: 40px;
 }
 
+.search-bar{
+  justify-self: center;
+}
 .search-bar input {
   padding: 10px;
   border: none;
   border-radius: 20px;
   width: 200px;
+  
 }
 
 .user-info {

@@ -10,8 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <meta name="google-signin-client_id" content="306813547379-5b3bms5lupakn2behfh5hks0p5f54mq1.apps.googleusercontent.com">
-    <title>Library Login</title>
+    <title>Library Account</title>
     <link rel="stylesheet" href="../CSS/login.css">
+    <style>
+        .hidden {
+            display: none;
+        }
+        .visible {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <div id="fb-root"></div>
@@ -21,54 +29,103 @@
             <img src="../Media/illustration.png" alt="Illustration">
         </div>
         <div class="login-section">
-            <div class="h1">
-            <h1>Welcome To our LIBRARY</h1></div>
-            <form id="loginForm" action="#" method="POST">
-                <div class="input-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+
+            <!-- Login Section -->
+            <div id="loginSection" class="visible">
+                <h1>Welcome To our LIBRARY</h1>
+                <form id="loginForm" action="#" method="POST">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input class="password" type="password" id="password" name="password" placeholder="Password" required>
+                        <span class="toggle-password"><i class="fas fa-eye"></i></span>
+                    </div>
+                    <div class="or">OR</div>
+                    
+                    <div class="google" id="mySignin" onclick="login()"><img src="../Media/G.png" alt="google" style="cursor:pointer;height: 50%;width: 30%;"/></div>
+                    <div class="fb-login-button" style="padding: auto;  padding-left: 53px; " data-width="100%" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                    <div class="options">
+                        <label>
+                            <input type="checkbox" name="remember"> Remember me
+                        </label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <div class="create-account">
+                  <p>Don't have an account? <a href="#" onclick="showCreateAccount()">Create new account</a></p>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input class="password" type="password" id="password" name="password" placeholder="Password" required>
-                    <span class="toggle-password"><i class="fas fa-eye"></i></span>
+            </div>
+
+            <!-- Create Account Section -->
+            <div id="createAccountSection" class="hidden">
+                <h1>Create New Account</h1>
+                <form id="createAccountForm" action="#" method="POST">
+                    <div class="input-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="createEmail" name="email" placeholder="example@gmail.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input class="password" type="password" id="createPassword" name="password" placeholder="Password" required>
+                        <span class="toggle-password"><i class="fas fa-eye"></i></span>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input class="password" type="password" id="confirmPassword" name="confirm-password" placeholder="Confirm Password" required>
+                        <span class="toggle-password"><i class="fas fa-eye"></i></span>
+                    </div>
+                    <button type="submit">Create Account</button>
+                </form>
+                <div class="create-account">
+                    <p>Already have an account? <a href="#" onclick="showLogin()">Login here</a></p>
                 </div>
-                <div class="or">OR</div>
-                
-                <div class="google" id="mySignin" onclick="login()"><img src="../Media/G.png" alt="google" style="cursor:pointer;height: 50%;width: 30%;"/></div>
-                <div class="fb-login-button" style="padding: auto;  padding-left: 53px; " data-width="100%" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
-                <div class="options">
-                    <label>
-                        <input type="checkbox" name="remember"> Remember me
-                    </label>
-                    <a href="#">Forgot Password?</a>
-                </div>
-                <button type="submit">Login</button>
-            </form>
-            <div class="create-account">
-              <p>Don't have an account? <a href="create_account.html">Create new account</a></p>
-          </div>
+            </div>
+
         </div>
     </div>
     
     <script>
-        // Toggle password visibility
-        const passwordField = document.getElementById("password");
-        const togglePassword = document.querySelector(".toggle-password i");
+        function showCreateAccount() {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('visible');
+            document.getElementById('createAccountSection').classList.add('visible');
+            document.getElementById('createAccountSection').classList.remove('hidden');
+        }
 
-        togglePassword.addEventListener("click", function () {
-            if (passwordField.type === "password") {
-                passwordField.type = "text";
-                togglePassword.classList.remove("fa-eye");
-                togglePassword.classList.add("fa-eye-slash");
-            } else {
-                passwordField.type = "password";
-                togglePassword.classList.remove("fa-eye-slash");
-                togglePassword.classList.add("fa-eye");
-            }
+        function showLogin() {
+            document.getElementById('createAccountSection').classList.add('hidden');
+            document.getElementById('createAccountSection').classList.remove('visible');
+            document.getElementById('loginSection').classList.add('visible');
+            document.getElementById('loginSection').classList.remove('hidden');
+        }
+
+        // Toggle password visibility
+        const passwordFields = document.querySelectorAll(".password");
+        const togglePasswordIcons = document.querySelectorAll(".toggle-password i");
+
+        togglePasswordIcons.forEach((icon, index) => {
+            icon.addEventListener("click", function () {
+                if (passwordFields[index].type === "password") {
+                    passwordFields[index].type = "text";
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash");
+                } else {
+                    passwordFields[index].type = "password";
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye");
+                }
+            });
         });
 
-        // Form submission handler
+        // Form submission handler for login
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
             const email = document.getElementById('email').value;
@@ -87,9 +144,25 @@
                 alert('Invalid email or password'); // Display error message
             }
         });
+
+        // Form submission handler for create account
+        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('createEmail').value;
+            const password = document.getElementById('createPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            // Add logic for creating an account, such as sending data to the server
+            console.log('Account created for:', username, email);
+            alert('Account successfully created!');
+            showLogin();
+        });
     </script>
-    <script src="../JAVA/login.js"></script>
-    <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0&appId=318008428069390" nonce="xFVgsI7c"></script>
-  </body></body>
+</body>
 </html>

@@ -24,7 +24,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile3.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Michael Brown',
         joinDate: 'March 12, 2020',
         email: 'michaelbrown@example.com',
@@ -37,7 +37,7 @@ const users = [
     },
     // Add more user objects as needed
     {
-        profile: 'profile4.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Emily Davis',
         joinDate: 'April 7, 2020',
         email: 'emilydavis@example.com',
@@ -49,7 +49,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile5.jpg',
+        profile: '/Media/profile.png',
         fullName: 'David Wilson',
         joinDate: 'May 20, 2020',
         email: 'davidwilson@example.com',
@@ -61,7 +61,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile6.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Linda Martinez',
         joinDate: 'June 30, 2020',
         email: 'lindamartinez@example.com',
@@ -73,7 +73,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile7.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Robert Anderson',
         joinDate: 'July 14, 2020',
         email: 'robertanderson@example.com',
@@ -85,7 +85,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile8.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Patricia Thomas',
         joinDate: 'August 9, 2020',
         email: 'patriciathomas@example.com',
@@ -97,7 +97,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile9.jpg',
+        profile: '/Media/profile.png',
         fullName: 'James White',
         joinDate: 'September 1, 2020',
         email: 'jameswhite@example.com',
@@ -109,7 +109,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile10.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Barbara Lewis',
         joinDate: 'October 5, 2020',
         email: 'barbaralewis@example.com',
@@ -121,7 +121,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile11.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Susan Harris',
         joinDate: 'November 20, 2020',
         email: 'susanharris@example.com',
@@ -133,7 +133,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile12.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Kevin Clark',
         joinDate: 'December 25, 2020',
         email: 'kevinclark@example.com',
@@ -145,7 +145,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile13.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Lisa Robinson',
         joinDate: 'January 18, 2021',
         email: 'lisarobinson@example.com',
@@ -157,7 +157,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile14.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Christopher Martinez',
         joinDate: 'February 14, 2021',
         email: 'christophermartinez@example.com',
@@ -169,7 +169,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile15.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Angela Lewis',
         joinDate: 'March 22, 2021',
         email: 'angelalewis@example.com',
@@ -181,7 +181,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile16.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Steven Walker',
         joinDate: 'April 17, 2021',
         email: 'stevenwalker@example.com',
@@ -193,7 +193,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile17.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Mary Hall',
         joinDate: 'May 8, 2021',
         email: 'maryhall@example.com',
@@ -205,7 +205,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile18.jpg',
+        profile: '/Media/profile.png',
         fullName: 'James Wright',
         joinDate: 'June 13, 2021',
         email: 'jameswright@example.com',
@@ -217,7 +217,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile19.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Elizabeth Young',
         joinDate: 'July 21, 2021',
         email: 'elizabethyoung@example.com',
@@ -229,7 +229,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile20.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Mark Harris',
         joinDate: 'August 30, 2021',
         email: 'markharris@example.com',
@@ -241,7 +241,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile21.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Barbara Anderson',
         joinDate: 'September 25, 2021',
         email: 'barbaraanderson@example.com',
@@ -253,7 +253,7 @@ const users = [
         ]
     },
     {
-        profile: 'profile22.jpg',
+        profile: '/Media/profile.png',
         fullName: 'Paul Thompson',
         joinDate: 'October 12, 2021',
         email: 'paulthompson@example.com',
@@ -316,3 +316,36 @@ document.getElementById('close-btn').addEventListener('click', closeQuickOvervie
 
 // Initialize user list on page load
 document.addEventListener('DOMContentLoaded', displayUsers);
+// JavaScript to show/hide popup and adjust content margin
+const content = document.querySelector('.content');
+const quickOverview = document.querySelector('.quick-overview');
+const container = document.querySelector('.container');
+
+// Function to show popup
+function showPopup() {
+    quickOverview.classList.add('popup-visible');
+    container.classList.add('popup-visible');
+}
+
+// Function to hide popup
+function hidePopup() {
+    quickOverview.classList.remove('popup-visible');
+    container.classList.remove('popup-visible');
+}
+
+// Example event listener to toggle popup visibility
+document.addEventListener('DOMContentLoaded', function() {
+    // Example: Show popup when a user card is clicked
+    const userCards = document.querySelectorAll('.user-card');
+    userCards.forEach(card => {
+        card.addEventListener('click', function() {
+            showPopup();
+        });
+    });
+
+    // Example: Hide popup when close button is clicked
+    const closeBtn = document.querySelector('.close-btn');
+    closeBtn.addEventListener('click', function() {
+        hidePopup();
+    });
+});

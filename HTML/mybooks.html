@@ -14,9 +14,10 @@
             background-color: #F4F6FD;
         }
         header {
-            background-color: #fcfcfd;
-            color: rgb(7, 7, 7);
+            background-color: #343a40;
+            color: white;
             padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         nav ul {
             list-style: none;
@@ -30,19 +31,21 @@
             margin: 0 10px;
         }
         nav ul li a, nav ul li button {
-            color: rgb(3, 3, 3);
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 5px 10px;
+            padding: 10px 15px;
             border: none;
             background: none;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        nav ul li button:hover {
-            text-decoration: underline;
+        nav ul li a:hover, nav ul li button:hover {
+            background-color: #f8f9fa;
+            border-radius: 5px;
         }
         nav ul li input {
-            padding: 5px;
+            padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
@@ -61,18 +64,29 @@
             text-align: center;
             color: #5352ED;
             margin-bottom: 20px;
-            font-size: 2em;
+            font-size: 2.5em;
+            border-bottom: 2px solid #343a40;
+            display: inline-block;
+            padding-bottom: 5px;
+            width: 100%;
         }
         .total-fees-top {
             text-align: right;
             font-weight: bold;
-            font-size: 1.2em;
+            font-size: 1.5em;
             margin-bottom: 10px;
+            color: #dc3545;
+        }
+        .table-wrapper {
+            position: relative;
+            overflow: auto;
+            max-height: 600px; /* Adjust based on your requirement */
         }
         .book-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .book-table th, .book-table td {
             padding: 15px;
@@ -80,12 +94,15 @@
             border-bottom: 1px solid #ddd;
         }
         .book-table th {
-            background-color: #47A6EB;
+            background-color: #343a40;
             color: white;
             font-weight: bold;
             position: sticky;
             top: 0;
             z-index: 1;
+        }
+        .book-table th:last-child {
+            border-right: none;
         }
         .book-table td img {
             width: 50px;
@@ -93,8 +110,11 @@
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+        .book-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
         .return-btn {
-            background-color: #FF7F56;
+            background-color: #dc3545;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -103,15 +123,20 @@
             transition: background-color 0.3s, transform 0.3s;
         }
         .return-btn:hover {
-            background-color: #833015;
+            background-color: #c82333;
             transform: scale(1.05);
         }
         .overdue {
             color: red;
             font-weight: bold;
         }
+        .returned {
+            color: green;
+            font-weight: bold;
+        }
         .paid {
             text-decoration: line-through;
+            color: gray;
         }
         .total-row {
             font-weight: bold;
@@ -186,7 +211,7 @@
                         <th>Date of Borrowing</th>
                         <th>Due Date</th>
                         <th>Status</th>
-                        <th>Total Late Fees (AED)</th>
+                        <th>Total Fees (AED)</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -270,6 +295,14 @@
             const today = new Date();
             let totalUnpaidFees = 0;
 
+            // Sort books: unreturned first, then by nearest due date
+            books.sort((a, b) => {
+                if (a.returned === b.returned) {
+                    return new Date(a.dueDate) - new Date(b.dueDate);
+                }
+                return a.returned - b.returned;
+            });
+
             books.forEach(book => {
                 const dueDate = new Date(book.dueDate);
                 const timeDiff = today - dueDate;
@@ -298,7 +331,7 @@
                     <td>${book.title}</td>
                     <td>${book.borrowDate}</td>
                     <td>${book.dueDate}</td>
-                    <td class="${daysLate > 0 ? 'overdue' : ''}">${status}</td>
+                    <td class="${book.returned ? 'returned' : daysLate > 0 ? 'overdue' : ''}">${status}</td>
                     <td class="${book.returned ? 'paid' : ''}">${fees}</td>
                     <td>${book.returned ? '' : `<button class="return-btn" data-book-id="${book.id}">Return</button>`}</td>
                 `;

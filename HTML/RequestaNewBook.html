@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request a New Book - Library Management System</title>
+    <link rel="stylesheet" href="/CSS/user.css">
+    <link rel="manifest" href="/JAVA/uesr.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .form-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .form-box:hover {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+        }
+        .form-box h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        .form-box label {
+            display: block;
+            text-align: left;
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 16px;
+        }
+        .form-box .input-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .form-box .input-container input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-box .input-container input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+        }
+        .form-box .input-container .icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #007bff;
+        }
+        .form-box button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .form-box button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+        .form-box .footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+        .form-box .footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .form-box .footer a:hover {
+            color: #0056b3;
+        }
+        /* Pop-up message styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 30px;
+            display: none;
+            width: 300px;
+        }
+        .popup h3 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 20px;
+        }
+        .popup button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .popup button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My books</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Return book</a></li>
+                <li><a href="#">Request a new book</a></li>
+                <li><a href="#">Request a meeting room</a></li>
+                <li>
+                    <input type="text" placeholder="Search for a book">
+                    <button>🔍</button>
+                </li>
+                <li><a href="../HTML/user_dashbord.html">👤</a></li>
+                <li><a href="#" id="cart">🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="form-container">
+        <div class="form-box">
+            <h2>Request a New Book</h2>
+            <form id="request-book-form">
+                <label for="book-title">Book Title</label>
+                <div class="input-container">
+                    <input type="text" id="book-title" name="book-title" placeholder="Enter the book title" required>
+                    <i class="fas fa-book icon"></i>
+                </div>
+                <label for="author">Author</label>
+                <div class="input-container">
+                    <input type="text" id="author" name="author" placeholder="Enter the author's name" required>
+                    <i class="fas fa-user icon"></i>
+                </div>
+                <label for="publication-year">Publication Year</label>
+                <div class="input-container">
+                    <input type="text" id="publication-year" name="publication-year" placeholder="Enter the publication year" required>
+                    <i class="fas fa-calendar-alt icon"></i>
+                </div>
+                <button type="submit">Request Book</button>
+            </form>
+            <div class="footer">
+                <p>Need help? <a href="#">Contact us</a></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Pop-up message -->
+    <div class="popup" id="popup">
+        <h3>Your Request Sent Successfully</h3>
+        <button onclick="closePopup()">OK!</button>
+    </div>
+
+    <script src="/JAVA/user.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+
+        document.getElementById('request-book-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            showPopup();
+            // Optionally reset the form
+            this.reset();
+        });
+
+        function showPopup() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -114,7 +114,7 @@ input[type='password']:focus {
     transition: ease-in-out;
 }
 input[type='password']::placeholder {
-    background: white url(../Media/Group.png) no-repeat ;
+    background: white url(../Media/key-solid.svg) no-repeat ;
     padding-left: calc(100% - 88%);
     background-position-x:15px ;
     background-size: contain;

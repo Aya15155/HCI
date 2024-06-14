@@ -171,13 +171,36 @@ tbody tr:nth-child(even) {
     background-color: #eacca97c;
 }
 
-.details {
-    width: 300px;
-    background: #fff;
-    border-left: 1px solid #ddd;
+
+.container {
+    flex: 1;
     padding: 20px;
+    overflow-y: auto;
+    transition: margin-right 0.3s ease; /* Add transition for smooth shifting */
+    margin-right: 0; /* Initial margin */
+}
+
+.popup-visible .container {
+    margin-right:30vw; /* Adjust the margin to shift content left */
+}
+
+
+.details {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 20vw;
+    z-index: 1000;
     display: none;
-    position: relative;
+    overflow-y: auto; /* Ensure popup content scrolls */
+    max-height: 100vh; /* Limit popup height to viewport height */
+    scrollbar-width: thin; /* Adjust scrollbar width as needed */
+    scrollbar-color: #ccc #f0f0f0; /* Adjust scrollbar color as needed */
 }
 
 .details-header {

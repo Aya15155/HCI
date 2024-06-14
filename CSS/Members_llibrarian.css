@@ -1,63 +1,84 @@
+/* Basic styles for body and container */
 body {
     font-family: Arial, sans-serif;
-}
-
-.container {
+    margin: 0;
+    padding: 0;
     display: flex;
+    height: 100vh;
 }
 
-.sidebar {
-    width: 200px;
-    background-color: #f0f0f0;
-    padding: 10px;
+h1{
+    font-family: "Actor", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
 }
 
-.sidebar h2 {
-    text-align: center;
+/* Hamburger menu for mobile */
+.hamburger {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    z-index: 1000;
+    cursor: pointer;
 }
 
+/* Content area */
 .content {
     flex: 1;
-    padding: 10px;
-    transition: margin-right 0.3s ease;
-}
-
-.content.with-quick-overview {
-    margin-right: 320px; /* Adjust as necessary to accommodate the quick overview width */
+    padding: 20px;
+    overflow-y: auto;
 }
 
 .user-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .user-card {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px;
     padding: 10px;
     width: 150px;
+    text-align: center;
     cursor: pointer;
 }
+
 
 .user-card img {
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-bottom: 10px;
 }
 
-.quick-overview {
-    background-color: #fff;
+
+.quick-overview h3 {
+    margin-top: 0;
+}
+
+.quick-overview table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.quick-overview table td, .quick-overview table th {
     border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 10px;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 300px;
-    z-index: 1000;
-    display: none;
+    padding: 8px;
+    text-align: left;
+}
+
+.quick-overview table th {
+    background-color: #f2f2f2;
 }
 
 .quick-overview span.close-btn {
@@ -73,11 +94,73 @@ body {
     color: red;
 }
 
+/* Responsive design */
 @media (max-width: 768px) {
     .sidebar {
         width: 100px;
     }
+
+    .content {
+        padding: 20px;
+    }
+
     .user-card {
         width: 100px;
     }
+
+    .menu li a, .menu2 li a {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+/* Content area */
+/* Content area */
+/* Content area */
+/* Content area */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    transition: margin-right 0.3s ease; /* Add transition for smooth shifting */
+    margin-right: 0; /* Initial margin */
+}
+
+.popup-visible .content {
+    margin-right:30vw; /* Adjust the margin to shift content left */
+}
+
+.quick-overview {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min-content;
+    z-index: 1000;
+    display: none;
+    overflow-y: auto; /* Ensure popup content scrolls */
+    max-height: 100vh; /* Limit popup height to viewport height */
+    scrollbar-width: thin; /* Adjust scrollbar width as needed */
+    scrollbar-color: #ccc #f0f0f0; /* Adjust scrollbar color as needed */
+}
+
+/* Adjust scrollbar appearance for WebKit browsers */
+.quick-overview::-webkit-scrollbar {
+    width: 8px;
+}
+
+.quick-overview::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.quick-overview::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
 }

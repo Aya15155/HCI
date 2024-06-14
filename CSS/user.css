@@ -134,7 +134,21 @@ h2{
   margin-bottom: 30px; /* Adjust bottom margin for spacing */
   border-radius: 5px;
 }
-
+.Read-btn{
+  margin-top: 20px; /* Add space between book and button */
+  background-color: #47A6EB;
+  color: white;
+  border: none;
+  padding: 10px 30px; /* Adjust padding as needed */
+  cursor: pointer;
+  display: block; /* Ensure buttons appear on a new line */
+  margin-bottom: 30px; /* Adjust bottom margin for spacing */
+  border-radius: 5px;
+  
+}
+.Read-btn:hover{
+  background-color: #0056b3;
+}
 .book .borrow-btn:hover {
   background-color: #0056b3;
 }

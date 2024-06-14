@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books - Library Management System</title>
+    <link rel="stylesheet" href="/CSS/user.css">
+    <link rel="manifest" href="/JAVA/user.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
+        header {
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        nav ul li {
+            margin: 0 10px;
+        }
+        nav ul li a, nav ul li button {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        nav ul li button:hover {
+            text-decoration: underline;
+        }
+        nav ul li input {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        main {
+            padding: 20px;
+        }
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .total-fees-top {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .book-table th, .book-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .book-table th {
+            background-color: #343a40;
+            color: white;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .book-table td img {
+            width: 50px;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .return-btn {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .return-btn:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+        .overdue {
+            color: red;
+            font-weight: bold;
+        }
+        .paid {
+            text-decoration: line-through;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f1f1f1;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 140px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; 
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            .book-table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">My books</a></li>
+                <li><a href="#">Browse</a></li>
+                <li><a href="#">Return book</a></li>
+                <li><a href="#">Request a new book</a></li>
+                <li><a href="#">Request a meeting room</a></li>
+                <li>
+                    <input type="text" placeholder="Search for a book">
+                    <button>🔍</button>
+                </li>
+                <li><a href="#">👤</a></li>
+                <li><a href="#" id="cart">🛒</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="total-fees-top">Total Unpaid Fees (AED): <span id="total-unpaid-fees-top">0</span></div>
+        <section id="my-books" class="page">
+            <h2>My Borrowed Books</h2>
+            <table class="book-table">
+                <thead>
+                    <tr>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Date of Borrowing</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Total Fees (AED)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="book-list">
+                    <!-- Books will be dynamically inserted here -->
+                </tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td colspan="5">Total Unpaid Fees (AED)</td>
+                        <td id="total-unpaid-fees">0</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+
+    <script src="/JAVA/user.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const books = [
+                {
+                    id: 1,
+                    cover: '../Media/book1.png',
+                    title: 'Book Title 1',
+                    borrowDate: '2024-04-01',
+                    dueDate: '2024-05-01',
+                    returned: false
+                },
+                {
+                    id: 2,
+                    cover: '../Media/book2.png',
+                    title: 'Book Title 2',
+                    borrowDate: '2024-05-01',
+                    dueDate: '2024-06-01',
+                    returned: true
+                },
+                {
+                    id: 3,
+                    cover: '../Media/book3.png',
+                    title: 'Book Title 3',
+                    borrowDate: '2024-05-05',
+                    dueDate: '2024-06-05',
+                    returned: false
+                },
+                {
+                    id: 4,
+                    cover: '../Media/book4.png',
+                    title: 'Book Title 4',
+                    borrowDate: '2024-05-10',
+                    dueDate: '2024-06-10',
+                    returned: true
+                },
+                {
+                    id: 5,
+                    cover: '../Media/book5.png',
+                    title: 'Book Title 5',
+                    borrowDate: '2024-05-13',
+                    dueDate: '2024-06-13',
+                    returned: false
+                },
+                {
+                    id: 6,
+                    cover: '../Media/book6.png',
+                    title: 'Book Title 6',
+                    borrowDate: '2024-05-20',
+                    dueDate: '2024-06-20',
+                    returned: true
+                },
+                {
+                    id: 7,
+                    cover: '../Media/book7.png',
+                    title: 'Book Title 7',
+                    borrowDate: '2024-05-25',
+                    dueDate: '2024-06-25',
+                    returned: false
+                }
+            ];
+
+            const bookList = document.getElementById('book-list');
+            const today = new Date();
+            let totalUnpaidFees = 0;
+
+            books.forEach(book => {
+                const dueDate = new Date(book.dueDate);
+                const timeDiff = today - dueDate;
+                const daysLate = Math.min(Math.ceil(timeDiff / (1000 * 60 * 60 * 24)), 30);
+                let status = 'On Time';
+                let fees = 0;
+
+                if (daysLate > 0) {
+                    status = `Overdue by ${daysLate} days`;
+                    fees = daysLate * 10;
+                }
+
+                if (book.returned) {
+                    status = 'Returned';
+                    fees = 0;
+                } else if (daysLate <= 0) {
+                    status = 'Not Returned';
+                    fees = 0;
+                } else {
+                    totalUnpaidFees += fees;
+                }
+
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><img src="${book.cover}" alt="${book.title}"></td>
+                    <td>${book.title}</td>
+                    <td>${book.borrowDate}</td>
+                    <td>${book.dueDate}</td>
+                    <td class="${daysLate > 0 ? 'overdue' : ''}">${status}</td>
+                    <td class="${book.returned ? 'paid' : ''}">${fees}</td>
+                    <td>${book.returned ? '' : `<button class="return-btn" data-book-id="${book.id}">Return</button>`}</td>
+                `;
+                bookList.appendChild(row);
+            });
+
+            document.getElementById('total-unpaid-fees').textContent = totalUnpaidFees;
+            document.getElementById('total-unpaid-fees-top').textContent = totalUnpaidFees;
+        });
+    </script>
+</body>
+</html>

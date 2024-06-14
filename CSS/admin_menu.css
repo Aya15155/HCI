@@ -6,6 +6,28 @@ body {
     
 }
 
+::-webkit-scrollbar {
+    width: 11px;
+    
+  }
+  
+  
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #3498db; 
+    
+    border-radius: 3px;
+  }
+   
+::-webkit-scrollbar-thumb {
+    background: #3498db; 
+    border-radius: 3px;
+  }
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #2d86c2; 
+  }
+
+
 .container {
     display: flex;
     width: 100%;
@@ -124,6 +146,10 @@ body {
 }
 
 .menu li.active a {
+    background-color: #0443A5;
+    color: #fff;
+}
+.menu2 li.active a {
     background-color: #0443A5;
     color: #fff;
 }

@@ -4,65 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management - Cataloging</title>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f2f2f2;
+           
         }
-        .sidebar {
-            width: 250px;
-            height: 100vh;
-            background-color: #d6dbf8;
-            padding-top: 20px;
-            position: fixed;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .sidebar .logo {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .sidebar .logo img {
-            width: 40px;
-        }
-        .sidebar p {
-            margin-left: 20px;
-        }
-        .sidebar .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            color: #333;
-            text-decoration: none;
-            font-size: 18px;
-            border-bottom: 1px solid #e6e6e6;
-            transition: background-color 0.3s;
-        }
-        .sidebar .menu-item:hover {
-            background-color: #c5cbe3;
-        }
-        .sidebar .menu-item i {
-            margin-right: 20px;
-        }
-        .sidebar .menu-top, .sidebar .menu-bottom {
-            flex-grow: 1;
-        }
-        .sidebar .menu-bottom {
-            margin-top: auto;
-        }
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            overflow: auto;
-        }
+        
         .top-bar {
             background-color: #2c5aa0;
             padding: 10px 20px;
+            
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -75,8 +30,9 @@
             padding: 5px;
             border-radius: 20px;
             flex-grow: 1;
+            margin-right: 20px;
         }
-        .top-bar .search-container input[type="search"] {
+        .top-bar .search-container input[type="text"] {
             border: none;
             border-radius: 20px;
             padding: 8px;
@@ -85,36 +41,26 @@
             margin-right: 10px;
             background-color: #e0e0e0;
         }
-        .top-bar .search-container button {
-            background: none;
-            border: none;
-            color: #333;
-            cursor: pointer;
-        }
-        .search-container {
-            background-color: #e0e0e0;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 10px;
-            margin-top: 20px;
-        }
-        .search-container input {
-            border: 1px solid #888;
-            border-radius: 5px;
-            padding: 8px;
-            font-size: 14px;
-            width: 120px;
-            margin: 0 5px;
-        }
-        .search-container input:focus {
+        .top-bar .search-container input[type="text"]:focus {
             outline: none;
             border-color: #7a52d4;
             box-shadow: 0 0 5px #7a52d4;
         }
+        .top-bar .search-container button {
+            background-color: #7a52d4;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .top-bar .search-container button:hover {
+            background-color: #6a47c1;
+        }
         .icon-group {
             display: flex;
+            align-items: center;
             justify-content: space-between;
             background-color: #fff;
             padding: 10px 0;
@@ -191,13 +137,12 @@
             .content {
                 margin-left: 0;
             }
-            .search-container {
+            .top-bar {
                 flex-direction: column;
-                align-items: flex-start;
             }
-            .search-container input {
+            .search-container {
                 width: 100%;
-                margin-bottom: 10px;
+                margin: 10px 0;
             }
             .icon-group {
                 flex-direction: column;
@@ -210,6 +155,7 @@
         /* Modal styles */
         .modal {
             display: none;
+            visibility:hidden;
             position: fixed;
             z-index: 1;
             left: 0;
@@ -272,140 +218,163 @@
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div>
-            <div class="logo">
-                <img src="https://via.placeholder.com/40" alt="Logo">
-            </div>
-            <p>akhouna labib<br><small>Librarian</small></p>
-            <div class="menu-top">
-                <a href="#" class="menu-item"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                <a href="#" class="menu-item"><i class="fas fa-book"></i>Cataloging</a>
-                <a href="#" class="menu-item"><i class="fas fa-users"></i>Members</a>
-                <a href="#" class="menu-item"><i class="fas fa-tasks"></i>Manage Request</a>
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="/Media/logo.png" alt="Library Logo">
+        </div>
+        <div class="profile">
+            <img src="/Media/profile.png" alt="Profile Picture">
+            <div class="profile-info">
+                <h2>John Sam</h2>
+                <p>admin</p>
             </div>
         </div>
-        <div class="menu-bottom">
-            <a href="#" class="menu-item"><i class="fas fa-question-circle"></i>help</a>
-            <a href="#" class="menu-item"><i class="fas fa-cog"></i>Settings</a>
-        </div>
-    </div>
+        <ul class="menu">
+            <li><a href="Dashboard_admin.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li class="active"><a href="#"><i class="fas fa-archive"></i> Cataloging</a></li>
+            <li><a href="librarians.html"><i class="fas fa-user-tie"></i> Librarian</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
+            <li><a href="managerequest.html"><i class="fas fa-tasks"></i> Manage Requests</a></li>
+        </ul>
+        <ul class="menu2">
+            <li><a href="help.html"><i class="fas fa-question-circle"></i> Help</a></li>
+            <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
+        </ul>
+    </nav>
+    <button class="hamburger" id="hamburger">&#9776;</button>
     <div class="content">
         <div class="top-bar">
-            <div
-            class="search-container">
-            <input type="search" placeholder="Search">
-            <button><i class="fas fa-search"></i></button>
+            <div class="search-container">
+                <input type="text" id="search-author" placeholder="Author">
+                <input type="text" id="search-publisher" placeholder="Publisher">
+                <input type="text" id="search-year" placeholder="Year">
+                <button onclick="searchTable()">Search</button>
+            </div>
+        </div>
+        <div class="icon-group">
+            <button onclick="openNewRecordModal()"><i class="fas fa-plus-circle"></i><span> New Record</span></button>
+            <button onclick="filterTable('all')"><i class="fas fa-check-circle"></i><span> Select All</span></button>
+            <button onclick="filterTable('available')"><i class="fas fa-check-circle"></i><span> Select Available</span></button>
+            <button onclick="filterTable('not-available')"><i class="fas fa-times-circle"></i><span> Select Not Available</span></button>
+            
+            <button onclick="filterTable('delayed')"><i class="fas fa-exclamation-circle"></i><span> Select Delayed</span></button>
+            
+        </div>
+        <div class="table-container">
+            <table id="itemTable">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Publication Year</th>
+                        <th>Barcode</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>The Great Gatsby</td>
+                        <td>F. Scott Fitzgerald</td>
+                        <td>Scribner</td>
+                        <td>1925</td>
+                        <td>1234567890123</td>
+                        <td><span class="availability-available">Available</span></td>
+                    </tr>
+                    <tr>
+                        <td>1984</td>
+                        <td>George Orwell</td>
+                        <td>Secker & Warburg</td>
+                        <td>1949</td>
+                        <td>1234567890124</td>
+                        <td><span class="availability-not-available">Not Available</span></td>
+                    </tr>
+                    <tr>
+                        <td>To Kill a Mockingbird</td>
+                        <td>Harper Lee</td>
+                        <td>J.B. Lippincott & Co.</td>
+                        <td>1960</td>
+                        <td>1234567890125</td>
+                        <td><span class="availability-available">Available</span></td>
+                    </tr>
+                    <tr>
+                        <td>The Catcher in the Rye</td>
+                        <td>J.D. Salinger</td>
+                        <td>Little, Brown and Company</td>
+                        <td>1951</td>
+                        <td>1234567890126</td>
+                        <td><span class="availability-delayed">Delayed</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <div class="search-container">
-        <input type="text" placeholder="Field">
-        <input type="text" placeholder="Subject">
-        <input type="text" placeholder="Author">
-        <input type="text" placeholder="Publisher">
-        <input type="text" placeholder="Year">
-        <input type="text" placeholder="Keyword">
+    <!-- Modal -->
+    <div id="newRecordModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('newRecordModal').style.visibility='hidden'">&times;</span>
+            <h2>Add New Item</h2>
+            <form>
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Enter the item's title">
+                
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Enter the item's author">
+                
+                <label for="publisher">Publisher</label>
+                <input type="text" id="publisher" placeholder="Enter the item's publisher">
+                
+                <label for="barcode">Barcode</label>
+                <input type="text" id="barcode" placeholder="Enter the item's barcode">
+                
+                <label for="pubdate">Publication date</label>
+                <input type="text" id="pubdate" placeholder="18/07/2003">
+                
+                <button type="button" class="btn">Add New Item</button>
+            </form>
+        </div>
     </div>
-    <div class="icon-group">
-        <button onclick="document.getElementById('newRecordModal').style.display='flex'"><i class="fas fa-plus"></i><span> New Record</span></button>
-        <button><i class="fas fa-check-circle"></i><span> Select Available</span></button>
-        <button><i class="fas fa-times-circle"></i><span> Select Borrowed</span></button>
-        <button><i class="fas fa-clock"></i><span> Select delay</span></button>
-        <button><i class="fas fa-minus"></i><span> Select Lost</span></button>
-    </div>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Publisher</th>
-                    <th>Publication date</th>
-                    <th>ISBN</th>
-                    <th>Barcode</th>
-                    <th>availability</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
-                    <td>B.S. Blyth.</td>
-                    <td>Springer-Verlag</td>
-                    <td>September 2018</td>
-                    <td>978-3-319-77535-9</td>
-                    <td>123456789</td>
-                    <td class="availability-not-available">Not Available till 18/07/2023</td>
-                </tr>
-                <tr>
-                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
-                    <td>B.S. Blyth.</td>
-                    <td>Springer-Verlag</td>
-                    <td>September 2018</td>
-                    <td>978-3-319-77535-9</td>
-                    <td>123456789</td>
-                    <td class="availability-available">available</td>
-                </tr>
-                <tr>
-                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
-                    <td>B.S. Blyth.</td>
-                    <td>Springer-Verlag</td>
-                    <td>September 2018</td>
-                    <td>978-3-319-77535-9</td>
-                    <td>123456789</td>
-                    <td class="availability-reserved">reserved</td>
-                </tr>
-                <tr>
-                    <td><img src="path/to/book-image.jpg" alt="Book Image"> Basic Linear Algebra</td>
-                    <td>B.S. Blyth.</td>
-                    <td>Springer-Verlag</td>
-                    <td>September 2018</td>
-                    <td>978-3-319-77535-9</td>
-                    <td>123456789</td>
-                    <td class="availability-not-available">Not Available till 02/01/2024</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+    <script>
 
-<!-- Modal -->
-<div id="newRecordModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="document.getElementById('newRecordModal').style.display='none'">&times;</span>
-        <h2>Add New Item</h2>
-        <form>
-            <label for="title">Title</label>
-            <input type="text" id="title" placeholder="Enter the item's title">
-            
-            <label for="author">Author</label>
-            <input type="text" id="author" placeholder="Enter the item's author">
-            
-            <label for="publisher">Publisher</label>
-            <input type="text" id="publisher" placeholder="Enter the item's publisher">
-            
-            <label for="barcode">Barcode</label>
-            <input type="text" id="barcode" placeholder="Enter the item's barcode">
-            
-            <label for="subject">Subject</label>
-            <select id="subject">
-                <option value="">Select subject</option>
-            </select>
-            
-            <label for="pubdate">Publication date</label>
-            <input type="text" id="pubdate" placeholder="18/07/2003">
-            
-            <button type="button" class="btn">Add New Item</button>
-        </form>
-    </div>
-</div>
-
-<script>
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('newRecordModal')) {
-            document.getElementById('newRecordModal').style.display = "none";
+        function filterTable(status) {
+            var rows = document.querySelectorAll('#itemTable tbody tr');
+            rows.forEach(function(row) {
+                row.style.display = '';
+                if (status !== 'all') {
+                    var availability = row.querySelector('.availability-' + status);
+                    if (!availability) {
+                        row.style.display = 'none';
+                    }
+                }
+            });
         }
+
+        function searchTable() {
+            var author = document.getElementById('search-author').value.toLowerCase();
+            var publisher = document.getElementById('search-publisher').value.toLowerCase();
+            var year = document.getElementById('search-year').value.toLowerCase();
+
+            var rows = document.querySelectorAll('#itemTable tbody tr');
+            rows.forEach(function(row) {
+                var authorText = row.children[1].textContent.toLowerCase();
+                var publisherText = row.children[2].textContent.toLowerCase();
+                var yearText = row.children[3].textContent.toLowerCase();
+
+                if (
+                    (author === '' || authorText.includes(author)) &&
+                    (publisher === '' || publisherText.includes(publisher)) &&
+                    (year === '' || yearText.includes(year))
+                ) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+        function openNewRecordModal() {
+        var modal = document.getElementById('newRecordModal');
+        modal.style.visibility ='visible';
     }
-</script>
+    </script>
 </body>
 </html>

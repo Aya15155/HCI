@@ -124,12 +124,7 @@ header h1 {
     margin-bottom: 10px;
 }
 
-.table-container {
-    margin-top: 20px;
-    height: 90vh; /* Adjust the height as needed */
-    
-    position: relative;
-}
+
 
 .table-container h2 {
     position: sticky;
@@ -140,63 +135,40 @@ header h1 {
     margin: 0; /* Remove margin to prevent unwanted spacing */
 }
 
-#overdue-books-table {
+table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 2%;
+    border-radius: 10px;
 }
 
-#overdue-books-table thead {
+thead {
     position: sticky;
-    top: 40px; /* Adjust according to the height of the h2 heading */
-    background: #ddd;
-    z-index: 5; /* Ensure it stays on top of the scrolling body */
+    top: 7vh;
+    background-color: #f9f9f9;
+    z-index: 11;
 }
 
-#overdue-books-table thead th {
-    text-align: start;
+thead th {
+    text-align: left;
+    padding: 10px;
+    background-color: #ddd;
     font-family: "Aclonica", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: small;
-    padding: 1% 1%;
 }
 
-#overdue-books-table tbody {
-    
-    height: 80vh; /* Adjust the height as needed */
-    max-height: calc(90vh - 60px); /* Adjust to fit within container height */
-    overflow-y:auto;
-    position: relative;
-    width: 100%;
-}
-
-#overdue-books-table tbody tr {
-    
-    width: 100%;
-    table-layout: fixed;
-}
-
-#overdue-books-table td {
-    max-width: max-content; /* Adjust as needed */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap; /* Prevent wrapping */
+tbody td {
     font-family: "Actor", sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: small;
     padding: 2% 1%;
+    border-top: 1px solid #ddd;
 }
 
-
-#overdue-books-table tr:nth-child(2n) {
-    background-color: #EACCA9;
-}
-
-#overdue-books-table th,
-#overdue-books-table td {
-    width: 10%; /* Adjust percentages as needed */
+tbody tr:nth-child(even) {
+    background-color: #eacca97c;
 }
 
 .details {

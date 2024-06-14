@@ -84,8 +84,8 @@ input, select {
 .order-summary .item {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-top: 15px;
+  flex-wrap: wrap;
 }
 
 .order-summary .cart-item {
@@ -104,13 +104,22 @@ input, select {
 
 .order-summary .cart-item .book-info {
   flex-grow: 1;
-}
+  ;
 
+}
+.cart-items-container{
+  align-content: start;
+}
+.book-info p{
+  margin-left: 3vw;
+}
 .order-summary .cart-item .remove-btn {
   background: none;
   border: none;
   font-size: 20px;
   cursor: pointer;
+  right: 0;
+
 }
 
 .order-summary .summary {

@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
           cart.push({ id: bookId, name: bookName });
           localStorage.setItem('cart', JSON.stringify(cart));
           updateCart();
-          alert(`Book ID: ${bookId}, Name: ${bookName} added to cart`);
+          alert(`Book: ${bookName} added to cart`);
       });
   });
 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <i class="fa-solid fa-book fa-3x"></i>
               <div class="book-info">
                   <p>Book Title ${bookId}</p>
-                  <p>$10.00</p>
+                  <p>Brrow for 30 days</p>
               </div>
               <button class="remove-btn" data-index="${index}">🗑️</button>
           `;
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Calculate and display total amount
   const calculateTotalAmount = () => {
-      const totalAmount = cart.length * 10; // Assuming each book costs $10
+      const totalAmount = cart.length * 0.0; // Assuming each book costs $10
       document.getElementById('product-total').textContent = `Product total: $${(totalAmount).toFixed(2)}`;
       document.getElementById('discount').textContent = `Discount: $${(totalAmount * 0.1).toFixed(2)}`; // Assuming 10% discount
       document.getElementById('total-amount').textContent = `Total: $${(totalAmount * 0.9).toFixed(2)}`; // After discount

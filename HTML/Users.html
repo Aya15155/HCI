@@ -21,23 +21,7 @@
             padding: 20px;
             overflow: auto;
         }
-        .top-bar {
-            background-color: #3498db;
-            padding: 10px 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-        .top-bar input[type="search"] {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            margin-right: 10px;
-            flex-grow: 1;
-            background-color: #e0e0e0;
-            font-size: 16px;
-        }
+        
         .search-container {
             display: flex;
             align-items: center;
@@ -227,9 +211,7 @@
         </ul>
     </nav>
     <div class="content">
-        <div class="top-bar">
-            <input type="search" id="searchInput" placeholder="Search" onkeyup="filterTable()">
-        </div>
+        
         <div class="search-container">
             <div style="flex-grow: 1;">
                 <label for="email">Email</label>
@@ -240,10 +222,6 @@
                 <input type="text" id="id" placeholder="Borrower's ID">
             </div>
             <div class="icon-group">
-                <div style="text-align: center;">
-                    <button class="icon-btn" title="Search" onclick="filterTable()"><i class="fas fa-search"></i></button>
-                    <div class="icon-label">Search</div>
-                </div>
                 <div style="text-align: center; margin-left: 10px;">
                     <button class="icon-btn" title="Add" onclick="showAddModal()"><i class="fas fa-plus"></i></button>
                     <div class="icon-label">Add</div>

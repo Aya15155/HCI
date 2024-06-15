@@ -18,6 +18,7 @@ body {
     margin: auto;
     width: 60vw;
     margin-left: calc(100vw - 85vw); 
+    transition: margin-right 0.3s ease;
 }
 
 .char_cont {
@@ -129,14 +130,10 @@ header h1 {
     margin-bottom: 10px;
 }
 
-
-
 .table-container h2 {
     position: sticky;
-   
     background-color: #fff;
     padding: 10px 0;
-    
 }
 
 .table-container {
@@ -144,6 +141,9 @@ header h1 {
     height: 85vh;
     border: 1px solid #ddd;
     border-radius: 10px;
+}
+.sidebar {
+    z-index: 2;
 }
 
 table {
@@ -187,11 +187,12 @@ tbody tr:nth-child(even) {
     padding: 20px;
     overflow-y: auto;
     transition: margin-right 0.3s ease; /* Add transition for smooth shifting */
-    margin-right: 0; /* Initial margin */
+    margin-left: 0; /* Initial margin */
 }
 
-.popup-visible .container {
-    margin-right:30vw; /* Adjust the margin to shift content left */
+.container.popup-visible  {
+    width: 50vw;/* Adjust the margin to shift content left */
+    margin-right: 30vw;
 }
 
 .details {
@@ -203,7 +204,7 @@ tbody tr:nth-child(even) {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 20vw;
+    width: 30vw;
     z-index: 1000;
     display: none;
     overflow-y: auto; /* Ensure popup content scrolls */
@@ -228,4 +229,18 @@ tbody tr:nth-child(even) {
 
 .details-content {
     padding: 10px 0;
+    position: relative;
+}
+
+.details-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('your-image-url-here') no-repeat center center;
+    background-size: cover;
+    opacity: 0.2;
+    z-index: -1;
 }

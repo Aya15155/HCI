@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../CSS/usr_dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F4F6FD;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #47A6EB;
+            padding: 1px 20px;
+            color: #ecf0f1;
+        }
+         .logo img {
+            width: 60px;
+        }
+        .navbar .search-bar input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 200px;
+            
+        }
+        .navbar .search-bar{
+            margin: 10px;
+            padding-left: 20vw;
+        }
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .user-info span {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        .navbar .user-info i {
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        .container {
+            display: flex;
+            max-height: min-content;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #F4F6FD;
+            padding: 20px;
+            color: #ecf0f1;
+            top: 0;
+            bottom: 0;
+            position: sticky;
+            height: 93vh;
+            z-index: 1;
+            margin: 0;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 40px;
+            
+        }
+        
+        .sidebar ul li a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li a i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .sidebar ul li a:hover {
+            color: #FF7F56;
+        }
+        .sidebar  li {
+            margin-bottom: 40px;
+            list-style-type: none;
+        }
+        
+        .sidebar  li a {
+            color: #000000;
+            text-decoration: none;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            text-decoration: none ;
+        }
+        .sidebar  li a i {
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .sidebar  li a:hover {
+            color: #FF7F56;
+        }
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .content .page {
+            display: none;
+        }
+        .content .page.active {
+            display: block;
+        }
+        h2 {
+            color: #000000;
+            font-size: 24px;
+            border-bottom: 2px solid #81b0f6;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .account-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: flex-start;
+        }
+        .account-details .profile-picture {
+            position: relative;
+            margin-right: 20px;
+        }
+        .account-details .profile-picture img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #47A6EB;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .account-details .profile-picture .edit-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: #020202;
+            color: #fff;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .account-details .info {
+            flex-grow: 1;
+        }
+        .account-details .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .account-details .info-item i {
+            margin-right: 10px;
+            color: #5352ED;
+            font-size: 18px;
+        }
+        .account-details .info p {
+            font-size: 16px;
+            color: #34495e;
+        }
+        .account-details .info p strong {
+            font-weight: 600;
+        }
+        .account-details .edit-button {
+            background-color: #FF7F56;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            align-self: flex-start;
+        }
+        .account-details .edit-button:hover {
+            background-color: #bb5634;
+        }
+        .notifications {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .notification-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+        .notification-item i {
+            margin-right: 15px;
+            color: #5352ED;
+            font-size: 24px;
+        }
+        .notification-item p {
+            margin: 0;
+            color: #34495e;
+            font-size: 16px;
+        }
+        .requests {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .request-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .request-item:last-child {
+            border-bottom: none;
+        }
+        .request-item img {
+            width: 50px;
+            height: 75px;
+            margin-right: 15px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .request-item .request-info {
+            flex-grow: 1;
+        }
+        .request-item .request-info p {
+            margin: 0;
+            color: #34495e;
+            font-size: 16px;
+        }
+        .request-item .request-info p strong {
+            font-weight: 600;
+        }
+        .request-item .actions button {
+            background-color: #FF7F56;
+            color: #ecf0f1;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .request-item .actions button:hover {
+            background-color: #c0392b;
+        }
+        .settings {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .settings-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .settings-item label {
+            display: block;
+            font-size: 16px;
+            color: #34495e;
+            margin-bottom: 5px;
+            flex: 1;
+        }
+        .settings-item i {
+            margin-right: 10px;
+            color: #5352ED;
+            font-size: 24px;
+        }
+        .settings-item input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 10px;
+        }
+        .settings-item input[type="text"],
+        .settings-item input[type="email"],
+        .settings-item input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            flex: 2;
+        }
+        .help {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .help-section {
+            margin-bottom: 20px;
+        }
+        .help-section h3 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        .help ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .help li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .help li a {
+            color: #3b9edf;
+            text-decoration: none;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .help li a:hover {
+            text-decoration: underline;
+        }
+        .help li i {
+            color: #5352ED;
+            font-size: 24px;
+        }
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .contact-option i {
+            font-size: 24px;
+            color: #5352ED;
+            margin-right: 10px;
+        }
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+        }
+        .feedback-form input[type="text"],
+        .feedback-form input[type="email"],
+        .feedback-form textarea {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .feedback-form button {
+            align-self: flex-start;
+        }
+        .logout {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .logout p {
+            font-size: 18px;
+            color: #34495e;
+            margin-bottom: 20px;
+        }
+        .logout .logout-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            background-color: #FF7F56;
+            color: #ecf0f1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #d7653e;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../Media/Frame 313.png" alt="Logo">
+        </div>
+        
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+        <div class="user-info">
+            <span>Maria Ahmed</span>
+            <i class="fas fa-user-circle"></i>
+            <i class="fas fa-bell"></i>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <aside class="sidebar">
+            <li><a href="/HTML/user.html"><i class="fa-solid fa-house-user"></i>Home</a></li>
+            <ul>
+              
+                <li><a href="#" data-page="account"><i class="fas fa-user"></i>My Account</a></li>
+                <li><a href="#" data-page="notification"><i class="fas fa-bell"></i>Notifications</a></li>
+                <li><a href="#" data-page="requests"><i class="fas fa-book"></i>Requests</a></li>
+                <li><a href="#" data-page="settings"><i class="fas fa-cog"></i>Settings</a></li>
+                <li><a href="#" data-page="help"><i class="fas fa-question-circle"></i>Help</a></li>
+                <li><a href="#" data-page="logout"><i class="fas fa-sign-out-alt"></i>Log Out</a></li>
+            </ul>
+        </aside>
+        <main class="content">
+            <div id="account" class="page active">
+                <h2>My Account</h2>
+                <div class="account-details">
+                    <div class="profile-picture">
+                        <img src="../Media/avatar.png" alt="Profile Picture">
+                        <div class="edit-icon">
+                            <i class="fas fa-edit"></i>
+                        </div>
+                    </div>
+                    <div class="info">
+                        <div class="info-item">
+                            <i class="fas fa-user"></i>
+                            <p><strong>Name:</strong> Maria Ahmed</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><strong>Email:</strong> maria.ahmed@example.com</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <p><strong>Member Since:</strong> January 2021</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p><strong>Location:</strong> Dubai, UAE</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p><strong>Phone:</strong> +971 50 123 4567</p>
+                        </div>
+                        <button class="edit-button">Edit Profile</button>
+                    </div>
+                </div>
+            </div>
+            <div id="notification" class="page">
+                <h2>Notifications</h2>
+                <div class="notifications">
+                    <div class="notification-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Your request for 'The Great Gatsby' has been approved.</p>
+                    </div>
+                    <div class="notification-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Your request for 'To Kill a Mockingbird' is pending.</p>
+                    </div>
+                    <div class="notification-item">
+                        <i class="fas fa-info-circle"></i>
+                        <p>New updates are available in your account settings.</p>
+                    </div>
+                    <div class="notification-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>You have a new message from the library admin.</p>
+                    </div>
+                </div>
+            </div>
+            <div id="requests" class="page">
+                <h2>Requests</h2>
+                <div class="requests">
+                    <div class="request-item">
+                        <img src="../Media/b14.jpeg" alt="To Kill a Mockingbird">
+                        <div class="request-info">
+                            <p><strong>Computer vision</strong></p>
+                            <p>Request Date: January 12, 2024</p>
+                            <p>Status: <span style="color: orange;">Pending</span></p>
+                        </div>
+                        <div class="actions">
+                            <button>Cancel Request</button>
+                        </div>
+                    </div> 
+                    <div class="request-item">
+                        <img src="../Media/b13.jpeg" alt="Pattern recognition and Machine learning">
+                        <div class="request-info">
+                            <p><strong>Pattern recognition and Machine learning</strong></p>
+                            <p>Request Date: January 10, 2024</p>
+                            <p>Status: <span style="color: green;">Approved</span></p>
+                        </div>
+                    </div>
+                    <div class="request-item">
+                        <img src="../Media/b15.jpg" alt="To Kill a Mockingbird">
+                        <div class="request-info">
+                            <p><strong>Digital image processing</strong></p>
+                            <p>Request Date: January 9, 2024</p>
+                            <p>Status: <span style="color: rgb(255, 0, 0);">Declined</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="settings" class="page">
+                <h2>Settings</h2>
+                <div class="settings">
+                    <div class="settings-item">
+                        <i class="fas fa-envelope"></i>
+                        <label for="email-notifications">Email Notifications</label>
+                        <input type="checkbox" id="email-notifications" checked>
+                    </div>
+                    <div class="settings-item">
+                        <i class="fas fa-moon"></i>
+                        <label for="dark-mode">Dark Mode</label>
+                        <input type="checkbox" id="dark-mode">
+                    </div>
+                    <div class="settings-item">
+                        <i class="fas fa-key"></i>
+                        <label for="change-password">Change Password</label>
+                        <input type="password" id="change-password" placeholder="Enter new password">
+                    </div>
+                    <div class="settings-item">
+                        <i class="fas fa-phone"></i>
+                        <label for="phone-number">Phone Number</label>
+                        <input type="text" id="phone-number" placeholder="Enter phone number">
+                    </div>
+                    <div class="settings-item">
+                        <i class="fas fa-envelope"></i>
+                        <label for="email-address">Email Address</label>
+                        <input type="email" id="email-address" placeholder="Enter new email">
+                    </div>
+                    <button>Save Settings</button>
+                </div>
+            </div>
+            <div id="help" class="page">
+                <h2>Help</h2>
+                <div class="help">
+                    <div class="help-section">
+                        <h3>Contact Us</h3>
+                        <div class="contact-options">
+                            <div class="contact-option">
+                                <i class="fas fa-phone"></i>
+                                <span>+971 50 123 4567</span>
+                            </div>
+                            <div class="contact-option">
+                                <i class="fas fa-envelope"></i>
+                                <span>support@example.com</span>
+                            </div>
+                            <div class="contact-option">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>123 Library St, Dubai, UAE</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="help-section">
+                        <h3>Feedback</h3>
+                        <form class="feedback-form">
+                            <input type="text" placeholder="Your Name">
+                            <input type="email" placeholder="Your Email">
+                            <textarea rows="4" placeholder="Your Feedback"></textarea>
+                            <button type="submit">Submit Feedback</button>
+                        </form>
+                    </div>
+                    <div class="help-section">
+                        <h3>Common Issues</h3>
+                        <ul>
+                            <li><i class="fas fa-question-circle"></i><a href="#">How to reset my password?</a></li>
+                            <li><i class="fas fa-question-circle"></i><a href="#">How to update my email address?</a></li>
+                            <li><i class="fas fa-question-circle"></i><a href="#">How to cancel a request?</a></li>
+                        </ul>
+                    </div>
+                    <div class="help-section">
+                        <h3>Additional Resources</h3>
+                        <ul>
+                            <li><i class="fas fa-question-circle"></i><a href="#">Library Policies</a></li>
+                            <li><i class="fas fa-question-circle"></i><a href="#">Terms of Service</a></li>
+                            <li><i class="fas fa-question-circle"></i><a href="#">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="logout" class="page">
+                <h2>Log Out</h2>
+                <div class="logout">
+                    <p>Are you sure you want to log out?</p>
+                    <div class="logout-buttons">
+                        <a href="login.html">
+                        <button>Yes, Log Me Out</button>
+                        </a>
+                        <button>No, Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        document.querySelectorAll('.sidebar ul li a').forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault();
+                const page = this.getAttribute('data-page');
+                document.querySelectorAll('.content .page').forEach(pageDiv => {
+                    pageDiv.classList.remove('active');
+                });
+                document.getElementById(page).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

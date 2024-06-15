@@ -349,3 +349,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderRecords();
 });
+document.addEventListener("DOMContentLoaded", function() {
+    const hamburger = document.getElementById("hamburger");
+    const sidebar = document.querySelector(".sidebar");
+
+    hamburger.addEventListener("click", function() {
+        sidebar.classList.toggle("open");
+    });
+
+    const filterButtons = document.querySelectorAll(".filter-button");
+    filterButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            filterButtons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+            // Add filter functionality based on button id
+            filterRecords(this.id);
+        });
+    });
+});
+
+function filterRecords(filterId) {
+    const rows = document.querySelectorAll("#records-table tr");
+    rows.forEach(row => {
+        row.style.display = "table-row";
+        const type = row.getAttribute("data-type");
+        if (filterId !== "filter-all" && filterId !== `filter-${type}`) {
+            row.style.display = "none";
+        }
+    });
+}

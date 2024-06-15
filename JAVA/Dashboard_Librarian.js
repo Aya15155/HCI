@@ -75,7 +75,7 @@ overdueBooksTable.addEventListener('click', function (event) {
 
         detailsContent.innerHTML = `
             
-            <p><strong>Book title:</strong><h3>${title}</h3>
+            <p><strong>Book title:</strong>${title}</p>
             <p><strong>Author:</strong> ${author}</p>
             <p><strong>Due Date:</strong> ${dueDate}</p>
             <p><strong>Overdue Days:</strong> ${overdueDays}</p>

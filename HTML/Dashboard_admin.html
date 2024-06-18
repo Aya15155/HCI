@@ -7,36 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
+        @media all{
         body {
             display: flex;
             margin: 0;
             font-family: Arial, sans-serif;
-            
-            
         }
 
-       
-
-        .profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .profile img {
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            margin-bottom: 10px;
-        }
-
-        .profile-info p {
-            margin: 0;
-            color: #0F254F;
-            font-size: 14px;
-        }
-
+        
         .main-content {
             flex-grow: 1;
             padding: 20px;
@@ -50,7 +28,7 @@
         }
 
         header h1 {
-            margin: 0;
+            
             font-size: 24px;
             color: #333;
         }
@@ -58,7 +36,6 @@
         .dropdown {
             position: relative;
             display: inline-block;
-            margin-right: 30vw;
         }
 
         .dropbtn {
@@ -70,7 +47,6 @@
 
         .dropdown-content {
             display: none;
-           
             position: absolute;
             background-color: white;
             min-width: 160px;
@@ -103,7 +79,8 @@
             border-radius: 5px;
             width: 80vw;
         }
-        .stats h2{
+
+        .stats h2 {
             font-size: 14px;
         }
 
@@ -122,8 +99,6 @@
         .chart {
             background-color: #333;
             height: auto;
-            
-           
             margin: 20px 0;
             padding: 20px;
             border-radius: 5px;
@@ -137,7 +112,6 @@
             margin: auto;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            
         }
 
         .manage-librarians h2 {
@@ -191,7 +165,7 @@
             display: flex;
             justify-content: space-around;
             margin: 20px 0;
-           width: 80vw;
+            width: 80vw;
         }
 
         .section-icons div {
@@ -203,120 +177,164 @@
             height: 15vw;
             margin: 10px;
         }
-        
-        p{
+
+        p {
             font-size: 14px;
         }
-        h1{
+
+        h1 {
             margin-top: 0;
             padding-top: 0;
         }
-        
-        @media (min-width: 769px ) and (max-width: 1000px ) {
-            .stats{
+    }
+        @media (min-width: 769px) and (max-width: 1000px) {
+            .stats {
                 max-width: 77vw;
+            }
 
-            }
             .chart {
-            background-color: #333;
-            height: max-content;
-            max-width: 77vw;
-            min-width: max-content;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
-        }
-            .manage-librarians{
-               
+                background-color: #333;
+                height: max-content;
+                max-width: 77vw;
+                min-width: max-content;
+                margin: 20px 0;
+                padding: 20px;
+                border-radius: 5px;
+            }
+
+            .manage-librarians {
                 max-width: 77vw;
             }
+            .content{
+                margin-left: 100px;
+            }
         }
-        @media (min-width: 1000px ) and (max-width: 2000px ){
-            .stats{
+
+        @media (min-width: 1000px) and (max-width: 2000px) {
+            .stats {
                 width: auto;
-
             }
-            .up{
-            display: grid;
-            grid-template-columns: 50vw 30vw;
-            
-            
-        }
+
+            .up {
+                display: grid;
+                grid-template-columns: 50vw 30vw;
+            }
+
             .chart {
-            background-color: #333;
-            height: max-content;
-            width: auto;
-            min-width: max-content;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
-        }
-            .manage-librarians{
+                background-color: #333;
+                height: max-content;
+                width: auto;
+                min-width: max-content;
+                margin: 20px 0;
+                padding: 20px;
+                border-radius: 5px;
+            }
+
+            .manage-librarians {
                 margin-top: 3vh;
                 margin-left: 10%;
                 width: auto;
             }
+
             .section-icons img {
-            width: 7vw;
-            height: 7vw;
-            
+                width: 7vw;
+                height: 7vw;
+            }
+
+            .section-icons {
+                width: 20vw;
+            }
         }
-        .section-icons  {
-            width: 20vw;
-            
-            
-        }
-        }
-        @media (max-width: 768px ) and (min-width:401px) {
-            .stats{
+
+        @media (max-width: 768px) and (min-width: 401px) {
+            .stats {
                 width: 80vw;
                 padding: 20px;
             }
+
             .chart {
-            background-color: #333;
-            height: max-content;
-            width: 80vw;
-            min-width: max-content;
-            margin: 20px 0;
-            padding: 20px;
-            border-radius: 5px;
+                background-color: #333;
+                height: max-content;
+                width: 80vw;
+                min-width: max-content;
+                margin: 20px 0;
+                padding: 20px;
+                border-radius: 5px;
             }
-            .manage-librarians{
+
+            .manage-librarians {
                 margin-top: 3vh;
                 margin: 0%;
                 width: 80vw;
             }
-            h1{
+
+            h1 {
                 padding-left: 20px;
+                margin-left: 1000px;
+            }
+            .content{
+                
             }
         }
-        @media (max-width:400px) and (min-width:200px) {
-            
-            .stats{
+
+        @media (max-width: 400px) and (min-width: 200px) {
+            .stats {
                 height: auto;
                 width: 80vw;
             }
-            .chart {
-            
-            height: auto;
-            width: 80vw;
-            
-            margin: 0px 0;
-            
-            border-radius: 5px;
-        }
-        .manage-librarians {
-            width: 80vw;
-        }
-        
-    }
 
+            .chart {
+                height: auto;
+                width: 80vw;
+                margin: 0px 0;
+                border-radius: 5px;
+            }
+
+            .manage-librarians {
+                width: 80vw;
+            }
+            h1{
+                margin-left: 100px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                transform: translateX(-250px);
+                height: 100%;
+                z-index: 1000;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 30px;
+                background: none;
+                border: none;
+                color: #333;
+                cursor: pointer;
+            }
+            h1{
+                margin-left: 100px;
+            }
+        }
+
+        .hamburger {
+            display: none;
+        }
     </style>
     <link rel="stylesheet" href="/CSS/admin_menu.css">
-    <!-- Font Awesome CDN Link -->
     <script src="https://kit.fontawesome.com/fa33ff1c75.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <button class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
     <div class="container">
         <nav class="sidebar" id="sidebar">
             <div class="logo">

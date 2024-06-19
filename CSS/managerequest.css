@@ -185,12 +185,19 @@ button{
 }
 
 #successModal .modal-content {
-    background-color: #4CAF50;
+    background-color:#47A6EB;
     color: white;
 }
 @media (max-width: 768px) {
-    .content {
-        margin-left:calc(100vw - 90vw);
+    .sidebar {
+        transform: translateX(-100%);
+        z-index: 100;
+        width: calc(100vw - 70vw);
+        min-width: 120px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
     }
     .approve{
         margin-bottom:3px ;

@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const recordsTable = document.getElementById('records-table');
     const filterButtons = document.querySelectorAll('.filter-button');
-
     const records = [
         {
             cover: '/Media/b1.jpg',
@@ -302,16 +301,13 @@ document.addEventListener('DOMContentLoaded', () => {
             type: 'journal'
         }
     ];
-    
-
     function renderRecords(filter = 'all') {
         recordsTable.innerHTML = '';
-        const filteredRecords = filter === 'all' ? records : records.filter(record => record.type === filter);
-
+        const filteredRecords = records.filter(record => filter === 'all' || record.type === filter);
         filteredRecords.forEach(record => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td><img src="${record.cover}" alt="${record.title}" width="50"></td>
+                <td><img src="${record.cover}" alt="Cover Image" width="50"></td>
                 <td>${record.title}</td>
                 <td>${record.author}</td>
                 <td>${record.publisher}</td>
@@ -328,6 +324,62 @@ document.addEventListener('DOMContentLoaded', () => {
         button.addEventListener('click', () => {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
+            renderRecords(button.id.replace('filter-', ''));
+        });
+    });
+
+    renderRecords();
+
+    // Add Modal
+    const addModal = document.getElementById("addModal");
+    const addNewButton = document.getElementById("add-new");
+    const span = document.getElementsByClassName("close")[0];
+
+    addNewButton.onclick = function() {
+        addModal.style.display = "block";
+    }
+
+    span.onclick = function() {
+        addModal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target === addModal) {
+            addModal.style.display = "none";
+        }
+    }
+
+    document.getElementById('addRecordForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const newRecord = {
+            cover: e.target.cover.value,
+            title: e.target.title.value,
+            author: e.target.author.value,
+            publisher: e.target.publisher.value,
+            publicationDate: e.target.publicationDate.value,
+            isbn: e.target.isbn.value,
+            barcode: e.target.barcode.value,
+            availability: e.target.availability.value,
+            type: e.target.type.value
+        };
+        records.push(newRecord);
+        renderRecords();
+        addModal.style.display = "none";
+    });
+});
+
+// Hamburger menu functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.querySelector('.sidebar');
+
+    hamburger.addEventListener('click', function () {
+        sidebar.classList.toggle('open');
+    });
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
             const filter = button.id.replace('filter-', '');
             renderRecords(filter);
         });
@@ -337,10 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const searchInput = document.querySelector('.top-bar input[type="search"]').value.toLowerCase();
         const filteredRecords = records.filter(record => record.title.toLowerCase().includes(searchInput));
         renderRecords(filteredRecords);
-    });
-
-    document.getElementById('add-new').addEventListener('click', () => {
-        // Implement add new record functionality
     });
 
     document.getElementById('delete-record').addEventListener('click', () => {
@@ -378,3 +426,96 @@ function filterRecords(filterId) {
         }
     });
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const searchBtn = document.getElementById("search-btn");
+    const titleInput = document.getElementById("title");
+    const authorInput = document.getElementById("author");
+
+    searchBtn.addEventListener("click", function() {
+        const titleSearchTerm = titleInput.value.trim().toLowerCase();
+        const authorSearchTerm = authorInput.value.trim().toLowerCase();
+        searchRecords(titleSearchTerm, authorSearchTerm);
+    });
+});
+
+function searchRecords(titleSearchTerm, authorSearchTerm) {
+    const rows = document.querySelectorAll("#records-table tr");
+    rows.forEach(row => {
+        row.style.display = "table-row";
+        const title = row.querySelector("td:nth-child(2)").textContent.trim().toLowerCase();
+        const author = row.querySelector("td:nth-child(3)").textContent.trim().toLowerCase();
+        
+        const titleMatch = title.includes(titleSearchTerm);
+        const authorMatch = author.includes(authorSearchTerm);
+
+        if (!titleMatch || !authorMatch) {
+            row.style.display = "none";
+        }
+    });
+}
+
+function renderRecords(filter = 'all') {
+    recordsTable.innerHTML = '';
+    const filteredRecords = records.filter(record => filter === 'all' || record.type === filter);
+    filteredRecords.forEach(record => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td><img src="${record.cover}" alt="Cover Image" width="50"></td>
+            <td>${record.title}</td>
+            <td>${record.author}</td>
+            <td>${record.publisher}</td>
+            <td>${record.publicationDate}</td>
+            <td>${record.isbn}</td>
+            <td>${record.barcode}</td>
+            <td>${record.availability}</td>
+        `;
+        recordsTable.appendChild(row);
+    });
+}
+
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        renderRecords(button.id.replace('filter-', ''));
+    });
+});
+
+renderRecords();
+
+// Add Modal
+const addModal = document.getElementById("addModal");
+const addNewButton = document.getElementById("add-new");
+const span = document.getElementsByClassName("close")[0];
+
+addNewButton.onclick = function() {
+    addModal.style.display = "block";
+}
+
+span.onclick = function() {
+    addModal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target === addModal) {
+        addModal.style.display = "none";
+    }
+}
+
+document.getElementById('addRecordForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const newRecord = {
+        cover: e.target.cover.value,
+        title: e.target.title.value,
+        author: e.target.author.value,
+        publisher: e.target.publisher.value,
+        publicationDate: e.target.publicationDate.value,
+        isbn: e.target.isbn.value,
+        barcode: e.target.barcode.value,
+        availability: e.target.availability.value,
+        type: e.target.type.value
+    };
+    records.push(newRecord);
+    renderRecords();
+    addModal.style.display = "none";
+});

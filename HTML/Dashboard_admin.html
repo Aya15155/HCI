@@ -25,6 +25,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
+            width: 70vw;
         }
 
         header h1 {
@@ -96,13 +97,19 @@
             color: #000;
         }
 
-        .chart {
+        .chart, canvas#chart {
             background-color: #333;
             height: auto;
+            min-height: min-content;
+            width: 100%;
             margin: 20px 0;
-            padding: 20px;
+            padding: 0px;
             border-radius: 5px;
         }
+        .frist{
+            width: min-content;
+        }
+        
 
         .manage-librarians {
             display: flex;
@@ -192,14 +199,19 @@
                 max-width: 77vw;
             }
 
-            .chart {
+            .chart{
                 background-color: #333;
                 height: max-content;
-                max-width: 77vw;
+                max-width: 100%;
                 min-width: max-content;
                 margin: 20px 0;
                 padding: 20px;
                 border-radius: 5px;
+            }
+            canvas#chart{
+                height: max-content;
+                
+                min-width: max-content;
             }
 
             .manage-librarians {
@@ -211,29 +223,32 @@
         }
 
         @media (min-width: 1000px) and (max-width: 2000px) {
+            
             .stats {
                 width: auto;
             }
 
             .up {
                 display: grid;
-                grid-template-columns: 50vw 30vw;
+                grid-template-columns: 40vw 30vw;
             }
 
             .chart {
                 background-color: #333;
                 height: max-content;
-                width: auto;
+                width: 50vw;
                 min-width: max-content;
                 margin: 20px 0;
                 padding: 20px;
                 border-radius: 5px;
             }
 
+           
             .manage-librarians {
                 margin-top: 3vh;
-                margin-left: 10%;
-                width: auto;
+                margin-left: 1vw;
+                margin-right: 0;
+                width: 20vw;
             }
 
             .section-icons img {
@@ -261,7 +276,11 @@
                 padding: 20px;
                 border-radius: 5px;
             }
-
+            canvas#chart{
+                height: max-content;
+                max-width: max-content;
+                min-width: max-content;
+            }
             .manage-librarians {
                 margin-top: 3vh;
                 margin: 0%;
@@ -281,11 +300,16 @@
                 width: 80vw;
             }
 
-            .chart {
+            .chart{
                 height: auto;
                 width: 80vw;
                 margin: 0px 0;
                 border-radius: 5px;
+            }
+            canvas#chart{
+                height: max-content;
+                width: 90vw;
+                min-width: max-content;
             }
 
             .manage-librarians {
@@ -303,7 +327,11 @@
                 height: 100%;
                 z-index: 1000;
             }
-
+            canvas#chart{
+                height: max-content;
+                max-width: max-content;
+                min-width: max-content;
+            }
             .sidebar.show {
                 transform: translateX(0);
             }

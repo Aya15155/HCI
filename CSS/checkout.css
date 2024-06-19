@@ -48,7 +48,7 @@ h1 {
 }
 
 .payment-method, .order-summary {
-  width: 48%;
+  width: 70vw;
   margin-top: 20px;
 }
 

@@ -1,12 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <script src="https://kit.fontawesome.com/fa33ff1c75.js" crossorigin="anonymous"></script>
+    
+    <style>
+        /* Common Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        .checkout-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .back-button {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        .back-button:hover {
+            color: #555;
+        }
+
+        .checkout-header h1 {
+            font-size: 24px;
+            
+            color: #333;
+        }
+
+        /* Content Styles */
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .payment-method,
+        .order-summary {
+            flex: 1;
+            margin-right: 20px;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .payment-method h2,
+        .order-summary h2 {
+            margin-top: 0;
+        }
+
+        .payment-method .card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .payment-method label,
+        .order-summary p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .payment-method input[type="text"],
+        .payment-method input[type="password"],
+        .payment-method select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .order-summary .item {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .summary {
+            margin-top: 20px;
+        }
+
+        .order-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .order-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Hamburger Menu Icon */
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1{
+                margin-left: 10vw;
+            }
+            .checkout-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .content {
+                
+                flex-direction: column-reverse;
+            }
+
+            .payment-method,
+            .order-summary {
+                margin: auto;
+                margin-bottom: 3vh;
+                width: 70vw;
+            }
+            
+        }
+    </style>
     <link rel="stylesheet" href="../CSS/checkout.css">
 </head>
+
 <body>
     <div id="cart-items" style="display: none;"></div>
     <div class="container">
@@ -53,4 +204,5 @@
     </div>
     <script src="../JAVA/checkout.js"></script>
 </body>
+
 </html>

@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-    <link rel="stylesheet" href="/CSS/admin_menu.css">
+    
     
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-           
         }
 
         .content {
@@ -160,14 +159,19 @@
             color: white;
             margin-top: 20px;
         }
+
+        /* Responsive Styles */
+       
         @media (max-width: 768px) {
             .sidebar {
                 width: 100%;
                 height: auto;
                 position: relative;
+                display: none;
             }
             .content {
-                margin-left: 0;
+               
+                padding: 20px;
             }
             .top-bar {
                 flex-direction: column;
@@ -178,12 +182,57 @@
             }
             .search-container {
                 flex-direction: column;
+                
             }
             .search-container .icon-group {
                 margin-top: 10px;
             }
+            .hamburger {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                margin: 10px;
+            }
+            .hamburger i {
+                font-size: 24px;
+            }
+            .table-container {
+            background-color: #e0e5e5;
+            padding: 1vw;
+            margin: auto;
+            align-items: center;
+            align-content: center;
+            width: 90vw;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-collapse:collapse;
+        }
+        .delete-button{
+            padding: 7px;
+            width: min-content;
+            font-size: 3vw;
+        }
+        table {
+            width: 80vw;
+            margin: auto;
+            margin-top: 10px;
+        }
+        table th, table td {
+            padding: 3px;
+            font-size: small;
+            text-align: left;
+            overflow: hidden;
+            width: 2vw;
+        }
+        }
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
         }
     </style>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
 </head>
 <body>
     <nav class="sidebar" id="sidebar">
@@ -213,6 +262,7 @@
 
         </ul>
     </nav>
+    <button class="hamburger" id="hamburger">&#9776;</button>
     <div class="content">
         
         <div class="search-container">

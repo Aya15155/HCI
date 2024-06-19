@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management - Cataloging</title>
-    <link rel="stylesheet" href="/CSS/admin_menu.css">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-           
         }
         
         .top-bar {
             background-color: #47A6EB;
             padding: 10px 20px;
-            
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
         }
+        
         .top-bar .search-container {
             display: flex;
             align-items: center;
@@ -31,7 +30,9 @@
             border-radius: 20px;
             flex-grow: 1;
             margin-right: 20px;
+            width: 100%;
         }
+
         .top-bar .search-container input[type="text"] {
             border: none;
             border-radius: 20px;
@@ -40,12 +41,15 @@
             flex-grow: 1;
             margin-right: 10px;
             background-color: #e0e0e0;
+            width: 100%;
         }
+
         .top-bar .search-container input[type="text"]:focus {
             outline: none;
             border-color: #7a52d4;
             box-shadow: 0 0 5px #7a52d4;
         }
+
         .top-bar .search-container button {
             background-color: #FF7F56;
             color: white;
@@ -55,19 +59,21 @@
             cursor: pointer;
             font-size: 16px;
         }
+
         .top-bar .search-container button:hover {
             background-color: #6a47c1;
         }
+
         .icon-group {
             display: flex;
             align-items: center;
-            justify-content: space-between;
             background-color: #fff;
-            padding: 10px 0;
-            margin-top: 10px;
+            padding: 10px;
             border-bottom: 1px solid #ddd;
             color: #e86833;
+            flex-wrap: wrap;
         }
+
         .icon-group button {
             background: none;
             border: none;
@@ -76,14 +82,17 @@
             display: flex;
             align-items: center;
             font-size: 14px;
-            margin: 0 10px;
+            margin: 5px;
         }
+
         .icon-group button i {
             margin-right: 5px;
         }
+
         .icon-group button span {
             font-size: 14px;
         }
+
         .table-container {
             margin-top: 20px;
             overflow-x: auto;
@@ -91,6 +100,7 @@
             padding: 20px;
             border-radius: 10px;
         }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -99,63 +109,90 @@
             border-radius: 10px;
             overflow: hidden;
         }
+
         table th, table td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
             color: #555;
         }
+
         table th {
             background-color: #f1f1f1;
             color: #333;
         }
+
         table tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         table td img {
             width: 60px;
             height: auto;
         }
+
         .availability-available {
             color: green;
         }
+
         .availability-not-available {
             color: red;
         }
+
         .availability-reserved {
             color: blue;
         }
+
         .availability-delayed {
             color: orange;
         }
+
         @media (max-width: 768px) {
+            body {
+                font-size: x-small;
+            }
+
             .sidebar {
-                width: 100%;
                 height: auto;
                 position: relative;
             }
+
             .content {
                 margin-left: 0;
             }
+
             .top-bar {
                 flex-direction: column;
             }
+
             .search-container {
                 width: 100%;
                 margin: 10px 0;
             }
+
             .icon-group {
-                flex-direction: column;
+                width: 100%;
+                flex-direction: row;
                 align-items: flex-start;
+                justify-content: space-between;
             }
+
             .icon-group button {
                 margin-bottom: 5px;
+                flex-grow: 1;
+                justify-content: center;
+            }
+
+            table th:nth-child(5),
+            table td:nth-child(5) {
+                display: none;
             }
         }
+
         /* Modal styles */
         .modal {
             display: none;
-            visibility:hidden;
+            visibility: hidden;
             position: fixed;
             z-index: 1;
             left: 0;
@@ -168,21 +205,28 @@
             align-items: center;
             justify-content: center;
         }
+
         .modal-content {
             background-color: #fff;
             padding: 20px;
             border: 1px solid #888;
-            width: 25%;
+            width: 80%;
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
             border-radius: 10px;
         }
+
         .modal-content h2 {
             margin-top: 0;
         }
+
         .modal-content label {
             display: block;
             margin: 10px 0 5px;
             color: #e86833;
         }
+
         .modal-content input, .modal-content select {
             width: calc(100% - 20px);
             padding: 10px;
@@ -190,6 +234,7 @@
             border: 1px solid #e86833;
             border-radius: 5px;
         }
+
         .modal-content .btn {
             background-color: #7a52d4;
             color: white;
@@ -200,22 +245,27 @@
             margin-top: 20px;
             width: 100%;
         }
+
         .modal-content .btn:hover {
             background-color: #6a47c1;
         }
+
         .modal-content .close {
             color: #aaa;
             float: right;
             font-size: 28px;
             font-weight: bold;
         }
+
         .modal-content .close:hover,
         .modal-content .close:focus {
             color: black;
             text-decoration: none;
             cursor: pointer;
         }
+        
     </style>
+    <link rel="stylesheet" href="/CSS/admin_menu.css">
 </head>
 <body>
     <nav class="sidebar" id="sidebar">
@@ -239,8 +289,6 @@
         <ul class="menu2">
             <li><a href="help_admin.html"><i class="fas fa-question-circle"></i> Help</a></li>
             <li><a href="setting.html"><i class="fas fa-cog"></i> Settings</a></li>
-            <li><a href="login.html"><i class="fa-solid fa-right-from-bracket"></i> logout</a></li>
-
         </ul>
     </nav>
     <button class="hamburger" id="hamburger">&#9776;</button>
@@ -255,128 +303,189 @@
         </div>
         <div class="icon-group">
             <button onclick="openNewRecordModal()"><i class="fas fa-plus-circle"></i><span> New Record</span></button>
-            <button onclick="filterTable('all')"><i class="fas fa-check-circle"></i><span> Select All</span></button>
-            <button onclick="filterTable('available')"><i class="fas fa-check-circle"></i><span> Select Available</span></button>
-            <button onclick="filterTable('not-available')"><i class="fas fa-times-circle"></i><span> Select Not Available</span></button>
-            
-            <button onclick="filterTable('delayed')"><i class="fas fa-exclamation-circle"></i><span> Select Delayed</span></button>
-            
+            <button onclick="filterTable('all')"><i class="fas fa-book"></i><span> All</span></button>
+            <button onclick="filterTable('book')"><i class="fas fa-book"></i><span> Books</span></button>
+            <button onclick="filterTable('journal')"><i class="fas fa-book-open"></i><span> Journals</span></button>
+            <button onclick="filterTable('available')"><i class="fas fa-check"></i><span> Available</span></button>
+            <button onclick="filterTable('not available')"><i class="fas fa-times"></i><span> Not Available</span></button>
+            <button onclick="filterTable('reserved')"><i class="fas fa-lock"></i><span> Reserved</span></button>
+            <button onclick="filterTable('delayed')"><i class="fas fa-exclamation-triangle"></i><span> Delayed</span></button>
         </div>
         <div class="table-container">
-            <table id="itemTable">
+            <table id="libraryTable">
                 <thead>
                     <tr>
+                        <th>Type</th>
                         <th>Title</th>
                         <th>Author</th>
                         <th>Publisher</th>
-                        <th>Publication Year</th>
-                        <th>Barcode</th>
+                        <th>Year</th>
                         <th>Availability</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>The Great Gatsby</td>
-                        <td>F. Scott Fitzgerald</td>
-                        <td>Scribner</td>
-                        <td>1925</td>
-                        <td>1234567890123</td>
-                        <td><span class="availability-available">Available</span></td>
+                    <tr data-type="book" data-availability="available">
+                        <td>Book</td>
+                        <td>Effective Java</td>
+                        <td>Joshua Bloch</td>
+                        <td>Addison-Wesley</td>
+                        <td>2018</td>
+                        <td class="availability-available">Available</td>
                     </tr>
-                    <tr>
-                        <td>1984</td>
-                        <td>George Orwell</td>
-                        <td>Secker & Warburg</td>
-                        <td>1949</td>
-                        <td>1234567890124</td>
-                        <td><span class="availability-not-available">Not Available</span></td>
+                    <tr data-type="journal" data-availability="not available">
+                        <td>Journal</td>
+                        <td>Nature Journal</td>
+                        <td>Various</td>
+                        <td>Nature Publishing Group</td>
+                        <td>2023</td>
+                        <td class="availability-not-available">Not Available</td>
                     </tr>
-                    <tr>
-                        <td>To Kill a Mockingbird</td>
-                        <td>Harper Lee</td>
-                        <td>J.B. Lippincott & Co.</td>
-                        <td>1960</td>
-                        <td>1234567890125</td>
-                        <td><span class="availability-available">Available</span></td>
+                    <tr data-type="book" data-availability="reserved">
+                        <td>Book</td>
+                        <td>Clean Code</td>
+                        <td>Robert C. Martin</td>
+                        <td>Prentice Hall</td>
+                        <td>2008</td>
+                        <td class="availability-reserved">Reserved</td>
                     </tr>
-                    <tr>
-                        <td>The Catcher in the Rye</td>
-                        <td>J.D. Salinger</td>
-                        <td>Little, Brown and Company</td>
-                        <td>1951</td>
-                        <td>1234567890126</td>
-                        <td><span class="availability-delayed">Delayed</span></td>
+                    <tr data-type="journal" data-availability="delayed">
+                        <td>Journal</td>
+                        <td>IEEE Transactions</td>
+                        <td>Various</td>
+                        <td>IEEE</td>
+                        <td>2022</td>
+                        <td class="availability-delayed">Delayed</td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <!-- Modal -->
+
+    <!-- New Record Modal -->
     <div id="newRecordModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="document.getElementById('newRecordModal').style.visibility='hidden'">&times;</span>
-            <h2>Add New Item</h2>
-            <form>
-                <label for="title">Title</label>
-                <input type="text" id="title" placeholder="Enter the item's title">
-                
-                <label for="author">Author</label>
-                <input type="text" id="author" placeholder="Enter the item's author">
-                
-                <label for="publisher">Publisher</label>
-                <input type="text" id="publisher" placeholder="Enter the item's publisher">
-                
-                <label for="barcode">Barcode</label>
-                <input type="text" id="barcode" placeholder="Enter the item's barcode">
-                
-                <label for="pubdate">Publication date</label>
-                <input type="text" id="pubdate" placeholder="18/07/2003">
-                
-                <button type="button" class="btn">Add New Item</button>
-            </form>
+            <span class="close" onclick="closeNewRecordModal()">&times;</span>
+            <h2>New Record</h2>
+            <label for="type">Type</label>
+            <select id="type">
+                <option value="book">Book</option>
+                <option value="journal">Journal</option>
+            </select>
+            <label for="title">Title</label>
+            <input type="text" id="title" required>
+            <label for="author">Author</label>
+            <input type="text" id="author" required>
+            <label for="publisher">Publisher</label>
+            <input type="text" id="publisher" required>
+            <label for="year">Year</label>
+            <input type="text" id="year" required>
+            <label for="availability">Availability</label>
+            <select id="availability">
+                <option value="available">Available</option>
+                <option value="not available">Not Available</option>
+                <option value="reserved">Reserved</option>
+                <option value="delayed">Delayed</option>
+            </select>
+            <button class="btn" onclick="addRecord()">Add Record</button>
         </div>
     </div>
-    <script>
 
-        function filterTable(status) {
-            var rows = document.querySelectorAll('#itemTable tbody tr');
-            rows.forEach(function(row) {
-                row.style.display = '';
-                if (status !== 'all') {
-                    var availability = row.querySelector('.availability-' + status);
-                    if (!availability) {
-                        row.style.display = 'none';
-                    }
-                }
-            });
-        }
+    <script>
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('sidebar').classList.toggle('active');
+        });
 
         function searchTable() {
-            var author = document.getElementById('search-author').value.toLowerCase();
-            var publisher = document.getElementById('search-publisher').value.toLowerCase();
-            var year = document.getElementById('search-year').value.toLowerCase();
+            var authorInput = document.getElementById('search-author').value.toUpperCase();
+            var publisherInput = document.getElementById('search-publisher').value.toUpperCase();
+            var yearInput = document.getElementById('search-year').value.toUpperCase();
+            var table = document.getElementById('libraryTable');
+            var tr = table.getElementsByTagName('tr');
 
-            var rows = document.querySelectorAll('#itemTable tbody tr');
-            rows.forEach(function(row) {
-                var authorText = row.children[1].textContent.toLowerCase();
-                var publisherText = row.children[2].textContent.toLowerCase();
-                var yearText = row.children[3].textContent.toLowerCase();
-
-                if (
-                    (author === '' || authorText.includes(author)) &&
-                    (publisher === '' || publisherText.includes(publisher)) &&
-                    (year === '' || yearText.includes(year))
-                ) {
-                    row.style.display = '';
-                } else {
-                    row.style.display = 'none';
+            for (var i = 0; i < tr.length; i++) {
+                var tdAuthor = tr[i].getElementsByTagName('td')[2];
+                var tdPublisher = tr[i].getElementsByTagName('td')[3];
+                var tdYear = tr[i].getElementsByTagName('td')[4];
+                if (tdAuthor && tdPublisher && tdYear) {
+                    var authorValue = tdAuthor.textContent || tdAuthor.innerText;
+                    var publisherValue = tdPublisher.textContent || tdPublisher.innerText;
+                    var yearValue = tdYear.textContent || tdYear.innerText;
+                    if (authorValue.toUpperCase().indexOf(authorInput) > -1 &&
+                        publisherValue.toUpperCase().indexOf(publisherInput) > -1 &&
+                        yearValue.toUpperCase().indexOf(yearInput) > -1) {
+                        tr[i].style.display = '';
+                    } else {
+                        tr[i].style.display = 'none';
+                    }
                 }
-            });
+            }
         }
+
+        function filterTable(type) {
+            var table = document.getElementById('libraryTable');
+            var tr = table.getElementsByTagName('tr');
+
+            for (var i = 0; i < tr.length; i++) {
+                var itemType = tr[i].getAttribute('data-type');
+                var itemAvailability = tr[i].getAttribute('data-availability');
+                if (type === 'all' || itemType === type || itemAvailability === type) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+
         function openNewRecordModal() {
-        var modal = document.getElementById('newRecordModal');
-        modal.style.visibility ='visible';
-    }
+            document.getElementById('newRecordModal').style.display = 'block';
+        }
+
+        function closeNewRecordModal() {
+            document.getElementById('newRecordModal').style.display = 'none';
+        }
+
+        function addRecord() {
+            var type = document.getElementById('type').value;
+            var title = document.getElementById('title').value;
+            var author = document.getElementById('author').value;
+            var publisher = document.getElementById('publisher').value;
+            var year = document.getElementById('year').value;
+            var availability = document.getElementById('availability').value;
+
+            var table = document.getElementById('libraryTable').getElementsByTagName('tbody')[0];
+            var newRow = table.insertRow();
+
+            newRow.setAttribute('data-type', type);
+            newRow.setAttribute('data-availability', availability);
+
+            var cell1 = newRow.insertCell(0);
+            var cell2 = newRow.insertCell(1);
+            var cell3 = newRow.insertCell(2);
+            var cell4 = newRow.insertCell(3);
+            var cell5 = newRow.insertCell(4);
+            var cell6 = newRow.insertCell(5);
+
+            cell1.innerHTML = type.charAt(0).toUpperCase() + type.slice(1);
+            cell2.innerHTML = title;
+            cell3.innerHTML = author;
+            cell4.innerHTML = publisher;
+            cell5.innerHTML = year;
+            cell6.innerHTML = availability.charAt(0).toUpperCase() + availability.slice(1);
+
+            var availabilityClass;
+            if (availability === 'available') {
+                availabilityClass = 'availability-available';
+            } else if (availability === 'not available') {
+                availabilityClass = 'availability-not-available';
+            } else if (availability === 'reserved') {
+                availabilityClass = 'availability-reserved';
+            } else if (availability === 'delayed') {
+                availabilityClass = 'availability-delayed';
+            }
+            cell6.classList.add(availabilityClass);
+
+            closeNewRecordModal();
+        }
     </script>
 </body>
 </html>

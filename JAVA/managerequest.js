@@ -59,12 +59,12 @@ function showSuccessModal() {
 function showDeclineModal() {
     const successModal = document.getElementById('successModal');
     successModal.querySelector('p').textContent = 'Request Declined Successfully';
-    successModal.style.backgroundColor = '#f44336';
+    successModal.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
     successModal.style.display = 'block';
     setTimeout(function() {
         successModal.style.display = 'none';
         successModal.querySelector('p').textContent = 'Request Approved Successfully';
-        successModal.style.backgroundColor = '#4CAF50';
+        successModal.style.backgroundColor = 'rgba(0, 0, 0, 0.4)';
         if (selectedRow) {
             selectedRow.remove();
         }

@@ -7,6 +7,250 @@
     <link rel="stylesheet" href="/CSS/admin_menu.css">
     <link rel="stylesheet" href="/CSS/librarian_cataloge.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <style>
+        /* Basic Modal Styles */
+        
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            margin-top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.4); 
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 2% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="date"], select {
+            width: calc(100% - 20px);
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="file"] {
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+       
+        
+        
+        #availability-till {
+            display: none;
+        }
+
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 74vw;
+            margin-left: 20vw;
+            padding: 20px;
+        }
+        .search-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        .search-container input {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #e0e0e0;
+            font-size: 16px;
+        }
+        .search-container div {
+            flex-grow: 1;
+            margin-bottom: 10px;
+            margin-right: 1vw;
+        }
+        .icon-group {
+            display: flex;
+            align-items: center;
+            right: 0;
+        }
+        .icon-group .icon-btn {
+           
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            right: 0;
+            display: inline-block;
+            
+        }
+        .icon-group .icon-btn button{
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #777777;
+            border: none;
+            border-radius: 5px;
+        }
+        .icon-group .icon-btn button:active {
+          
+           
+          transform: translateY(4px);
+      }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .filter-buttons .filter-button {
+            background-color: #898b8b;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 9px #999;
+        }
+        .table-container {
+            overflow-x: auto;
+            height: 80vh;
+            width: 75vw;
+        }
+        table {
+            width: 74vw;
+            column-gap: 5px;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            
+
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .hamburger {
+                display: block;
+            }
+            .container {
+                margin-left: 0;
+                padding: 20px;
+            }
+            .table-container {
+                width: 90vw;
+                overflow-x: auto;
+            }
+            table{
+                width: 89vw;
+            }
+            .search-container {
+                flex-direction: column;
+            }
+            .search-container div {
+                width: 100%;
+            }
+            .icon-group {
+                justify-content: space-between;
+            }
+            .icon-group .icon-btn {
+                width: 100%;
+                margin: 5px 0;
+            }
+            
+        }
+        @media (max-width: 480px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .modal-content {
+                width: 90%;
+                margin: 10vh auto;
+                padding: 10px;
+            }
+            .table-container {
+                width: 90vw;
+                overflow-x: auto;
+            }
+            table{
+                width: 90vw;
+            }
+            .icon-group .icon-btn {
+                width: 90vw;
+                margin: 5px 0;
+            }
+            
+            .filter-button {
+                width: 20vw;
+                margin: 5px 0;
+            }
+            .filter-buttons{
+                
+                margin: 5vw auto;
+            }
+            .search-container {
+                flex-direction: column;
+            }
+            .search-container div {
+                width: 100%;
+            }
+            table th:nth-child(n+3),
+            table td:nth-child(n+3) {
+                display: none;
+            }
+            table th:nth-child(8),
+            table td:nth-child(8) {
+                display:block;
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="sidebar">
@@ -21,7 +265,7 @@
             </div>
         </div>
         <ul class="menu">
-            <li ><a href="Dashboard_Librarian.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+            <li><a href="Dashboard_Librarian.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
             <li class="active"><a href="#"><i class="fas fa-book"></i> Books</a></li>
             <li><a href="Members_llibrarian.html"><i class="fas fa-users"></i> Members</a></li>
             <li><a href="Librarian_manage.html"><i class="fas fa-tasks"></i> Manage Request</a></li>
@@ -33,53 +277,537 @@
     </nav>
     <button class="hamburger" id="hamburger">&#9776;</button>
     <div class="container">
-        
         <div class="search-container">
             <div style="flex-grow: 1;">
-                <label for="email">Title</label>
-                <input type="text" id="email" placeholder="Title">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Title">
             </div>
             <div style="flex-grow: 1; margin-left: 20px;">
-                <label for="id">Author</label>
-                <input type="text" id="id" placeholder="Author">
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Author">
             </div>
-            
             <div class="icon-group">
-                <div style="text-align: center;">
-                    <button class="icon-btn" id="search-btn" title="Search"><i class="fas fa-search"></i></button>
-                    <div class="icon-label">Search</div>
-                </div>
-                <div style="text-align: center; margin-left: 10px;">
+                <button id="search-btn" class="icon-btn"><i class="fas fa-search"></i></button>
+                
                     <button class="icon-btn add-new" id="add-new" title="Add"><i class="fas fa-plus"></i></button>
-                    <div class="icon-label">Add</div>
-                </div>
-                <div style="text-align: center; margin-left: 10px;">
-                    <button class="icon-btn delete-btn delete-record" id="delete-record" title="Delete"><i class="fas fa-trash"></i></button>
-                    <div class="icon-label">Delete</div>
-                </div>
+                    
+                
+                <button id="delete-record" class="icon-btn delete-btn"><i class="fas fa-trash"></i></button>
             </div>
         </div>
         
-        <main class="table-container">
+        <div class="filter-buttons">
+            <button class="filter-button active" id="filter-all">All</button>
+            <button class="filter-button" id="filter-book">Books</button>
+            <button class="filter-button" id="filter-journal">Journals</button>
+        </div>
+        <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th style="width: calc(1/8 *2%);">Cover</th>
-                        <th style="width: calc(1/8 *2%);">Title</th>
-                        <th style="width: calc(1/8 *2%);">Author</th>
-                        <th style="width: calc(1/8 *2%);">Publisher</th>
-                        <th style="width: calc(1/8 *2%);">Publication Date</th>
-                        <th style="width: calc(1/8 *2%);">ISBN</th>
-                        <th style="width: calc(1/8 *2%);">Barcode</th>
-                        <th style="width: calc(1/8 *2%);">Availability</th>
+                        <th>Cover</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Publication Date</th>
+                        <th>ISBN</th>
+                        <th>Barcode</th>
+                        <th>Availability</th>
                     </tr>
                 </thead>
                 <tbody id="records-table">
-                    <!-- Records will be inserted here dynamically -->
+                    <!-- Records will be dynamically inserted here -->
                 </tbody>
             </table>
-        </main>
+        </div>
     </div>
-    <script src="/JAVA/librarian_cataloge.js"></script>
+
+    <!-- Add Record Modal -->
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Record</h2>
+            <form id="addRecordForm">
+                <label for="cover">Cover</label>
+                <input type="file" id="cover" name="cover" accept="image/*" required>
+
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="author">Author</label>
+                <input type="text" id="author" name="author" required>
+
+                <label for="publisher">Publisher</label>
+                <input type="text" id="publisher" name="publisher" required>
+
+                <label for="publicationDate">Publication Date</label>
+                <input type="date" id="publicationDate" name="publicationDate" required>
+
+                <label for="isbn">ISBN</label>
+                <input type="text" id="isbn" name="isbn" required>
+
+                <label for="barcode">Barcode</label>
+                <input type="text" id="barcode" name="barcode" required>
+
+                <label for="availability">Availability</label>
+                <select id="availability" name="availability" required>
+                    <option value="Available">Available</option>
+                    <option value="Unavailable">Unavailable</option>
+                </select>
+
+                <label for="type">Type</label>
+                <select id="type" name="type" required>
+                    <option value="book">Book</option>
+                    <option value="journal">Journal</option>
+                </select>
+
+                <button type="submit">Add Record</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const recordsTable = document.getElementById('records-table');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const records = [
+            {
+            cover: '/Media/b1.jpg',
+            title: 'Basic Linear Algebra',
+            author: 'B.S. Blyth',
+            publisher: 'Springer-Verlag',
+            publicationDate: 'September 2018',
+            isbn: '978-3-319-77535-9',
+            barcode: '123456789',
+            availability: 'Not Available till 18/07/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b2.jpg',
+            title: 'Advanced Calculus',
+            author: 'A. Smith',
+            publisher: 'Springer-Verlag',
+            publicationDate: 'January 2020',
+            isbn: '978-3-319-77536-6',
+            barcode: '123456790',
+            availability: 'Available',
+            type: 'journal'
+        },
+        {
+            cover: '/Media/b3.jpg',
+            title: 'Data Structures and Algorithms',
+            author: 'Mark Allen Weiss',
+            publisher: 'Addison-Wesley',
+            publicationDate: 'August 2019',
+            isbn: '978-0-321-99288-3',
+            barcode: '123456791',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b4.jpg',
+            title: 'Artificial Intelligence: A Modern Approach',
+            author: 'Stuart Russell, Peter Norvig',
+            publisher: 'Pearson',
+            publicationDate: 'December 2020',
+            isbn: '978-0-136-04459-0',
+            barcode: '123456792',
+            availability: 'Not Available till 25/06/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b5.jpg',
+            title: 'Introduction to Algorithms',
+            author: 'Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein',
+            publisher: 'MIT Press',
+            publicationDate: 'July 2009',
+            isbn: '978-0-262-03384-8',
+            barcode: '123456793',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b6.jpg',
+            title: 'Clean Code: A Handbook of Agile Software Craftsmanship',
+            author: 'Robert C. Martin',
+            publisher: 'Prentice Hall',
+            publicationDate: 'August 2008',
+            isbn: '978-0-13-235088-4',
+            barcode: '123456794',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b7.jpg',
+            title: 'Design Patterns: Elements of Reusable Object-Oriented Software',
+            author: 'Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides',
+            publisher: 'Addison-Wesley',
+            publicationDate: 'November 1994',
+            isbn: '978-0-201-63361-0',
+            barcode: '123456795',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b8_.jpg',
+            title: 'The Pragmatic Programmer: Your Journey to Mastery',
+            author: 'Andrew Hunt, David Thomas',
+            publisher: 'Addison-Wesley',
+            publicationDate: 'October 1999',
+            isbn: '978-0-201-61622-4',
+            barcode: '123456796',
+            availability: 'Not Available till 01/07/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b9.jpg',
+            title: 'Computer Networks',
+            author: 'Andrew S. Tanenbaum, David J. Wetherall',
+            publisher: 'Pearson',
+            publicationDate: 'March 2011',
+            isbn: '978-0-13-212695-3',
+            barcode: '123456797',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b10.jpg',
+            title: 'Operating System Concepts',
+            author: 'Abraham Silberschatz, Peter B. Galvin, Greg Gagne',
+            publisher: 'Wiley',
+            publicationDate: 'November 2018',
+            isbn: '978-1-119-32176-0',
+            barcode: '123456798',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b11_.jpg',
+            title: 'Database System Concepts',
+            author: 'Abraham Silberschatz, Henry F. Korth, S. Sudarshan',
+            publisher: 'McGraw-Hill',
+            publicationDate: 'May 2019',
+            isbn: '978-0-07-802215-9',
+            barcode: '123456799',
+            availability: 'Not Available till 20/06/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b12.jpg',
+            title: 'Principles of Compiler Design',
+            author: 'Alfred V. Aho, Jeffrey D. Ullman',
+            publisher: 'Addison-Wesley',
+            publicationDate: 'January 1977',
+            isbn: '978-0-201-00022-1',
+            barcode: '123456800',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b13.jpeg',
+            title: 'Pattern Recognition and Machine Learning',
+            author: 'Christopher M. Bishop',
+            publisher: 'Springer',
+            publicationDate: 'October 2006',
+            isbn: '978-0-387-31073-2',
+            barcode: '123456801',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b14.jpeg',
+            title: 'Digital Image Processing',
+            author: 'Rafael C. Gonzalez, Richard E. Woods',
+            publisher: 'Pearson',
+            publicationDate: 'August 2017',
+            isbn: '978-0-13-444646-7',
+            barcode: '123456802',
+            availability: 'Not Available till 30/06/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b15.jpg',
+            title: 'Computer Vision: Algorithms and Applications',
+            author: 'Richard Szeliski',
+            publisher: 'Springer',
+            publicationDate: 'September 2010',
+            isbn: '978-1-84882-934-3',
+            barcode: '123456803',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b16.jpg',
+            title: 'Deep Learning',
+            author: 'Ian Goodfellow, Yoshua Bengio, Aaron Courville',
+            publisher: 'MIT Press',
+            publicationDate: 'November 2016',
+            isbn: '978-0-262-03561-3',
+            barcode: '123456804',
+            availability: 'Not Available till 25/06/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b17.jpg',
+            title: 'Reinforcement Learning: An Introduction',
+            author: 'Richard S. Sutton, Andrew G. Barto',
+            publisher: 'MIT Press',
+            publicationDate: 'October 2018',
+            isbn: '978-0-262-03924-6',
+            barcode: '123456805',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b18.jpg',
+            title: 'The C Programming Language',
+            author: 'Brian W. Kernighan, Dennis M. Ritchie',
+            publisher: 'Prentice Hall',
+            publicationDate: 'February 1988',
+            isbn: '978-0-13-110362-1',
+            barcode: '123456806',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b19.jpg',
+            title: 'Structure and Interpretation of Computer Programs',
+            author: 'Harold Abelson, Gerald Jay Sussman',
+            publisher: 'MIT Press',
+            publicationDate: 'July 1996',
+            isbn: '978-0-262-51087-3',
+            barcode: '123456807',
+            availability: 'Not Available till 20/06/2023',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b20.jpg',
+            title: 'Algorithms',
+            author: 'Robert Sedgewick, Kevin Wayne',
+            publisher: 'Addison-Wesley',
+            publicationDate: 'April 2011',
+            isbn: '978-0-321-57351-8',
+            barcode: '123456808',
+            availability: 'Available',
+            type: 'book'
+        },
+        {
+            cover: '/Media/b21.jpg',
+            title: 'Journal of Machine Learning Research',
+            author: 'Multiple Authors',
+            publisher: 'MIT Press',
+            publicationDate: 'April 2021',
+            isbn: '978-1-624-48080-5',
+            barcode: '123456811',
+            availability: 'Available',
+            type: 'journal'
+        },
+        {
+            cover: '/Media/b22.jpg',
+            title: 'IEEE Transactions on Neural Networks and Learning Systems',
+            author: 'Multiple Authors',
+            publisher: 'IEEE',
+            publicationDate: 'May 2021',
+            isbn: '978-1-4244-8007-5',
+            barcode: '123456812',
+            availability: 'Available',
+            type: 'journal'
+        },
+        {
+            cover: '/Media/b23.png',
+            title: 'Nature Machine Intelligence',
+            author: 'Multiple Authors',
+            publisher: 'Nature Publishing Group',
+            publicationDate: 'June 2021',
+            isbn: '978-1-7804-0000-1',
+            barcode: '123456813',
+            availability: 'Not Available till 01/07/2023',
+            type: 'journal'
+        },
+        {
+            cover: '/Media/b24.jpg',
+            title: 'Journal of Artificial Intelligence Research',
+            author: 'Multiple Authors',
+            publisher: 'AI Access Foundation',
+            publicationDate: 'July 2021',
+            isbn: '978-1-577-40503-7',
+            barcode: '123456814',
+            availability: 'Available',
+            type: 'journal'
+        },
+        {
+            cover: '/Media/b25.jpg',
+            title: 'ACM Transactions on Graphics',
+            author: 'Multiple Authors',
+            publisher: 'ACM',
+            publicationDate: 'August 2021',
+            isbn: '978-1-4503-8307-7',
+            barcode: '123456815',
+            availability: 'Available',
+            type: 'journal'
+        },
+        {
+            cover: '/Media/b26.jpg',
+            title: 'Journal of Computer Vision',
+            author: 'Multiple Authors',
+            publisher: 'Springer',
+            publicationDate: 'September 2021',
+            isbn: '978-1-4451-2389-4',
+            barcode: '123456816',
+            availability: 'Not Available till 15/07/2023',
+            type: 'journal'
+        },
+       
+        {
+            cover: '/Media/b27.jpg',
+            title: 'IEEE Transactions on Pattern Analysis and Machine Intelligence',
+            author: 'Multiple Authors',
+            publisher: 'IEEE',
+            publicationDate: 'November 2021',
+            isbn: '978-1-4244-9766-6',
+            barcode: '123456818',
+            availability: 'Available',
+            type: 'journal'
+        }
+            ];
+
+            function renderRecords(records) {
+                recordsTable.innerHTML = '';
+                records.forEach(record => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><img src="${record.cover}" alt="Cover" style="width: 50px;"></td>
+                        <td>${record.title}</td>
+                        <td>${record.author}</td>
+                        <td>${record.publisher}</td>
+                        <td>${record.publicationDate}</td>
+                        <td>${record.isbn}</td>
+                        <td>${record.barcode}</td>
+                        <td>${record.availability}</td>
+                    `;
+                    recordsTable.appendChild(row);
+                });
+            }
+
+            renderRecords(records);
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const filter = button.id.split('-')[1];
+                    if (filter === 'all') {
+                        renderRecords(records);
+                    } else {
+                        const filteredRecords = records.filter(record => record.type === filter);
+                        renderRecords(filteredRecords);
+                    }
+                });
+            });
+
+            const addNewButton = document.getElementById('add-new');
+            const addModal = document.getElementById('addModal');
+            const closeModalButton = document.querySelector('.close');
+            const addRecordForm = document.getElementById('addRecordForm');
+
+            addNewButton.addEventListener('click', () => {
+                addModal.style.display = 'block';
+            });
+
+            closeModalButton.addEventListener('click', () => {
+                addModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == addModal) {
+                    addModal.style.display = 'none';
+                }
+            });
+
+            addRecordForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const formData = new FormData(addRecordForm);
+                const newRecord = {
+                    cover: URL.createObjectURL(formData.get('cover')),
+                    title: formData.get('title'),
+                    author: formData.get('author'),
+                    publisher: formData.get('publisher'),
+                    publicationDate: formData.get('publicationDate'),
+                    isbn: formData.get('isbn'),
+                    barcode: formData.get('barcode'),
+                    availability: formData.get('availability'),
+                    type: formData.get('type')
+                };
+                records.push(newRecord);
+                renderRecords(records);
+                addModal.style.display = 'none';
+            });
+            document.getElementById('availability').addEventListener('change', function() {
+            const availabilityTillInput = document.getElementById('availability-till');
+            const availabilityTillLabel = document.getElementById('availability-till-label');
+            if (this.value === 'not available') {
+                availabilityTillInput.style.display = 'block';
+                availabilityTillLabel.style.display = 'block';
+            } else {
+                availabilityTillInput.style.display = 'none';
+                availabilityTillLabel.style.display = 'none';
+            }
+        });
+            document.getElementById('search-btn').addEventListener('click', function() {
+        const title = document.getElementById('title').value.toLowerCase();
+        const author = document.getElementById('author').value.toLowerCase();
+        const filteredRecords = records.filter(record => 
+            record.title.toLowerCase().includes(title) && 
+            record.author.toLowerCase().includes(author)
+        );
+        recordsTable.innerHTML = '';
+        filteredRecords.forEach(record => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><img src="${record.cover}" alt="Cover Image" width="50"></td>
+                <td>${record.title}</td>
+                <td>${record.author}</td>
+                <td>${record.publisher}</td>
+                <td>${record.publicationDate}</td>
+                <td>${record.isbn}</td>
+                <td>${record.barcode}</td>
+                <td>${record.availability}</td>
+            `;
+            recordsTable.appendChild(row);
+        });
+    });
+
+    // Delete functionality
+    document.getElementById('delete-record').addEventListener('click', function() {
+        const selectedRows = Array.from(recordsTable.querySelectorAll('tr.selected'));
+        if (selectedRows.length === 0) {
+            alert('Please select a record to delete.');
+            return;
+        }
+        selectedRows.forEach(row => {
+            const index = records.findIndex(record => record.barcode === row.cells[6].textContent);
+            if (index !== -1) {
+                records.splice(index, 1);
+            }
+        });
+        renderRecords();
+    });
+
+    // Row selection
+    recordsTable.addEventListener('click', function(event) {
+        const row = event.target.closest('tr');
+        if (row) {
+            row.classList.toggle('selected');
+        }
+    });
+            // Hamburger menu toggle functionality
+            const hamburgerButton = document.getElementById('hamburger');
+            const sidebar = document.querySelector('.sidebar');
+            
+            hamburgerButton.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+        });
+    </script>
 </body>
 </html>

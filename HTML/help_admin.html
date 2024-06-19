@@ -14,34 +14,39 @@
             color: #333;
         }
         .sidebar {
-    width: calc(100vw - 85vw);
-    background-color: #f4f4f4;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0px 0px 0px 5px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(0);
-}
-
-.logo {
-    text-align: left;
-    margin-left: 20px;
-    margin-bottom: 10px;
-}
-
-.logo img {
-    width: calc(100% - 55%);
-    height: auto;
-}
-
-.profile {
+            margin-top: 7vh;
+            width: 250px;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(0);
+        }
+        
+        .logo {
+            text-align: left;
+            width: min-content;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            width: 3vw;
+            height: auto;
+        }
+        .M{
+            margin: auto;
+            text-align: center;
+            
+            width: 40vw;
+            height: auto;
+        }
+        .profile {
     text-align: center;
-    
     margin-bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -70,93 +75,55 @@
     color: gray;
 }
 
-.menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    flex-grow: 1;
-    margin-bottom: (100%-90%);
-}
-
-.menu li {
-    margin: 0;
-    padding: 0;
-}
-
-.menu li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 15px;
-    display: block;
-    padding: calc(100% - 95%) 20px;
-    margin: auto;
-}
-.menu li a i {
-    margin-right: 1px;
-}
-.menu2 {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    padding-left: 0;
-    flex-grow: 1;
-    margin-bottom: (100% -98%);
-}
-
-.menu2 li {
-    margin: 0;
-    padding: 0;
-}
-
-.menu2 li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 15px;
-    display: block;
-    padding: calc(100% - 93%) 20px;
-}
-.menu2 li a i {
-    margin-right: 1px;
-}
-
-.menu li.active a {
-    background-color: #0443A5;
-    color: #fff;
-}
-.menu2 li.active a {
-    background-color: #0443A5;
-    color: #fff;
-}
-
-.hamburger {
-    display: none;
-    position: fixed;
-    left: 0px;
-    top: 0px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    font-size: 24px;
-    z-index: 1000;
-    cursor: pointer;
-}
+        .menu, .menu2 {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+        .menu li, .menu2 li {
+            margin: 0;
+            padding: 0;
+        }
+        .menu li a, .menu2 li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            display: block;
+            padding: 10px 20px;
+        }
+        .menu li a i, .menu2 li a i {
+            margin-right: 10px;
+        }
+        .menu li.active a, .menu2 li.active a {
+            background-color: #0443A5;
+            color: #fff;
+        }
+        .hamburger {
+            display: none;
+            position: fixed;
+            left: 10px;
+            top: 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            font-size: 24px;
+            z-index: 1000;
+            cursor: pointer;
+        }
         .header {
             background: linear-gradient(to right, #4a90e2, #0056b3);
-            padding: 20px;
+            
+            height: 7vh;
             color: white;
             text-align: center;
             font-size: 24px;
             position: sticky;
+            display: flex;
+            flex-direction: row;
             top: 0;
             z-index: 2;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .header .logo {
-            position: absolute;
-            left: 20px;
-            top: 20px;
-            width: 10vw;
         }
         .container {
             padding: 40px;
@@ -236,12 +203,69 @@
             .header {
                 font-size: 20px;
             }
+            .sidebar {
+        transform: translateX(-100%);
+        z-index: 100;
+        width: calc(100vw - 70vw);
+        min-width: 120px;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+            .hamburger {
+                display: block;
+            }
+            .logo img{
+                margin-left: 15vw;
+                width: 50px;
+            }
+            .M{
+                font-size: xx-small;
+                margin-left: 5vw;
+            }
+        }
+        @media (max-width: 900px) and  (min-width: 769px) {
+            .container {
+                margin-left: 30vw;
+                
+            }
+            .logo img {
+            width: 10vw;
+            height: auto;
+        }
+            
+        }
+        @media (max-width: 1200px) and  (min-width: 900px) {
+            .container {
+                margin-left: 25vw;
+                
+            }
+           
+            
+        }
+        @media (max-width: 1400px) and  (min-width: 1200px) {
+            .container {
+                margin-left: 20vw;
+                
+            }
+           
+            
+        }
+        @media (min-width: 1401px) {
+            .logo img {
+            width: 3vw;
+            height: auto;
+        }
+           
+            
         }
         .section:hover {
             transform: scale(1.02);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
     </style>
+
     
 </head>
 <body>
@@ -249,12 +273,10 @@
         <div class="logo">
             <img src="/Media/logo.png" alt="Library Logo">
         </div>
-        Library Management - Help
+        <p class="M">Library Management - Help</p>
     </div>
     <nav class="sidebar" id="sidebar">
-        <div class="logo">
-            <img src="/Media/logo.png" alt="Library Logo">
-        </div>
+
         <div class="profile">
             <img src="/Media/profile.png" alt="Profile Picture">
             <div class="profile-info">
@@ -354,5 +376,6 @@
             <p>Phone: <i class="fas fa-phone"></i> 123-456-7890</p>
         </div>
     </div>
+  <script src="/JAVA/admin_menu.js"></script>
 </body>
 </html>

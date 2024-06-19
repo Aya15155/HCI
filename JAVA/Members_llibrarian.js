@@ -264,7 +264,7 @@ const users = [
             { title: 'Medical Innovations', author: 'R. Clark', category: 'Journal', dueDate: 'September 15, 2024', status: 'Returned' }
         ]
     }
-    // Add more user objects if needed
+    
 ];
 
 function displayUsers() {

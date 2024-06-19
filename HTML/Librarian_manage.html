@@ -4,7 +4,120 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Dashboard</title>
-    <link rel="stylesheet" href="/CSS/admin_menu.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        
+        .sidebar {
+            background-color: #f4f4f4;
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            overflow: auto;
+        }
+
+        .logo img {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .profile {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .profile img {
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        .profile-info h2 {
+            margin: 10px 0 5px;
+        }
+
+        .menu, .menu2 {
+            list-style: none;
+            padding: 0;
+        }
+
+        .menu li, .menu2 li {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .menu li a, .menu2 li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .menu li.active a {
+            background-color: #ddd;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1001;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+
+        .search-container {
+            display: flex;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-container > div {
+            flex-grow: 1;
+            margin-bottom: 10px;
+        }
+
+        .search-container label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                display: none;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .search-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+     <link rel="stylesheet" href="/CSS/admin_menu.css">
     <link rel="stylesheet" href="/CSS/managerequest.css">
     <!-- Font Awesome CDN Link -->
     <script src="https://kit.fontawesome.com/fa33ff1c75.js" crossorigin="anonymous"></script>
@@ -139,6 +252,7 @@
         </div>
         
     </div>
+    <script src="/JAVA/admin_menu.js"></script>
     <script src="/JAVA/managerequest copy.js"></script>
 </body>
 </html>

@@ -137,11 +137,83 @@
         .popup button:hover {
             background-color: #0056b3;
         }
+
+         /* Hamburger menu styles */
+         .menu-btn {
+            display: none;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            color: #333;
+            z-index: 1000;
+        }
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px
+        }
+
+        header nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+
+        header nav ul li {
+            margin-right: 20px;
+        }
+
+        header nav ul li a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        
+
+        @media only screen and (max-width: 768px) {
+            .menu-btn {
+                display: block; /* Show for small screens */
+            }
+
+            header nav ul {
+                display: none; /* Hide navigation links by default */
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 40vw;
+                height: 90vw;
+                background-color: #fff;
+                box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+                padding:20px;
+                z-index: 999;
+            }
+
+            header nav ul.active {
+                display: flex; /* Show when active */
+                flex-direction: column;
+            }
+
+            header nav ul li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            header nav ul li a {
+                color: #333;
+                text-decoration: none;
+            }
+        }
+
+
     </style>
 </head>
 <body>
     <header>
         <nav>
+            <span class="menu-btn">&#9776;</span>
             <ul>
 
                 <li><a href="user.html">Home</a></li>
@@ -220,6 +292,11 @@
         function closePopup() {
             document.getElementById('popup').style.display = 'none';
         }
+
+        document.querySelector('.menu-btn').addEventListener('click', function() {
+            document.querySelector('header nav ul').classList.toggle('active');
+        });
+
     </script>
 </body>
 </html>

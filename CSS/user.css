@@ -154,7 +154,7 @@ nav input::placeholder{
 main{
   max-width: 90vw;
   overflow: hidden;
-  margin-top: 7vh;
+  margin: auto;
 }
 
 h2{

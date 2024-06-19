@@ -1,19 +1,21 @@
 {
   "name": "HCI Main App",
   "short_name": "HCI App",
+  "android_package_name": "com.HCI APP",
   "start_url": "/HTML/welcomepage.html",
-  "display": "standalone",
+  "display": "minimal-ui",
   "background_color": "white",
-  "theme_color": "#f5f7fa",
+  "theme_color": "#000000",
+  "orientation":"portrait",
   "icons": [
     {
-      "src": "/Media/logo.png",
+      "src": "/Media/logo-144.png",
       "sizes": "144x144",
       "type": "image/png",
-      "purpose": "any"
+      "purpose":"any"
     },
     {
-      "src": "/Media/logo.png",
+      "src": "/Media/logo-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
@@ -27,9 +29,29 @@
   ],
   "prefer_related_applications": true,
   "related_applications": [
-    {
-      "platform": "play",
-      "id": "com.google.samples.apps.iosched"
-    }
-  ]
+        {
+            "platform": "play",
+            "id": "com.HCI APP"
+        },
+        {
+            "platform": "play",
+            "id": "com.HCI APP.ota"
+        },
+        {
+            "platform": "play",
+            "id": "com.HCI APP.test"
+        },
+        {
+            "platform": "play",
+            "id": "com.HCI APP.twa"
+        },
+        {
+            "platform": "play",
+            "id": "com.HCI APP.dev"
+        },
+        {
+            "platform": "webapp",
+            "url": "http://127.0.0.1:5500/manifest.json"
+        }
+    ]
 }

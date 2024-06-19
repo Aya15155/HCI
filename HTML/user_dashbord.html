@@ -404,10 +404,22 @@
         }
 
         @media screen and (max-width: 768px) {
+            body{
+                margin: 0;
+                padding: 0;
+            }
+            .container{
+                max-width: 70vw;
+            }
             .navbar .search-bar {
                 display: none;
             }
-
+            .logo  {
+                max-width: 20px;
+            }
+            .navbar  {
+                max-width: 69vw;
+            }
             .nav-links {
                 display: none;
             }
@@ -422,6 +434,14 @@
 
             .sidebar.active {
                 display: block;
+                
+            }
+            .content{
+                max-width: 70vw ;
+            }
+            .profile-picture img{
+                max-width:50px;
+                max-height: 50px;
             }
         }
 

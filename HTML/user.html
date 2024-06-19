@@ -11,14 +11,14 @@
 </head>
 <body>
     <header>
-        <div class="hamburger" onclick="toggleMenu()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-
-        <nav>
-            <div id="nav-links">
+        
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        <nav class="nav-links">
+            <div class="nav-links" id="nav-links">
             <ul>
                 <li><a href="#page1" >Home</a></li>
                 <li><a href="mybooks.html">My books</a></li>
@@ -33,11 +33,7 @@
                 <li><a href="#" id="cart">🛒</a></li>
                </ul>
             </div>
-            <div id="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+           
         </nav>
         
     </header>
@@ -409,6 +405,19 @@
 
 <script src="/JAVA/user.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const hamburger = document.querySelector('.hamburger');
+      const navLinks = document.querySelector('.nav-links');
+  
+      hamburger.addEventListener('click', function () {
+        navLinks.classList.toggle('active');
+      });
+    });
+  </script>
+  
+<script>
+
+
 if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('/service-worker.js')
         .then(registration => {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Books - Library Management System</title>
     <link rel="stylesheet" href="/CSS/user.css">
-    <link rel="manifest" href="/JAVA/user.json">
+    
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#f5f7fa"> 
     <style>
@@ -86,7 +86,7 @@
             max-height: 600px; /* Adjust based on your requirement */
         }
         .book-table {
-            width: 100%;
+            min-width: 20vw;
             border-collapse: collapse;
             margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -174,8 +174,15 @@
             nav ul {
                 flex-direction: column;
             }
+            .book-table th, .book-table td {
+                padding: 5px;
+            }
             .book-table {
-                font-size: 0.9em;
+                width: 85vw;
+                font-size:x-small;
+            }
+            .return-btn {
+                padding: 5px 10px;
             }
         }
     </style>

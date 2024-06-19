@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Landing Page</title>
-    <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#f5f7fa"> 
-
     <style>
         body {
             margin: 0;
@@ -22,10 +18,16 @@
             padding: 10px 20px;
             background-color: white;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: relative;
         }
 
         .logo img {
             height: 40px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
         }
 
         nav ul {
@@ -40,6 +42,11 @@
             text-decoration: none;
             color: black;
             font-weight: bold;
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
         }
 
         .search input {
@@ -71,6 +78,32 @@
             color: white;
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: black;
+        }
+
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
         main {
             display: flex;
             justify-content: center;
@@ -91,6 +124,7 @@
             padding: 10vh;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            flex-direction: row;
         }
 
         .hero-text {
@@ -130,7 +164,7 @@
         }
 
         .hero-image img {
-            max-width: 50VW;
+            max-width: 50vw;
             max-height: calc(100vh - 30vh);
             left: 10%;
             border-radius: 8px;
@@ -158,16 +192,61 @@
             text-align: center;
             justify-content: center;
             justify-content: space-evenly
-
-
         }
-        .social-media a  {
+
+        .social-media a {
             color: #2960b9;
-            
             text-decoration: none;
-            
         }
         
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav, .search, .auth-buttons {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                text-align: center;
+            }
+
+            .hero-image img {
+                max-width: 100%;
+                max-height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .auth-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .hero-text h1 {
+                font-size: 2em;
+            }
+
+            .hero-text p {
+                font-size: 0.9em;
+            }
+
+            .hero-text .cta {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
         
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -180,10 +259,14 @@
         <div class="logo">
             <img src="../Media/Frame 313.png" alt="Library Logo">
         </div>
+        <div class="hamburger" onclick="toggleMobileNav()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <nav>
             <ul>
                 <li><a href="../HTML/user.html">Home</a></li>
-                
             </ul>
         </nav>
         <div class="search">
@@ -191,9 +274,25 @@
         </div>
         <div class="auth-buttons">
             <a href="login.html">
-            <button class="login">Login</button>
+                <button class="login">Login</button>
             </a>
             <button class="signup">Sign Up</button>
+        </div>
+        <div class="mobile-nav" id="mobile-nav">
+            <nav>
+                <ul>
+                    <li><a href="../HTML/user.html">Home</a></li>
+                </ul>
+            </nav>
+            <div class="search">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="auth-buttons">
+                <a href="login.html">
+                    <button class="login">Login</button>
+                </a>
+                <button class="signup">Sign Up</button>
+            </div>
         </div>
     </header>
     <main>
@@ -202,11 +301,11 @@
                 <h1>Welcome To our <span>LIBRARY</span></h1>
                 <p>Discover a vast collection of books, borrow and return with ease, and request new titles. Need a space? Request a meeting room for your gatherings. Dive into a world of knowledge and convenience with us!</p>
                 <a href="../HTML/login.html">
-                <button class="cta">Get Started For Free</button>
+                    <button class="cta">Get Started For Free</button>
                 </a>
             </div>
             <div class="hero-image">
-                <img src="/Media/Illustration_welcom.png" alt="Library Illustration" >
+                <img src="/Media/Illustration_welcom.png" alt="Library Illustration">
             </div>
         </section>
     </main>
@@ -218,69 +317,14 @@
         </div>
     </footer>
     <script>
-        // Placeholder for any JavaScript functionality you want to add
-        // For example, you can add event listeners to buttons here
-        document.querySelector('.cta').addEventListener('click', () => {
-            alert('Get Started For Free button clicked!');
-        });
-    </script>
-    <script>
-        if ('serviceWorker' in navigator) {
-          window.addEventListener('load', function() {
-            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
-              console.log('ServiceWorker registration successful with scope: ', registration.scope);
-            }, function(error) {
-              console.log('ServiceWorker registration failed: ', error);
-            });
-          });
+        function toggleMobileNav() {
+            var mobileNav = document.getElementById("mobile-nav");
+            if (mobileNav.style.display === "flex") {
+                mobileNav.style.display = "none";
+            } else {
+                mobileNav.style.display = "flex";
+            }
         }
-      </script>
-      <script>
-        let deferredPrompt;
-      
-        window.addEventListener('beforeinstallprompt', (e) => {
-          // Prevent the mini-infobar from appearing on mobile
-          e.preventDefault();
-          // Stash the event so it can be triggered later.
-          deferredPrompt = e;
-          // Update UI notify the user they can install the PWA
-          showInstallPromotion(); // Implement this function to show your install button
-      
-          installButton.addEventListener('click', (e) => {
-            // Hide the install promotion
-            hideInstallPromotion(); // Implement this function to hide your install button
-            // Show the install prompt
-            deferredPrompt.prompt();
-            // Wait for the user to respond to the prompt
-            deferredPrompt.userChoice.then((choiceResult) => {
-              if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-              } else {
-                console.log('User dismissed the install prompt');
-              }
-              deferredPrompt = null;
-            });
-          });
-        });
-        btnAdd.addEventListener('click', (e) => {
-  // hide our user interface that shows our A2HS button
-  btnAdd.style.display = 'none';
-  // Show the prompt
-  deferredPrompt.prompt();
-  // Wait for the user to respond to the prompt
-  deferredPrompt.userChoice
-    .then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
-    });
-});
-      </script>
-      
+    </script>
 </body>
 </html>
-
-

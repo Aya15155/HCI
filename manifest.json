@@ -2,20 +2,20 @@
   "name": "HCI Main App",
   "short_name": "HCI App",
   "android_package_name": "com.HCI APP",
-  "start_url": "/HTML/welcomepage.html",
+  "start_url": "https://aya15155.github.io/HCI/HTML/welcomepage.html",
   "display":"standalone",
   "background_color": "white",
   "theme_color": "#000000",
   "orientation":"portrait",
   "icons": [
     {
-      "src": "/Media/logo-144.png",
+      "src": "../Media/logo-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose":"any"
     },
     {
-      "src": "/Media/logo-192.png",
+      "src": "../Media/logo-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"

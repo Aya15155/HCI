@@ -151,9 +151,10 @@ nav input::placeholder{
   padding: 0px 0px;
 }
 
-
-main {
-  padding: 20px;
+main{
+  max-width: 90vw;
+  overflow: hidden;
+  margin-top: 7vh;
 }
 
 h2{
@@ -171,13 +172,14 @@ h2{
 
 .book-section, .genre-section, .author-section, .meeting-room-section {
   margin-bottom: 40px;
+  position: relative;
 }
 
 .book-list, .meeting-room-container {
   display: flex;
   justify-content:center;
   align-items: center;
-  gap: 50px; 
+  gap: 10px; 
 }
 
 .genre-list, .author-list{
@@ -238,8 +240,10 @@ h2{
 
 #browse-genres {
   margin: 20px 0;
+  width: 90vw;
+  overflow: hidden;
 }
-
+.genre-list
 
 .browse-header {
   display: flex;
@@ -340,11 +344,13 @@ h2{
 
 .meeting-room-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 150px; 
-}
 
+}
+.meeting-room-container img {
+  width: 20vw;
+
+
+}
 #meeting-room-form {
   display: flex;
   flex-direction: column;
@@ -480,18 +486,44 @@ footer {
   
 }
 
-@media (max-width: 768px) {
-  .footer-content {
-      flex-direction: column;
-  }
 
-  #email {
-      width: 60%;
+@media (max-width: 768px) {
+  .genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 70vw;
+    max-width: 70vw;
   }
+  main{
+    margin-top: 7vh;
+  }
+  
+  .genre-btn {
+    width: 20vw; /* Set a fixed width */
+    height: 10vh;
+   
+    padding: 10px 20px;
+    background-color: #FF7F56;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 70px;
+    margin-bottom: 5px;
+    text-align: center; 
+    line-height: 20px; 
+    border-radius: 5px;
+  }
+  .footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    font-size: x-small;
 }
 
-
-@media (max-width: 768px) {
+#email {
+    width: 70vw;
+}
   header {
     padding: 10px 20px;
   }
@@ -518,7 +550,10 @@ footer {
   .meeting-room-container,
   .genre-list,
   .author-list {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex: 1;
     gap: 0px;
   }
 
@@ -547,17 +582,20 @@ footer {
   }
 
   #book-meeting-room img {
-    max-width: 100%;
+    max-width: 60vw;
     width: auto;
+    height: auto;
     margin-right: 0;
   }
 
   .footer-content {
     padding: 10px;
+    align-items: center;
+    width: 99vw;
   }
 
   .about img {
-    width: 50px;
+    width: 70px;
   }
 }
 

@@ -184,12 +184,42 @@
             .return-btn {
                 padding: 5px 10px;
             }
+            .nav-links ul {
+    display: none; /* Hide the navigation links */
+  }
+
+  .nav-links.active ul {
+    display: flex; /* Show the navigation links when hamburger menu is active */
+    flex-direction: column;
+    background-color: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 40vw;
+    height: 90vh;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .hamburger {
+    
+    display: block;
+}
         }
     </style>
 </head>
 <body>
     <header>
-        <nav>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        <nav class="nav-links">
           
             <ul>
                 <li><a href="user.html">Home</a></li>
@@ -241,6 +271,18 @@
 
     <script src="/JAVA/user.js"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const hamburger = document.querySelector('.hamburger');
+          const navLinks = document.querySelector('.nav-links');
+      
+          hamburger.addEventListener('click', function () {
+            navLinks.classList.toggle('active');
+          });
+        });
+      </script>
+      
+    <script>
+   
         document.addEventListener('DOMContentLoaded', () => {
             const books = [
                 {

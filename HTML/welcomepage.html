@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Landing Page</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#f5f7fa"> 
+
     <style>
         body {
             margin: 0;
@@ -221,6 +224,62 @@
             alert('Get Started For Free button clicked!');
         });
     </script>
+    <script>
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', function() {
+            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+              console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, function(error) {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+          });
+        }
+      </script>
+      <script>
+        let deferredPrompt;
+      
+        window.addEventListener('beforeinstallprompt', (e) => {
+          // Prevent the mini-infobar from appearing on mobile
+          e.preventDefault();
+          // Stash the event so it can be triggered later.
+          deferredPrompt = e;
+          // Update UI notify the user they can install the PWA
+          showInstallPromotion(); // Implement this function to show your install button
+      
+          installButton.addEventListener('click', (e) => {
+            // Hide the install promotion
+            hideInstallPromotion(); // Implement this function to hide your install button
+            // Show the install prompt
+            deferredPrompt.prompt();
+            // Wait for the user to respond to the prompt
+            deferredPrompt.userChoice.then((choiceResult) => {
+              if (choiceResult.outcome === 'accepted') {
+                console.log('User accepted the install prompt');
+              } else {
+                console.log('User dismissed the install prompt');
+              }
+              deferredPrompt = null;
+            });
+          });
+        });
+        btnAdd.addEventListener('click', (e) => {
+  // hide our user interface that shows our A2HS button
+  btnAdd.style.display = 'none';
+  // Show the prompt
+  deferredPrompt.prompt();
+  // Wait for the user to respond to the prompt
+  deferredPrompt.userChoice
+    .then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      } else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      deferredPrompt = null;
+    });
+});
+      </script>
+      
 </body>
 </html>
 

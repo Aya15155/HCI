@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 document.addEventListener('DOMContentLoaded', function() {
     const borrowButtons = document.querySelectorAll('.borrow-btn');
 

@@ -3,7 +3,7 @@
   "short_name": "HCI App",
   "android_package_name": "com.HCI APP",
   "start_url": "/HTML/welcomepage.html",
-  "display": "minimal-ui",
+  "display":"standalone",
   "background_color": "white",
   "theme_color": "#000000",
   "orientation":"portrait",
@@ -17,12 +17,6 @@
     {
       "src": "/Media/logo-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/Media/logo.png",
-      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     }

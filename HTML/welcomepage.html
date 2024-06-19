@@ -199,7 +199,7 @@
             }
 
             nav, .search, .auth-buttons {
-                display: none;
+                display: block;
             }
 
             .mobile-nav {
@@ -242,6 +242,8 @@
             }
         }
     </style>
+        <link rel="manifest" href="/manifest.json">
+        <meta name="theme-color" content="#f5f7fa"> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -252,11 +254,7 @@
         <div class="logo">
             <img src="../Media/Frame 313.png" alt="Library Logo">
         </div>
-        <div class="hamburger" onclick="toggleMobileNav()">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+        
         <nav>
             <ul>
                 <li><a href="../HTML/user.html">Home</a></li>
@@ -269,24 +267,9 @@
             <a href="login.html">
                 <button class="login">Login</button>
             </a>
-            <button class="signup">Sign Up</button>
+            
         </div>
-        <div class="mobile-nav" id="mobile-nav">
-            <nav>
-                <ul>
-                    <li><a href="../HTML/user.html">Home</a></li>
-                </ul>
-            </nav>
-            <div class="search">
-                <input type="text" placeholder="Search">
-            </div>
-            <div class="auth-buttons">
-                <a href="login.html">
-                    <button class="login">Login</button>
-                </a>
-                <button class="signup">Sign Up</button>
-            </div>
-        </div>
+        
     </header>
     <main>
         <section class="hero">

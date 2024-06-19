@@ -15,6 +15,8 @@ Administrator: Provides admin-level control over the system, including user mana
 
 ## User Login Credentials
 
+start from the welcome page you can click on the "let get started button" or the login button up on the navbar
+
 Admin Login:
 Username: admin@gmail.com
 Password: 123

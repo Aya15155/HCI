@@ -56,8 +56,8 @@
             max-height: min-content;
         }
         .sidebar {
-            width: calc(100vw - 85vw);
-            background-color: #f4f4f4;
+            width: 250px;
+            background-color: #F4F6FD;
             padding: 20px;
             color: #ecf0f1;
             top: 0;
@@ -70,48 +70,45 @@
         .sidebar ul {
             list-style-type: none;
             padding: 0;
-            margin: 0;
-            flex-grow: 1;
-            margin-bottom: (100%-90%);
         }
         .sidebar ul li {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             
         }
         
         .sidebar ul li a {
-            color: #333;
+            color: #000000;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 18px;
             display: flex;
             align-items: center;
         }
-        
         .sidebar ul li a i {
             margin-right: 10px;
             font-size: 20px;
         }
-        
+        .sidebar ul li a:hover {
+            color: #FF7F56;
+        }
         .sidebar  li {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
             list-style-type: none;
         }
         
         .sidebar  li a {
+            color: #000000;
             text-decoration: none;
-    color: #333;
-    font-size: 15px;
-    display: block;
-    padding: calc(100% - 95%) 20px;
-    margin: auto;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            text-decoration: none ;
         }
         .sidebar  li a i {
             margin-right: 10px;
             font-size: 20px;
         }
-        .sidebar  li.active a {
-            background-color: #0443A5;
-            color: #fff;
+        .sidebar  li a:hover {
+            color: #FF7F56;
         }
         .content {
             flex-grow: 1;
@@ -393,6 +390,42 @@
         button:hover {
             background-color: #d7653e;
         }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hamburger-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 768px) {
+            .navbar .search-bar {
+                display: none;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .sidebar.active {
+                display: block;
+            }
+        }
+
+
     </style>
 </head>
 <body>
@@ -408,6 +441,9 @@
             <span>Omar Ali</span>
             <i class="fas fa-user-circle"></i>
             <i class="fas fa-bell"></i>
+        </div>
+        <div class="hamburger-menu">
+            <i class="fas fa-bars"></i>
         </div>
     </nav>
 
@@ -550,6 +586,12 @@
                     document.getElementById(pageId).classList.add("active");
                 });
             });
+        });
+        const hamburgerMenu = document.querySelector('.hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+
+        hamburgerMenu.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
         });
     </script>
 </body>

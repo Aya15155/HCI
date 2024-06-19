@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,8 +13,7 @@ body {
 .container {
     display: flex;
     width: 90vw;
-    max-width: 100%;
-    
+    max-width: 1200px; /* Set a maximum width */
     background-color: #fff;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -26,7 +26,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-   
 }
 
 .image-section img {
@@ -36,27 +35,16 @@ body {
 .login-section {
     flex: 1;
     padding: 40px;
-    border-style: solid;
-    border-top: none;
-    border-right: none;
-    border-bottom: none;
-    border-left-width: 1px;
-    border-color: #000;
+    border-left: 1px solid #000;
 }
 
 h1 {
     font-size: 23px;
     margin-bottom: 20px;
     color: #5352ED;
-    font-family: "Roboto", sans-serif;
     font-weight: 400;
-    font-style: normal;
-}
-.h1{
-    width: calc(100% - 55%);
 }
 
-  
 .input-group {
     margin-bottom: 20px;
     position: relative;
@@ -69,7 +57,7 @@ h1 {
 }
 
 .input-group input {
-    width: calc(100% - 40px);
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -84,39 +72,36 @@ h1 {
     top: 50%;
     transform: translateY(-50%);
 }
+
 .password-toggle i {
     font-size: 18px;
     line-height: 1;
     color: #333;
     transition: color 0.3s ease-in-out;
-    margin-bottom: 20px;
 }
 
 .password-toggle i:hover {
     color: #000;
 }
 
-input[type='email']:focus {
-    background-image: none;
-    padding-left: calc(100% - 98%);
-    transition: ease-in-out;
-}
-input[type='email']::placeholder {
-    background: white url(../Media/Vector.png) no-repeat ;
-    padding-left: calc(100% - 88%);
-    background-position-x:10px ;
-    background-size: contain;
-}
+input[type='email']:focus,
 input[type='password']:focus {
     background-image: none;
-    padding-left: calc(100% - 98%);
-    overflow: hidden;
+    padding-left: 10px;
     transition: ease-in-out;
 }
+
+input[type='email']::placeholder {
+    background: white url('../Media/Vector.png') no-repeat;
+    padding-left: 30px;
+    background-position: 10px center;
+    background-size: contain;
+}
+
 input[type='password']::placeholder {
-    background: white url(../Media/key-solid.svg) no-repeat ;
-    padding-left: calc(100% - 88%);
-    background-position-x:15px ;
+    background: white url('../Media/key-solid.svg') no-repeat;
+    padding-left: 30px;
+    background-position: 10px center;
     background-size: contain;
 }
 
@@ -126,49 +111,31 @@ input[type='password']::placeholder {
     color: #888;
 }
 
-.social-login {
+.social-login-button {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    width: 100%;
     padding: 10px;
-    margin-bottom: 10px;
-    border: none;
+    margin: 10px 0;
+    border: 1px solid #ddd;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    width: 100%; /* Ensures the button takes the full width of the container */
 }
 
-
-.google{
-    
-    width: 400px;
-    height: 40px;
-    border: none;
-    
-    border-radius: 5px;
-    margin:auto;
-    margin-left: 53px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    
+.social-login-button i {
+    margin-right: 10px;
 }
 
-.fb-login-button {
-    width: 100%;
-    margin:auto;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.google-login-button {
     background-color: #fff;
-    color: #3b5998;
-    border: none;
+    color: #757575;
+}
+
+.facebook-login-button {
+    background-color: #3b5998;
+    color: #fff;
 }
 
 .options {
@@ -197,50 +164,36 @@ button[type="submit"] {
 @media (max-width: 800px) {
     .container {
         flex-direction: column;
-        width: 100%;
+        width: 90vw;
+        
+        overflow-y: auto;
     }
 
     .image-section {
-        flex: none;
-        width: 100%;
-        order: 2; /* Move image below form on smaller screens */
+        display: none; /* Hide the image section on smaller screens */
     }
 
     .login-section {
-        width: 100%;
-        order: 1; /* Move form above image on smaller screens */
+        width: 83vw;
+        padding: 20px;
     }
 
-    .image-section img {
-        width: 100%;
-        height: auto;
+    .input-group input {
+        width: 80vw;
     }
 
-    .social-login {
-        width: 48%;
+    .social-login-button {
+        width: 80vw;
         margin-bottom: 10px;
     }
-
-    .social-login:first-child {
-        margin-right: 4%;
-    }
-    
-    
 }
+
 @media (min-width: 1500px) {
-    .google{
-    
-        
-        margin:auto;
+    .google-login-button {
         margin-left: 202px;
-        margin-bottom: 10px;
-        width: 400px;
-        height: 40px;
-        
     }
-    .fb-login-button{
-        margin:auto;
+
+    .facebook-login-button {
         margin-left: 150px;
-        margin-bottom: 30px;
     }
 }

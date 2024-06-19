@@ -14,16 +14,14 @@ body {
     flex: 1;
     padding: 20px;
     padding-top: 3px;
-    max-width: 78vw;
-    margin: auto;
+    
+    
     width: 60vw;
     margin-left: calc(100vw - 85vw); 
     transition: margin-right 0.3s ease;
 }
 
-.char_cont {
-    padding: 5vh 10vw;
-}
+
 
 header {
     display: flex;
@@ -33,7 +31,7 @@ header {
 }
 
 header h1 {
-    margin: 0;
+   
     font-size: 24px;
     color: #333;
 }
@@ -112,10 +110,33 @@ header h1 {
 }
 
 @media (max-width: 768px) {
-    .stats {
-        flex-direction: column;
+    body{
+        font-size: x-small;
     }
-
+    h1{
+        margin-left: 10px;
+    }
+    .stats {
+        width: 90vw;
+        padding: 20px;
+    }
+    .content{
+        width: 100vw;
+    }
+    .chart {
+        background-color: #333;
+        height: 230px;
+        width: 90vw;
+        margin: 20px 0;
+        padding: 20px;
+        border-radius: 5px;
+    }
+    canvas#chart{
+        height: 200px;
+        min-height: 160px;
+        max-width:100vw;
+        
+    }
     .stat {
         margin-bottom: 20px;
     }
@@ -123,7 +144,9 @@ header h1 {
     .stat:last-child {
         margin-bottom: 0;
     }
+    
 }
+
 
 .stat .number {
     font-size: 2em;
@@ -139,6 +162,7 @@ header h1 {
 .table-container {
     overflow-y: auto;
     height: 85vh;
+    
     border: 1px solid #ddd;
     border-radius: 10px;
 }
@@ -148,6 +172,7 @@ header h1 {
 
 table {
     width: 100%;
+    max-height: min-content;
     border-collapse: collapse;
     border-radius: 10px;
 }
@@ -184,8 +209,8 @@ tbody tr:nth-child(even) {
 
 .container {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
+    
+    
     transition: margin-right 0.3s ease; /* Add transition for smooth shifting */
     margin-left: 0; /* Initial margin */
 }

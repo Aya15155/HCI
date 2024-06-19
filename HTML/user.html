@@ -120,9 +120,9 @@
         </div>
 
         <nav>
+            <div id="nav-links">
             <ul>
-
-                <li><a href="#page1" >Home</a></li>
+                 <li><a href="#page1" >Home</a></li>
                 <li><a href="mybooks.html">My books</a></li>
                 <li><a href="#page4" >Browse</a></li>
                 <li><a href="RequestaNewBook.html">Request a new book</a></li>
@@ -133,9 +133,13 @@
                 </li>
                 <li><a href="../HTML/user_dashbord.html">👤</a></li>
                 <li><a href="#" id="cart">🛒</a></li>
-               
-                
-            </ul>
+               </ul>
+            </div>
+            <div id="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </nav>
         
     </header>
@@ -516,10 +520,14 @@ if ('serviceWorker' in navigator) {
             console.log('Service Worker registration failed:', error);
         });
 }
+<<<<<<< Updated upstream
 function toggleMenu() {
         const nav = document.querySelector('nav ul');
         nav.classList.toggle('show');
     }
+=======
+
+>>>>>>> Stashed changes
 </script>
 
 

@@ -2,7 +2,7 @@
   "name": "HCI Main App",
   "short_name": "HCI App",
   "android_package_name": "com.HCI APP",
-  "start_url": "https://aya15155.github.io/HCI/HTML/welcomepage.html",
+  "start_url": "/HTML/welcomepage.html",
   "display":"standalone",
   "background_color": "white",
   "theme_color": "#000000",

@@ -4,6 +4,8 @@ Welcome to our Library Management System website! This platform is designed to m
 
 This project is part of our Human-Computer Interaction (HCI) course at the university.
 
+***To open the file unzip the file and then open the "HCI main file"  that is inside the file HCI Project in vs code***
+
 ## Features
 
 Responsive Design: The website is fully responsive and accessible on all devices, ensuring a seamless user experience across desktops, tablets, and smartphones.
@@ -26,7 +28,7 @@ Username: librarian@gmail.com
 Password: 123
 
 Normal User Login:
-Username: User@gmail.com
+Username: user@gmail.com
 Password: 123
 
 ## Deliverables and Functionality
